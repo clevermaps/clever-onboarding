@@ -77,12 +77,16 @@ export default class OnboardRenderer {
 		// render SVG
 		this._svgEl = this._containerEl.append("svg")
 			.attr("class", style["svg"])
+			.attr("width", "100%")
+			.attr("height", "100%")
 
 		// defs el
 		this._defsEl = this._svgEl.append("defs");
 		this._maskEl = this._defsEl.append("mask")
 			.attr("class", style["mask"])
 			.attr("id", "onboarding-mask")
+			.attr("width", "100%")
+			.attr("height", "100%")
 			.attr("x", 0)
 			.attr("y", 0)
 
@@ -90,28 +94,20 @@ export default class OnboardRenderer {
 			.attr("class", style["bg"])
 			.attr("x", 0)
 			.attr("y", 0)
+			.attr("width", "100%")
+			.attr("height", "100%")
 			.attr("fill", "white")
 
 		this._bgEl = this._svgEl.append("rect")
 			.attr("class", style["bg"])
+			.attr("width", "100%")
+			.attr("height", "100%")
 			.attr("x", 0)
 			.attr("y", 0)
 			.attr("mask", "url(#onboarding-mask)")
 			.attr("fill", this._options.fillColor)
 			.attr("fill-opacity", this._options.fillOpacity)
 
-		this._handleHeight();
-
-		this._handleHeightHandler = this._handleHeight.bind(this);
-
-		window.addEventListener("resize", this._handleHeightHandler);
-	}
-
-	_handleHeight(){
-		var height = document.documentElement.clientHeight + document.body.scrollTop;
-
-		this._svgEl.attr("height", height);
-		this._maskEl.attr("height", height);
 	}
 
 	/**
@@ -235,9 +231,6 @@ export default class OnboardRenderer {
 	 * Destorys Onboard UI  
 	 */
 	destroy() {
-		if (this._rendered) {
-			window.removeEventListener("resize", this._handleHeightHandler);
-		}
 
 		this._observable.destroy();
 
