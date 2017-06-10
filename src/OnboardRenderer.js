@@ -65,7 +65,7 @@ export default class OnboardRenderer {
 	 */
 	render(selector) {
 		// get container element using selector or given element
-		this._containerEl = d3.select(selector || document.documentElement);
+		this._containerEl = d3.select(selector || document.body);
 
 		this._renderMask();
 		this._rendered = true;
@@ -73,12 +73,20 @@ export default class OnboardRenderer {
 		return this;
 	}
 
+	_getViewSize(){
+		return {
+			width: Math.max(document.documentElement.offsetWidth, document.documentElement.clientWidth),
+			height: Math.max(document.documentElement.offsetHeight, document.documentElement.clientHeight)
+		}
+	}
+
 	_renderMask(){
+		var size = this._getViewSize();
 		// render SVG
 		this._svgEl = this._containerEl.append("svg")
 			.attr("class", style["svg"])
-			.attr("width", "100%")
-			.attr("height", "100%")
+			.attr("width", size.width)
+			.attr("height", size.height)
 
 		// defs el
 		this._defsEl = this._svgEl.append("defs");
@@ -108,6 +116,13 @@ export default class OnboardRenderer {
 			.attr("fill", this._options.fillColor)
 			.attr("fill-opacity", this._options.fillOpacity)
 
+		this._onWindowResize = ()=>{
+			var size = this._getViewSize();
+			this._svgEl.attr("width", size.width);
+			this._svgEl.attr("height", size.height);
+		}	
+
+		window.addEventListener("resize", this._onWindowResize);
 	}
 
 	/**
@@ -231,7 +246,9 @@ export default class OnboardRenderer {
 	 * Destorys Onboard UI  
 	 */
 	destroy() {
-
+		if (this._rendered){
+			window.removeEventListener("resize", this._onWindowResize);
+		}
 		this._observable.destroy();
 
 		return this;
