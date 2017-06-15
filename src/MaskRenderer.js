@@ -7,7 +7,7 @@ import * as d3 from "d3";
  * @param {Object} options
  */
 export default class MaskRenderer {
-	constructor(options) {
+	constructor(options, model) {
 		/**
 		 * @private 
 		 * Onboard options
@@ -37,6 +37,15 @@ export default class MaskRenderer {
 		 * true if Onboard has been rendered
 		 */
 		this._rendered = false;
+
+		/**
+		 * @private
+		 */
+		this._model = model;
+
+		this._onStartBinding = this._model.on("start", this._onStart.bind(this));
+		this._onStepBinding = this._model.on("step", this._onStep.bind(this));
+		this._onStopBinding = this._model.on("stop", this._onStop.bind(this));
 	}
 
 	/**
@@ -73,6 +82,7 @@ export default class MaskRenderer {
 
 	_renderMask(){
 		var size = this._getViewSize();
+
 		// render SVG
 		this._svgEl = this._containerEl.append("svg")
 			.attr("class", style["svg"])
@@ -81,6 +91,7 @@ export default class MaskRenderer {
 
 		// defs el
 		this._defsEl = this._svgEl.append("defs");
+
 		this._maskEl = this._defsEl.append("mask")
 			.attr("class", style["mask"])
 			.attr("id", "onboarding-mask")
@@ -120,22 +131,13 @@ export default class MaskRenderer {
 	 * @public
 	 * @returns {MaskRenderer} 
 	 */
-	start() {
+	_onStart() {
 		this._svgEl.style("display", "block");
-		this._clearSteps();
-		this._renderSteps();
 		return this;
 	}	
+
 	_clearSteps(){
 		this._stepElements.forEach(element=>element.remove());
-	}
-
-	/**
-	 * @private
-	 */
-	_renderSteps(){
-		var steps = this._options.steps || [];
-		steps.forEach(this._renderStep.bind(this));
 	}
 
 	/**
@@ -149,27 +151,40 @@ export default class MaskRenderer {
 	}
 
 	_renderStepElement(element, step){
-		var shape = step.shape || "rectangle";
+		var shape = step.shape || {
+			type:"rectangle"
+		};
 			
-		if (shape == "circle"){
+		if (shape.type == "circle"){
 			return this._renderCircleMask(element, step);
 		} else {
 			return this._renderRectangleMask(element, step);
 		}
 	}
-
+	_getBorderRadius(el){
+		return parseFloat(window.getComputedStyle(el, null).getPropertyValue("border-top-left-radius"));
+	}
 	_renderRectangleMask(element, step){
 		var box = element.getBoundingClientRect();		
+		var borderRadius = this._getBorderRadius(element);
 
 		var stepEl = this._maskEl
 			.append("rect")
 				.attr("fill", "black")
-				.attr("x", box.left)
-				.attr("y", box.top)
-				.attr("width", box.width)
+				.attr("x", box.left + box.width/2)
+				.attr("y", box.top + box.height/2)
+				.attr("rx", borderRadius)
+				.attr("ry", borderRadius)
+				.attr("width", 0)
 				.attr("stroke-width", step.shape?step.shape.offset||0:0)
 				.attr("stroke", "black")
-				.attr("height", box.height)
+				.attr("height", 0)
+
+		stepEl.transition().duration(this._options.animationDuration)
+			.attr("width", box.width)
+			.attr("height", box.height)
+			.attr("x", box.left)
+			.attr("y", box.top)
 
 		return stepEl;
 	}
@@ -183,17 +198,29 @@ export default class MaskRenderer {
 			.append("circle")
 			.attr("r", 0)
 			.attr("fill", "black")
+			.attr("stroke-width", step.shape?step.shape.offset||0:0)
+			.attr("stroke", "black")
 			.attr("cx", cx)
 			.attr("cy", cy)
 
-		stepEl.transition().duration(250).attr("r", step.shape.radius || box.width /2)
+		stepEl.transition().duration(this._options.animationDuration).attr("r", step.shape.radius || box.width /2)
 	}
 
 	/**
 	 * @public
 	 * @returns {MaskRenderer} 
 	 */
-	stop() {
+	_onStep(step) {
+		this._clearSteps();
+		this._renderStep(step);
+		return this;
+	}	
+
+	/**
+	 * @public
+	 * @returns {MaskRenderer} 
+	 */
+	_onStop() {
 		this._svgEl.style("display", "none");
 		return this;
 	}
@@ -206,6 +233,12 @@ export default class MaskRenderer {
 		if (this._rendered){
 			window.removeEventListener("resize", this._onWindowResize);
 		}
+
+		this._clearSteps();
+
+		this._onStartBinding.destroy();
+		this._onStepBinding.destroy();
+		this._onStopBinding.destroy();
 
 		return this;
 	}

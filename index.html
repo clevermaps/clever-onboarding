@@ -5,6 +5,7 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/d3/4.8.0/d3.min.js"></script>
     <script src="dist/onboard.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
 </head>
 
 <style>
@@ -13,27 +14,80 @@
         font-family: Roboto;
     }
 
-    #menu-element {
+    .menu-element {
         position:absolute;
         left:133px;
         top:28px;
         width:236px;
         height:46px;
     }
+
+    .side-elements-ct {
+        position:absolute;
+        left: 834px;
+        top:59px;
+        height: 430px;
+        width:400px;
+    }
+
+    .side-element {
+        position:relative;
+        border-radius: 5px;
+        width:400px;
+        height: 67px;
+        margin-bottom:4px;
+    }
+
+    .filter-element {
+        position:absolute;
+        top:53px;
+        left:752px;
+        border-radius: 50%;
+        width:23px;
+        height: 23px;
+    }    
 </style>
 
 <body>
     <img src="images/1_INTRO.png" width="1366" height="768" />
-    <div id="menu-element" />
+    <div class="menu-element" />
+    <div class="side-elements-ct">
+        <div class="side-element"></div>
+        <div class="side-element"></div>
+        <div class="side-element"></div>
+        <div class="side-element"></div>
+        <div class="side-element"></div>
+        <div class="side-element"></div>
+    </div>
+    <div class="filter-element" />
 
     <script>
         var onboard = new Onboard({
+            nextText:"Další",
+            understandText:"Rozumím",            
             steps:[
                 {
-                    selection:d3.select("#menu-element"),
+                    selection:d3.select(".menu-element"),
                     title:"Data mimo dosah mapy",
                     text:"Odzoomovali jste mimo možnosti prohlížeče zobrazit takové množství oblastí zaráz. Kliknutím na ikonu se mapa přiblíží na nejbližší podporovanou úroveň zvolené graularity. Případně můžete vybrat jinou úroveň granularity, složenou z menšího počtu oblastí."
                     
+                },
+                {
+                    selection:d3.selectAll(".side-element"),
+                    title:"Indikátory",
+                    shape:{
+                        offset:-20
+                    },
+                    text:"Indikátory ve výchozím stavu ukazují hodnoty hromadně za celou síť. Zvolením oblasti nebo bodu v mapě se zobrazí hodnoty už jen pro vybraný objekt. Zvolením indikátoru se jev zobrazuje v mapě."
+                    
+                },
+                {
+                    selection:d3.selectAll(".filter-element"),
+                    title:"Aktivní filtr",
+                    shape:{
+                        offset:13
+                    },
+                    text:"Právě jste aktivovali filtr. Číslo u nástroje Filtr ukazuje počet všech aktivních filtrů, které aktuálně ořezávají data. Filtry lze dočasně vypnout pomocí ikony X aniž by se zrušilo jejich původní nastavení."
                 }
             ]
         });

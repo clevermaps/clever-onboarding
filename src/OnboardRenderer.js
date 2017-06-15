@@ -9,7 +9,7 @@ import * as d3 from "d3";
  * @param {Object} options
  */
 export default class OnboardRenderer {
-	constructor(options) {
+	constructor(options, model) {
 		/**
 		 * @private 
 		 * Onboard options
@@ -28,6 +28,12 @@ export default class OnboardRenderer {
 		this._rendered = false;
 
 		/**
+		 * @private 
+		 * Model
+		 */
+		this._model = model;
+
+		/**
 		 * @private
 		 * observable handler
 		 */
@@ -35,8 +41,8 @@ export default class OnboardRenderer {
 			
 		]);		
 
-		this._maskRenderer = new MaskRenderer(options);
-		this._windowRenderer = new WindowRenderer(options);
+		this._maskRenderer = new MaskRenderer(options, model);
+		this._windowRenderer = new WindowRenderer(options, model);
 	}
 
 	/**
@@ -67,26 +73,6 @@ export default class OnboardRenderer {
 	}
 
 	/**
-	 * @public
-	 * @returns {OnboardRenderer} 
-	 */
-	start() {
-		this._maskRenderer.start();
-		this._windowRenderer.start();
-		return this;
-	}	
-
-	/**
-	 * @public
-	 * @returns {OnboardRenderer} 
-	 */
-	stop() {
-		this._maskRenderer.stop();
-		this._windowRenderer.stop();
-		return this;
-	}		
-
-	/**
 	 * Bind widget event
 	 * @param {String} event event name
 	 * @param {Function} handler event handler
@@ -113,7 +99,7 @@ export default class OnboardRenderer {
 	 * Destorys Onboard UI  
 	 */
 	destroy() {
-		this._observable.destroy();
+		this._observable.destroy();	
 
 		return this;
 	}

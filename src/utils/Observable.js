@@ -24,7 +24,11 @@ export default class Observable {
     on(event, handler) {
         if (!(event in this._handlers)) throw "No such event: " + event;
 		this._handlers[event].push(handler);
-		return this;
+		return {
+			destroy:()=>{
+				this.off(event, handler)
+			}
+		};
     }
 
 	/**

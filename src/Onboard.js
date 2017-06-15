@@ -1,6 +1,7 @@
 import Observable from "./utils/Observable";
 import * as Defaults from "./OnboardDefaults";
 import OnboardRenderer from "./OnboardRenderer";
+import OnboardModel from "./OnboardModel";
 
 /**
  * @private 
@@ -39,6 +40,24 @@ class Onboard {
 
 		/**
 		 * @public
+		 * Next text
+		 */
+		this._options.nextText = getOptionValue(options.nextText, Defaults.NEXT_TEXT);		
+
+		/**
+		 * @public
+		 * Understand text
+		 */
+		this._options.understandText = getOptionValue(options.understandText, Defaults.UNDERSTAND_TEXT);		
+
+		/**
+		 * @public
+		 * animation duration
+		 */
+		this._options.animationDuration = getOptionValue(options.animationDuration, Defaults.ANIMATION_DURATION);		
+
+		/**
+		 * @public
 		 * steps
 		 */
 		this._options.steps = options.steps;
@@ -51,11 +70,13 @@ class Onboard {
 			
 		]);
 
+		this._model = new OnboardModel(this._options);
+
 		/**
 		 * @private
 		 * OnboardRenderer
 		 */
-		this._onboardRenderer = new OnboardRenderer(this._options);
+		this._onboardRenderer = new OnboardRenderer(this._options, this._model);
 
 		this.render();
 	}
@@ -90,6 +111,7 @@ class Onboard {
 		this._observable.destroy();
 		this._onboardRenderer.destroy();
 		this._options = null;
+		this._model.destroy();
 
 		return this;
 	}	
@@ -105,31 +127,11 @@ class Onboard {
 	}
 
 	/**
-	 * Sets data
-	 * @param {Object} options
-	 * @returns {Onboard} returns this widget instance 
-	 */
-	update(options) {
-		if (!this._onboardRenderer.isRendered()) {
-			throw "Can't call update() when widget is not rendered, please call .render() first."
-		}
-
-		this._onboardRenderer.update(options);
-
-		return this;
-	}
-
-	/**
 	 * Starts onboarding
 	 * @returns {Onboard} returns this widget instance 
 	 */
 	start() {
-		if (!this._onboardRenderer.isRendered()) {
-			this._onboardRenderer.render();
-		}
-
-		this._onboardRenderer.start();
-
+		this._model.start();
 		return this;
 	}
 
@@ -139,12 +141,7 @@ class Onboard {
 	 * @returns {Onboard} returns this widget instance 
 	 */
 	stop() {
-		if (!this._onboardRenderer.isRendered()) {
-			this._onboardRenderer.render();
-		}
-
-		this._onboardRenderer.stop();
-
+		this._model.stop();
 		return this;
 	}	
 }
