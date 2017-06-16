@@ -154,8 +154,10 @@ export default class MaskRenderer {
 		var shape = step.shape || {
 			type:"rectangle"
 		};
-			
-		if (shape.type == "circle"){
+
+		if (element.tagName == "path"){
+			return this._renderPathMask(element, step);
+		} else if (shape.type == "circle"){
 			return this._renderCircleMask(element, step);
 		} else {
 			return this._renderRectangleMask(element, step);
@@ -171,20 +173,16 @@ export default class MaskRenderer {
 		var stepEl = this._maskEl
 			.append("rect")
 				.attr("fill", "black")
-				.attr("x", box.left + box.width/2)
-				.attr("y", box.top + box.height/2)
+				.attr("x", box.left)
+				.attr("y", box.top)
 				.attr("rx", borderRadius)
 				.attr("ry", borderRadius)
-				.attr("width", 0)
+				.attr("width", box.width)
+				.attr("fill-opacity", 1)
+				.attr("stroke-opacity", 1)
 				.attr("stroke-width", step.shape?step.shape.offset||0:0)
 				.attr("stroke", "black")
-				.attr("height", 0)
-
-		stepEl.transition().duration(this._options.animationDuration)
-			.attr("width", box.width)
-			.attr("height", box.height)
-			.attr("x", box.left)
-			.attr("y", box.top)
+				.attr("height", box.height)
 
 		return stepEl;
 	}
@@ -196,15 +194,39 @@ export default class MaskRenderer {
 
 		var stepEl = this._maskEl
 			.append("circle")
-			.attr("r", 0)
+			.attr("r", step.shape.radius || box.width /2)
 			.attr("fill", "black")
+			.attr("fill-opacity", 1)
 			.attr("stroke-width", step.shape?step.shape.offset||0:0)
+			.attr("stroke-opacity", 1)
 			.attr("stroke", "black")
 			.attr("cx", cx)
 			.attr("cy", cy)
 
-		stepEl.transition().duration(this._options.animationDuration).attr("r", step.shape.radius || box.width /2)
+		return stepEl;
 	}
+
+	_renderPathMask(element, step){
+		var svgElement = element.parentElement; 
+		while (svgElement && svgElement.tagName != "svg"){
+			svgElement = svgElement.parentElement;
+		}
+
+		var box = svgElement.getBoundingClientRect();
+
+		var stepEl = this._maskEl
+			.append("g")
+			.attr("transform", "translate("+box.left+", "+box.top+")")
+			.append("path")
+				.attr("fill", "black")
+				.attr("fill-opacity", 1)
+				.attr("stroke-width", step.shape?step.shape.offset||0:0)
+				.attr("stroke", "black")
+				.attr("d", d3.select(element).attr("d"))
+			
+		
+		return stepEl;
+	}	
 
 	/**
 	 * @public

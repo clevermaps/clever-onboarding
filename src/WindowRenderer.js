@@ -1,5 +1,7 @@
 import style from "./Onboard.css";
 import * as d3 from "d3";
+import PositionResolver from "./PositionResolver";
+import ArrowRenderer from "./ArrowRenderer";
 
 /**
  * @class
@@ -30,6 +32,9 @@ export default class WindowRenderer {
 		this._onStartBinding = this._model.on("start", this._onStart.bind(this));
 		this._onStepBinding = this._model.on("step", this._onStep.bind(this));
 		this._onStopBinding = this._model.on("stop", this._onStop.bind(this));
+
+		this._positionResolver = new PositionResolver();
+		this._arrowRenderer = new ArrowRenderer(options, model);		
 	}
 
 	/**
@@ -52,6 +57,7 @@ export default class WindowRenderer {
 		this._containerEl = d3.select(selector || document.body);
 
 		this._renderWindow();
+		this._arrowRenderer.render(selector);
 		this._rendered = true;
 
 		return this;
@@ -122,6 +128,15 @@ export default class WindowRenderer {
 		} else {
 			this._nextBtnTextEl.html(this._options.understandText)
 		}
+
+		var firstNode = step.selection.nodes()[0];
+		var targetBox = firstNode.getBoundingClientRect();
+		var windowBox = this._windowEl.node().getBoundingClientRect();
+		var windowPosition = this._positionResolver.getWindowPosition(targetBox, windowBox, this._arrowRenderer.getArrowBox());
+
+		this._windowEl.style("left", windowPosition.left+"px");
+		this._windowEl.style("top", windowPosition.top+"px");
+		this._windowEl.attr("class", style["window"]+" "+style["window-"+windowPosition.position]);		
 
 		return this;
 	}	

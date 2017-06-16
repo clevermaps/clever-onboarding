@@ -3,6 +3,7 @@ import babelrc from 'babelrc-rollup';
 import postcss from 'rollup-plugin-postcss';
 import postcssModules from 'postcss-modules';
 import uglify from 'rollup-plugin-uglify';
+import cssnext from 'postcss-cssnext';
 
 let pkg = require('./package.json');
 let external = Object.keys(pkg.dependencies);
@@ -18,7 +19,8 @@ export default {
           getJSON (id, exportTokens) {
             cssExportMap[id] = exportTokens;
           }
-        })
+        }),
+        cssnext()        
       ],
       getExport (id) {
         return cssExportMap[id];

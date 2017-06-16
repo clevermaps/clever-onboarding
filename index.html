@@ -14,18 +14,22 @@
         font-family: Roboto;
     }
 
+    body {
+        margin:0;
+    }
+
     .menu-element {
         position:absolute;
-        left:133px;
-        top:28px;
-        width:236px;
+        left:129px;
+        top:19px;
+        width:237px;
         height:46px;
     }
 
     .side-elements-ct {
         position:absolute;
-        left: 834px;
-        top:59px;
+        left: 1009px;
+        top:61px;
         height: 430px;
         width:400px;
     }
@@ -33,34 +37,75 @@
     .side-element {
         position:relative;
         border-radius: 5px;
-        width:400px;
-        height: 67px;
-        margin-bottom:4px;
+        width:399px;
+        height: 66px;
+        margin-bottom: 5px;
     }
 
     .filter-element {
         position:absolute;
-        top:53px;
-        left:752px;
+        top: 10px;
+        left: 922.5px;
         border-radius: 50%;
         width:23px;
         height: 23px;
     }    
+
+    .map {
+        position: absolute;
+        overflow: visible;
+        top:387px;
+        left:364px;
+    }
+
+    .path {
+        position: absolute;
+    }
+
+    .path1 {
+        left:0px;
+    }
+
+    .path2 {
+        left:257px;
+    }
+
+    .path3 {
+        left:272px;
+        top:-230px;
+    }
+
+    .path4 {
+        left:257px;
+        top:-256px;
+    }
 </style>
 
 <body>
-    <img src="images/1_INTRO.png" width="1366" height="768" />
+
+    <div class="map">
+        <svg class="path path1">
+            <path class="ricany" stroke="#ffff00" stroke-opacity="1" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" fill="transparent" fill-opacity="0.48" fill-rule="evenodd" d="M201.5 19.5L213.3125 35.0625L207.125 41.5625L231.25 56.6875L227.6875 52.875L226.25 48.3125L227.4375 42.125L229.9375 40.0625L237.75 45.25L245.375 46.375L252.9375 45.875L254.75 48.125L254.625 54.125L264 55.875L264 214.6875L254.75 217L252.5 217L247.25 214.75L241.6875 203.875L230 201.9375L226 204.25L222.375 210.125L220.0625 211.625L212.75 213.0625L207.6875 213L201.625 207.5625L200.125 202.1875L201.8125 199.6875L204.4375 198.5L208.75 188.875L207.125 183.0625L198.6875 173.9375L180.8125 172.5L182.3125 181.3125L187.0625 194L185.125 198.5L177.5625 207.25L175.4375 209.375L172.5 210.5625L164.5625 202.5625L155.4375 196.125L152.4375 197.875L152.0625 202.9375L141.625 207.75L122.625 200.5L116.375 205.5625L105.625 209.1875L96.3125 208.5625L93.75 206.5625L92.8125 204L96.125 202.25L98.375 199.25L99.75 195.8125L99 191.25L95.125 189.375L90.9375 190.0625L90.875 190.8125L86.8125 188.9375L82.875 184.375L80.625 177.625L84.125 167.8125L88.5 164.9375L93.1875 153.9375L86.5625 146.6875L87.4375 142.125L95 128.5L99.0625 125.0625L107.4375 126.375L116.375 84.5L112.4375 64.25L122.375 55.875L137.9375 68.1875L142.9375 74.3125L164.625 79.0625L177.5 67.8125L185.3125 56.8125L186.0625 51.4375L184.9375 51.3125L176.25 37.6875L176.875 29.9375L184.0625 29.125L198.0625 17.375L201.5 19.5z"></path>
+        </svg>
+
+        <svg class="path path2">
+            <path class="ricany" stroke="#ffff00" stroke-opacity="1" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" fill="transparent" fill-opacity="0.48" fill-rule="evenodd" d="M73.9375 36.75L76 38.9375L75 52.125L73.5625 57.1875L74.6875 61.875L90.75 81.5L92.5 82.125L97.875 79.9375L110 83L113.1875 88.25L113.3125 90L111.875 90.25L112.6875 91.375L115.6875 90.0625L123.875 83.75L126.625 83.375L128.8125 85.3125L122.5625 96L120.5 105.25L120.125 140.125L112.0625 128.9375L111.375 126.6875L104.8125 126.0625L96.5625 132L93.5625 136.1875L91.0625 141.625L92.0625 148.9375L95.0625 156.625L101.3125 167.3125L110.6875 166.125L110.375 165.3125L113.125 162.625L121.375 167.875L115.6875 173.6875L103.375 191.8125L100.9375 194.125L97.375 192.375L93.4375 193.9375L89.0625 204.8125L73.9375 214.5L71.875 214.375L67.4375 210.6875L67.1875 202.875L66.4375 201.5625L63.5 200.75L41.75 200.75L37.0625 199.6875L32.375 195.3125L12.5 203.0625L11.9375 208.125L9.9375 214.1875L-1.25 217L-3.5 217L-8 215.0625L-8 46.1875L-3.0625 45.875L-1.25 48.125L-1.375 54.125L16.375 57.4375L30.875 64.25L37.25 63L58.875 54.375L63.8125 45.3125L61.3125 42L62.375 38.3125L65.5 35.875L70.1875 35.1875L73.9375 36.75z"></path>
+        </svg>      
+
+        <svg class="path path4">
+            <path class="lysa" stroke="#ffff00" stroke-opacity="1" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" fill="transparent" fill-opacity="0.48" fill-rule="evenodd" d="M68.0625 27.5625L72.4375 32.25L104.25 42.1875L111 46.375L121.0625 49.5L113 66.125L116.4375 92.5625L119.1875 125.125L118.5 133.8125L114.6875 139.125L96.125 155.0625L78.3125 173.125L72.5625 173.8125L66.75 170.4375L60.4375 169.9375L50.3125 166.625L48.375 161.1875L43.6875 162.25L34.125 159.9375L29.25 154.75L23.0625 145.8125L22.5 140.1875L23.375 138.25L23.3125 134.375L20.625 125.75L18 123.625L12.5625 122.875L1.8125 97.4375L7.875 60.6875L11.75 53.8125L24 50.5625L32.875 50.5625L38.6875 47.4375L45.125 29.6875L50.3125 27.3125L50.9375 26.4375L60.25 24.4375L68.0625 27.5625z"></path>
+        </svg>                         
+    </div> 
+    
+    <img src="images/1.png" width="1543" height="845" />
     <div class="menu-element" />
     <div class="side-elements-ct">
         <div class="side-element"></div>
         <div class="side-element"></div>
         <div class="side-element"></div>
         <div class="side-element"></div>
-        <div class="side-element"></div>
-        <div class="side-element"></div>
     </div>
     <div class="filter-element" />
-
     <script>
         var onboard = new Onboard({
             nextText:"Další",
@@ -73,20 +118,31 @@
                     
                 },
                 {
+                    selection:d3.selectAll(".ricany"),
+                    title:"Mapa ukazka - Ricany",
+                    text:"Indikátory ve výchozím stavu ukazují hodnoty hromadně za celou síť. Zvolením oblasti nebo bodu v mapě se zobrazí hodnoty už jen pro vybraný objekt. Zvolením indikátoru se jev zobrazuje v mapě."
+                    
+                },
+
+                {
+                    selection:d3.selectAll(".lysa"),
+                    title:"Mapa ukazka - lysa",
+                    text:"Indikátory ve výchozím stavu ukazují hodnoty hromadně za celou síť. Zvolením oblasti nebo bodu v mapě se zobrazí hodnoty už jen pro vybraný objekt. Zvolením indikátoru se jev zobrazuje v mapě."
+                    
+                },
+
+                {
                     selection:d3.selectAll(".side-element"),
                     title:"Indikátory",
-                    shape:{
-                        offset:-20
-                    },
                     text:"Indikátory ve výchozím stavu ukazují hodnoty hromadně za celou síť. Zvolením oblasti nebo bodu v mapě se zobrazí hodnoty už jen pro vybraný objekt. Zvolením indikátoru se jev zobrazuje v mapě."
                     
                 },
                 {
                     selection:d3.selectAll(".filter-element"),
-                    title:"Aktivní filtr",
                     shape:{
                         offset:13
-                    },
+                    },                                        
+                    title:"Aktivní filtr",
                     text:"Právě jste aktivovali filtr. Číslo u nástroje Filtr ukazuje počet všech aktivních filtrů, které aktuálně ořezávají data. Filtry lze dočasně vypnout pomocí ikony X aniž by se zrušilo jejich původní nastavení."
                 }
             ]
