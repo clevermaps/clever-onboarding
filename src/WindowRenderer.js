@@ -120,6 +120,16 @@ export default class WindowRenderer {
 		return this;
 	}	
 
+	_getBox(element){
+		var box = element.getBoundingClientRect();
+		return {
+			top:box.top +  + document.body.scrollTop,
+			left:box.left +  + document.body.scrollLeft,
+			width: box.width,
+			height:box.height
+		}
+	}
+
 	/**
 	 * @public
 	 * @returns {MaskRenderer} 
@@ -138,14 +148,14 @@ export default class WindowRenderer {
 		}
 
 		var firstNode = step.selection.nodes()[0];
-		var targetBox = firstNode.getBoundingClientRect();
-		var windowBox = this._windowEl.node().getBoundingClientRect();
+		var targetBox = this._getBox(firstNode);
+		var windowBox = this._getBox(this._windowEl.node());
 		var windowPosition = this._positionResolver.getWindowPosition(targetBox, windowBox, this._arrowRenderer.getArrowBox());
 
 		this._windowEl.transition().duration(this._options.animationDuration)
 			.style("left", windowPosition.left+"px")
 			.style("top", windowPosition.top+"px");
-			
+
 		this._windowEl.attr("class", style["window"]+" "+style["window-"+windowPosition.position]);		
 
 		return this;

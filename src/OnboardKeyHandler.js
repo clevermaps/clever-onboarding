@@ -12,6 +12,7 @@ export default class OnboardKeyHandler {
 		 */
 		this._options = options;
 		this._model = model;
+		
 		this._onStartBinding = this._model.on("start", this._onStart.bind(this));
 		this._onStopBinding = this._model.on("stop", this._onStop.bind(this));
 	}
@@ -30,11 +31,11 @@ export default class OnboardKeyHandler {
 	 * @returns {OnboarKeyHandler} 
 	 */
 	_onKeyDown(){
-		if(d3.event.key == "ArrowLeft"){
+		if(d3.event.key == "ArrowLeft" || d3.event.key == "Backspace"){
 			this._model.hasPrev()?this._model.prev():this._model.stop();
-		} else if (d3.event.key == "ArrowRight"){
+		} else if (d3.event.key == "ArrowRight" || d3.event.key == "Enter"){
 			this._model.hasNext()?this._model.next():this._model.stop();
-		} else if (d3.event.key == "Backspace" || d3.event.key == "Escape"){
+		} else if (d3.event.key == "Escape"){
 			this._model.stop();
 		}
 	}

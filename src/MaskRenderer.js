@@ -166,8 +166,19 @@ export default class MaskRenderer {
 	_getBorderRadius(el){
 		return parseFloat(window.getComputedStyle(el, null).getPropertyValue("border-top-left-radius"));
 	}
+
+	_getBox(element){
+		var box = element.getBoundingClientRect();
+		return {
+			top:box.top +  + document.body.scrollTop,
+			left:box.left +  + document.body.scrollLeft,
+			width: box.width,
+			height:box.height
+		}
+	}
+
 	_renderRectangleMask(element, step){
-		var box = element.getBoundingClientRect();		
+		var box = this._getBox(element);		
 		var borderRadius = this._getBorderRadius(element);
 
 		var stepEl = this._maskEl
@@ -188,7 +199,7 @@ export default class MaskRenderer {
 	}
 
 	_renderCircleMask(element, step){
-		var box = element.getBoundingClientRect();		
+		var box = this._getBox(element);
 		var cx = box.left + box.width / 2;
 		var cy = box.top + box.height / 2;
 
@@ -212,7 +223,7 @@ export default class MaskRenderer {
 			svgElement = svgElement.parentElement;
 		}
 
-		var box = svgElement.getBoundingClientRect();
+		var box = this._getBox(svgElement);
 
 		var stepEl = this._maskEl
 			.append("g")

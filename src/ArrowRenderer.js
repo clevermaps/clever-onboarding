@@ -66,8 +66,19 @@ export default class ArrowRenderer {
 		this._arrowEl = this._containerEl.append("div")
 			.attr("class", style["arrow"]+" "+style["arrow-bottom-right"])
 
-		this._arrowBox = this._arrowEl.node().getBoundingClientRect();
+		this._arrowBox = this._getBox(this._arrowEl.node());
 	}
+
+
+	_getBox(element){
+		var box = element.getBoundingClientRect();
+		return {
+			top:box.top +  + document.body.scrollTop,
+			left:box.left +  + document.body.scrollLeft,
+			width: box.width,
+			height:box.height
+		}
+	}	
 
 	/**
 	 * @public
@@ -84,7 +95,7 @@ export default class ArrowRenderer {
 	 */
 	_onStep(step) {
 		var firstNode = step.selection.nodes()[0];
-		var targetBox = firstNode.getBoundingClientRect();
+		var targetBox = this._getBox(firstNode);
 		var arrowPosition = this._positionResolver.getArrowPosition(targetBox, this._arrowBox);
 
 		this._arrowEl.transition().duration(0 /*this._options.animationDuration*/)
