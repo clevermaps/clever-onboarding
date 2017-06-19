@@ -120,7 +120,19 @@
             nextText:"Další",
             understandText:"Rozumím",            
             steps:[
-                                {
+                {
+                    selection:d3.select(".menu-element"),
+                    title:"Data mimo dosah mapy",
+                    text:"Odzoomovali jste mimo možnosti prohlížeče zobrazit takové množství oblastí zaráz. Kliknutím na ikonu se mapa přiblíží na nejbližší podporovanou úroveň zvolené graularity. Případně můžete vybrat jinou úroveň granularity, složenou z menšího počtu oblastí."
+                    
+                },                
+                 {
+                    selection:d3.selectAll(".side-element"),
+                    title:"Indikátory",
+                    text:"Indikátory ve výchozím stavu ukazují hodnoty hromadně za celou síť. Zvolením oblasti nebo bodu v mapě se zobrazí hodnoty už jen pro vybraný objekt. Zvolením indikátoru se jev zobrazuje v mapě."
+                    
+                },
+                {
                     selection:d3.selectAll(".ricany"),
                     title:"Mapa ukazka - Ricany",
                     text:"Indikátory ve výchozím stavu ukazují hodnoty hromadně za celou síť. Zvolením oblasti nebo bodu v mapě se zobrazí hodnoty už jen pro vybraný objekt. Zvolením indikátoru se jev zobrazuje v mapě."
@@ -133,25 +145,13 @@
                     
                 },                
                 {
-                    selection:d3.select(".menu-element"),
-                    title:"Data mimo dosah mapy",
-                    text:"Odzoomovali jste mimo možnosti prohlížeče zobrazit takové množství oblastí zaráz. Kliknutím na ikonu se mapa přiblíží na nejbližší podporovanou úroveň zvolené graularity. Případně můžete vybrat jinou úroveň granularity, složenou z menšího počtu oblastí."
-                    
-                },
-
-                {
                     selection:d3.selectAll(".lysa"),
                     title:"Mapa ukazka - lysa",
                     text:"Indikátory ve výchozím stavu ukazují hodnoty hromadně za celou síť. Zvolením oblasti nebo bodu v mapě se zobrazí hodnoty už jen pro vybraný objekt. Zvolením indikátoru se jev zobrazuje v mapě."
                     
                 },
 
-                {
-                    selection:d3.selectAll(".side-element"),
-                    title:"Indikátory",
-                    text:"Indikátory ve výchozím stavu ukazují hodnoty hromadně za celou síť. Zvolením oblasti nebo bodu v mapě se zobrazí hodnoty už jen pro vybraný objekt. Zvolením indikátoru se jev zobrazuje v mapě."
-                    
-                },
+               
                 {
                     selection:d3.selectAll(".filter-element"),
                     shape:{

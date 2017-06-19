@@ -133,3 +133,18 @@
 .window-right-top {
     
 }
+
+.window-close {
+    position:absolute;
+    right:18px;
+    top:18px;
+    font-size: 18px;
+    width:15px;
+    height:15px;
+    color:#cacaca;
+    cursor: pointer;
+}
+
+.window-close:hover {
+    color:black;
+}

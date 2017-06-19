@@ -89,6 +89,14 @@ export default class WindowRenderer {
 
 		this._bodyEl = this._windowEl.append("div")
 			.attr("class", style["window-body"])
+
+		this._closeEl = this._windowEl.append("div")
+			.attr("class", style["window-close"] + " zmdi zmdi-close")
+			.on("click", this._onCloseClick.bind(this))
+	}
+
+	_onCloseClick(){
+		this._model.stop();
 	}
 
 	_onNextClick(){
