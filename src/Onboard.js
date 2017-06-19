@@ -2,6 +2,7 @@ import Observable from "./utils/Observable";
 import * as Defaults from "./OnboardDefaults";
 import OnboardRenderer from "./OnboardRenderer";
 import OnboardModel from "./OnboardModel";
+import OnboardKeyHandler from "./OnboardKeyHandler";
 
 /**
  * @private 
@@ -78,6 +79,11 @@ class Onboard {
 		 */
 		this._onboardRenderer = new OnboardRenderer(this._options, this._model);
 
+		/**
+		 * @private
+		 */
+		this._onboardKeyHandler = new OnboardKeyHandler(this._options, this._model);		
+
 		this.render();
 	}
 
@@ -112,6 +118,7 @@ class Onboard {
 		this._onboardRenderer.destroy();
 		this._options = null;
 		this._model.destroy();
+		this._onboardKeyHandler.destroy();
 
 		return this;
 	}	
