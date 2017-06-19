@@ -87,8 +87,20 @@ export default class ArrowRenderer {
 		var targetBox = firstNode.getBoundingClientRect();
 		var arrowPosition = this._positionResolver.getArrowPosition(targetBox, this._arrowBox);
 
-		this._arrowEl.style("left", arrowPosition.left+"px");
-		this._arrowEl.style("top", arrowPosition.top+"px");
+		this._arrowEl.transition().duration(0 /*this._options.animationDuration*/)
+			.style("top", arrowPosition.top+"px")
+			.style("left", arrowPosition.left+"px");
+
+			// epxerimental fading when moving arrow
+		// this._arrowEl
+		// 	.transition("2")
+		// 	.duration(this._options.animationDuration/4)
+		// 	.style("opacity", 0)
+		// 	.transition().duration(this._options.animationDuration/2)
+		// 	.style("opacity", 0)
+		// 	.transition().duration(this._options.animationDuration/4)
+		// 	.style("opacity", 1);
+
 		this._arrowEl.attr("class", style["arrow"]+" "+style["arrow-"+arrowPosition.position]);
 
 		return this;

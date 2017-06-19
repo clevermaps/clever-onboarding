@@ -14,7 +14,7 @@ export const FILL_OPACITY = 0.25;
  * @public
  * Default animation duration
  */
-export const ANIMATION_DURATION = 250;
+export const ANIMATION_DURATION = 200;
 
 /**
  * @public

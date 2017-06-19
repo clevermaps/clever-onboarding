@@ -142,8 +142,10 @@ export default class WindowRenderer {
 		var windowBox = this._windowEl.node().getBoundingClientRect();
 		var windowPosition = this._positionResolver.getWindowPosition(targetBox, windowBox, this._arrowRenderer.getArrowBox());
 
-		this._windowEl.style("left", windowPosition.left+"px");
-		this._windowEl.style("top", windowPosition.top+"px");
+		this._windowEl.transition().duration(this._options.animationDuration)
+			.style("left", windowPosition.left+"px")
+			.style("top", windowPosition.top+"px");
+			
 		this._windowEl.attr("class", style["window"]+" "+style["window-"+windowPosition.position]);		
 
 		return this;
