@@ -28,8 +28,8 @@
 
     .side-elements-ct {
         position:absolute;
-        left: 1009px;
-        top:61px;
+        left: 1138px;
+        top: 79px;
         height: 430px;
         width:400px;
     }
@@ -44,12 +44,21 @@
 
     .filter-element {
         position:absolute;
-        top: 10px;
-        left: 922.5px;
+        top: 29px;
+        left: 1051px;
         border-radius: 50%;
         width:23px;
         height: 23px;
     }    
+
+    .graph-element {
+        position:absolute;
+        top: 485px;
+        left: 1137px;
+        border-radius: 5px;
+        width:400px;
+        height: 251px;
+    }        
 
     .map {
         position: absolute;
@@ -98,29 +107,35 @@
     </div> 
     
     <img src="images/1.png" width="1543" height="845" />
-    <div class="menu-element" />
+    <div class="menu-element"></div>
     <div class="side-elements-ct">
         <div class="side-element"></div>
         <div class="side-element"></div>
         <div class="side-element"></div>
-        <div class="side-element"></div>
     </div>
-    <div class="filter-element" />
+    <div class="graph-element"></div>
+    <div class="filter-element"></div>
     <script>
         var onboard = new Onboard({
             nextText:"Další",
             understandText:"Rozumím",            
             steps:[
+                                {
+                    selection:d3.selectAll(".ricany"),
+                    title:"Mapa ukazka - Ricany",
+                    text:"Indikátory ve výchozím stavu ukazují hodnoty hromadně za celou síť. Zvolením oblasti nebo bodu v mapě se zobrazí hodnoty už jen pro vybraný objekt. Zvolením indikátoru se jev zobrazuje v mapě."
+                    
+                },
+                {
+                    selection:d3.select(".graph-element"),
+                    title:"Data mimo dosah mapy",
+                    text:"Odzoomovali jste mimo možnosti prohlížeče zobrazit takové množství oblastí zaráz. Kliknutím na ikonu se mapa přiblíží na nejbližší podporovanou úroveň zvolené graularity. Případně můžete vybrat jinou úroveň granularity, složenou z menšího počtu oblastí."
+                    
+                },                
                 {
                     selection:d3.select(".menu-element"),
                     title:"Data mimo dosah mapy",
                     text:"Odzoomovali jste mimo možnosti prohlížeče zobrazit takové množství oblastí zaráz. Kliknutím na ikonu se mapa přiblíží na nejbližší podporovanou úroveň zvolené graularity. Případně můžete vybrat jinou úroveň granularity, složenou z menšího počtu oblastí."
-                    
-                },
-                {
-                    selection:d3.selectAll(".ricany"),
-                    title:"Mapa ukazka - Ricany",
-                    text:"Indikátory ve výchozím stavu ukazují hodnoty hromadně za celou síť. Zvolením oblasti nebo bodu v mapě se zobrazí hodnoty už jen pro vybraný objekt. Zvolením indikátoru se jev zobrazuje v mapě."
                     
                 },
 

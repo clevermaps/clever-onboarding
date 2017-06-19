@@ -115,6 +115,8 @@
 
 .arrow-right-bottom {
     transform: scaleY(-1);
+    margin-left: -10px;
+    margin-top: 10px;
 }
 
 .arrow-left-top {

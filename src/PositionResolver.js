@@ -23,7 +23,7 @@ export default class PositionResolver {
 			"left-top":targetBox.left + targetBox.width/2 + arrowBox.width,
 			"right-top":targetBox.left - arrowBox.width - windowBox.width,
 			"left-bottom":targetBox.left + targetBox.width/2 + arrowBox.width,
-			"right-bottom":targetBox.left + targetBox.width/2,
+			"right-bottom":targetBox.left - windowBox.width - arrowBox.width,
 		}[position];
 	}
 
@@ -31,8 +31,8 @@ export default class PositionResolver {
 		return {
 			"left-top":targetBox.top + targetBox.height + arrowBox.height,
 			"right-top":targetBox.top + targetBox.height/2 + arrowBox.height,
-			"left-bottom":targetBox.top - windowBox.height + arrowBox.height,
-			"right-bottom":targetBox.top + targetBox.height/2,
+			"left-bottom":targetBox.top - windowBox.height - arrowBox.height,
+			"right-bottom":targetBox.top - windowBox.height + arrowBox.height,
 		}[position];
 	}	
 
@@ -53,7 +53,7 @@ export default class PositionResolver {
 			"left-top":targetBox.left + targetBox.width/2,
 			"right-top":targetBox.left - arrowBox.width,
 			"left-bottom":targetBox.left + targetBox.width/2 ,
-			"right-bottom":targetBox.left + targetBox.width/2,
+			"right-bottom":targetBox.left - arrowBox.width,
 		}[position];
 	}
 
@@ -62,7 +62,7 @@ export default class PositionResolver {
 			"left-top":targetBox.top + targetBox.height,
 			"right-top":targetBox.top + targetBox.height/2,
 			"left-bottom":targetBox.top - arrowBox.height,
-			"right-bottom":targetBox.top + targetBox.height/2,
+			"right-bottom":targetBox.top + arrowBox.height,
 		}[position];
 	}
 
