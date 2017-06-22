@@ -101,6 +101,9 @@ export default class OnboardRenderer {
 	destroy() {
 		this._observable.destroy();	
 
+		this._maskRenderer.destroy();
+		this._windowRenderer.destroy();
+
 		return this;
 	}
 }

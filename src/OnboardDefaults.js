@@ -27,3 +27,9 @@ export const NEXT_TEXT = "Next";
  * Understand text
  */
 export const UNDERSTAND_TEXT = "Got it";
+
+/**
+ * @public
+ * Default window width
+ */
+export const WINDOW_WIDTH = 400;

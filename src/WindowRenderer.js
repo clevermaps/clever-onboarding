@@ -2,6 +2,7 @@ import style from "./Onboard.css";
 import * as d3 from "d3";
 import PositionResolver from "./PositionResolver";
 import ArrowRenderer from "./ArrowRenderer";
+import ProgressRenderer from "./ProgressRenderer";
 
 /**
  * @class
@@ -35,6 +36,8 @@ export default class WindowRenderer {
 
 		this._positionResolver = new PositionResolver();
 		this._arrowRenderer = new ArrowRenderer(options, model);		
+		this._progressRenderer = new ProgressRenderer(options, model);		
+		
 	}
 
 	/**
@@ -58,6 +61,7 @@ export default class WindowRenderer {
 
 		this._renderWindow();
 		this._arrowRenderer.render(selector);
+		this._progressRenderer.render(this._windowEl.node());
 		this._rendered = true;
 
 		return this;
@@ -66,6 +70,7 @@ export default class WindowRenderer {
 	_renderWindow(){
 		this._windowEl = this._containerEl.append("div")
 			.attr("class", style["window"])
+			.style("width", this._options.windowWidth + "px");
 
 		this._nextBtnEl = this._windowEl.append("div")
 			.on("click", this._onNextClick.bind(this))
@@ -109,7 +114,7 @@ export default class WindowRenderer {
 
 	_onNextClick(){
 		this._nextBtnEl.classed(style["window-next-btn-hover"], false);
-		
+
 		if (this._model.hasNext()){
 			this._model.next();
 		} else {
@@ -188,6 +193,9 @@ export default class WindowRenderer {
 		this._onStartBinding.destroy();
 		this._onStepBinding.destroy();
 		this._onStopBinding.destroy();
+
+		this._progressRenderer.destroy();
+		this._arrowRenderer.destroy();
 
 		return this;
 	}

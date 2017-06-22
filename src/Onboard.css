@@ -15,7 +15,6 @@
 .window {
     display: none;
     position:absolute;
-    width:400px;
     min-height:200px;
     left:calc(50% - 200px);
     top:calc(50% - 100px);
@@ -24,6 +23,7 @@
     box-shadow: 0 15px 20px 0 rgba(0, 0, 0, 0.2);
     font-family: Roboto;
     padding-bottom: 30px;
+    overflow: hidden;
 }
 
 .window-next-btn {
@@ -152,4 +152,21 @@
 
 .window-close:hover {
     color:black;
+}
+
+.window-progress-ct {
+    background-color: #49ace2;
+    height: 5px;
+    left: 0px;
+    top: 0px;
+    width:0px;
+    position: absolute;
+}
+
+.window-progress-step {
+    position: relative;
+    height:5px;
+    border-right:2px solid white;
+    background-color: transparent;
+    float:left;
 }

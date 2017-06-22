@@ -59,6 +59,12 @@ class Onboard {
 
 		/**
 		 * @public
+		 * window width
+		 */
+		this._options.windowWidth = getOptionValue(options.windowWidth, Defaults.WINDOW_WIDTH);				
+
+		/**
+		 * @public
 		 * steps
 		 */
 		this._options.steps = options.steps;
