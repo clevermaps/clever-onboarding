@@ -75,6 +75,14 @@ export default class WindowRenderer {
 			.attr("class",style["window-next-btn-text"])
 			.html(this._options.nextText);
 
+		this._nextBtnEl.on("mouseover", ()=>{
+			this._nextBtnEl.classed(style["window-next-btn-hover"], true);
+		});
+
+		this._nextBtnEl.on("mouseout", ()=>{
+			this._nextBtnEl.classed(style["window-next-btn-hover"], false);
+		})
+
 		this._nextBtnIconEl = this._nextBtnEl.append("div").attr("class",style["window-btn-icon"]+" zmdi zmdi-long-arrow-right");
 
 		this._prevBtnEl = this._windowEl.append("div")
@@ -100,6 +108,8 @@ export default class WindowRenderer {
 	}
 
 	_onNextClick(){
+		this._nextBtnEl.classed(style["window-next-btn-hover"], false);
+		
 		if (this._model.hasNext()){
 			this._model.next();
 		} else {
