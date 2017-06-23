@@ -15,14 +15,13 @@
 .window {
     display: none;
     position:absolute;
-    min-height:200px;
     left:calc(50% - 200px);
-    top:calc(50% - 100px);
+    padding-bottom:90px;
+    top:calc(50vh - 200px);
     border-radius: 5px;
     background-color: #ffffff;
     box-shadow: 0 15px 20px 0 rgba(0, 0, 0, 0.2);
     font-family: Roboto;
-    padding-bottom: 30px;
     overflow: hidden;
 }
 
@@ -38,6 +37,7 @@
     box-sizing: border-box;
     border-radius: 5px;
     font-size: 10px;
+    background-color:white;
     font-weight: bold;
     letter-spacing: 1px;
     user-select: none;
@@ -159,6 +159,7 @@
     height: 5px;
     left: 0px;
     top: 0px;
+    overflow: hidden;
     width:0px;
     position: absolute;
 }

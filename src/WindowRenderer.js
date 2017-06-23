@@ -3,6 +3,7 @@ import * as d3 from "d3";
 import PositionResolver from "./PositionResolver";
 import ArrowRenderer from "./ArrowRenderer";
 import ProgressRenderer from "./ProgressRenderer";
+import * as Defaults from "./OnboardDefaults";
 
 /**
  * @class
@@ -69,12 +70,12 @@ export default class WindowRenderer {
 
 	_renderWindow(){
 		this._windowEl = this._containerEl.append("div")
-			.attr("class", style["window"])
+			.attr("class", style["window"] + " " + this._options.windowClassName)
 			.style("width", this._options.windowWidth + "px");
 
 		this._nextBtnEl = this._windowEl.append("div")
 			.on("click", this._onNextClick.bind(this))
-			.attr("class", style["window-next-btn"]);
+			.attr("class", style["window-next-btn"] + " " + Defaults.NEXT_BUTTON_CLASS_NAME);
 
 		this._nextBtnTextEl = this._nextBtnEl.append("span")
 			.attr("class",style["window-next-btn-text"])
@@ -91,14 +92,14 @@ export default class WindowRenderer {
 		this._nextBtnIconEl = this._nextBtnEl.append("div").attr("class",style["window-btn-icon"]+" zmdi zmdi-long-arrow-right");
 
 		this._prevBtnEl = this._windowEl.append("div")
-			.attr("class", style["window-prev-btn"])
+			.attr("class", style["window-prev-btn"] + " " + Defaults.PREV_BUTTON_CLASS_NAME)
 			.on("click", this._onPrevClick.bind(this))
 			.html(this._options.prevText)
 
 		this._prevBtnEl.append("div").attr("class",style["window-btn-icon"]+" zmdi zmdi-long-arrow-left");			
 
 		this._titleEl = this._windowEl.append("div")
-			.attr("class", style["window-title"])
+			.attr("class", style["window-title"] + " " +Defaults.WINDOW_TITLE_CLASS_NAME)
 
 		this._bodyEl = this._windowEl.append("div")
 			.attr("class", style["window-body"])
@@ -155,11 +156,16 @@ export default class WindowRenderer {
 
 		this._prevBtnEl.classed(style["window-button-has-prev"], this._model.hasPrev());
 		this._nextBtnEl.classed(style["window-button-has-next"], this._model.hasNext());
+		this._nextBtnTextEl.html(step.nextText || this._options.nextText)
+		this._windowEl.attr("class", style["window"] + " " + (step.windowClassName || this._options.windowClassName))
+		this._windowEl.style("width", (step.windowWidth || this._options.windowWidth) + "px");
 
-		if (this._model.hasNext()){
-			this._nextBtnTextEl.html(this._options.nextText)
-		} else {
-			this._nextBtnTextEl.html(this._options.understandText)
+		if (!step.selection) {
+			this._windowEl.transition().duration(this._options.animationDuration)
+				.style("left", null)
+				.style("top", null);
+
+			return;
 		}
 
 		var firstNode = step.selection.nodes()[0];
@@ -171,7 +177,7 @@ export default class WindowRenderer {
 			.style("left", windowPosition.left+"px")
 			.style("top", windowPosition.top+"px");
 
-		this._windowEl.attr("class", style["window"]+" "+style["window-"+windowPosition.position]);		
+		this._windowEl.classed(style["window-"+windowPosition.position], true);
 
 		return this;
 	}	

@@ -49,7 +49,7 @@ class Onboard {
 		 * @public
 		 * Understand text
 		 */
-		this._options.understandText = getOptionValue(options.understandText, Defaults.UNDERSTAND_TEXT);		
+		this._options.windowClassName = getOptionValue(options.windowClassName, Defaults.WINDOW_CLASS_NAME);		
 
 		/**
 		 * @public

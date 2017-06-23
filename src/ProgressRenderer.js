@@ -31,11 +31,13 @@ export default class OnboardRenderer {
 		 */
 		this._model = model;
 
+		this._steps = model.getSteps().filter(step=>step.showProgress !== false);
+
 		/**
 		 * @private 
 		 * Number of steps 
 		 */
-		this._numOfSteps = this._model.getSteps().length;		
+		this._numOfSteps = this._steps.length;		
 
 		// only show when number of steps is > than 1
 		if (this._numOfSteps>1){
@@ -75,34 +77,50 @@ export default class OnboardRenderer {
 	}
 
 	_renderSteps(){
-		var stepWidth = this._getStepWidth();
-
-		this._model.getSteps().forEach(()=>{
+		this._steps.forEach(()=>{
 			this._progressEl.append("div")
-				.classed(style["window-progress-step"], true)
-				.style("width", stepWidth+"px");
+				.classed(style["window-progress-step"], true);
 		})
-		
 	}	
 
-	_getStepWidth(){
-		return this._options.windowWidth / this._numOfSteps;
+	_resizeSteps(step){
+		var stepWidth = this._getStepWidth(step);
+		d3.selectAll("."+style["window-progress-step"])
+			.transition()
+			.duration(this._options.animationDuration)
+			.style("width", stepWidth + "px");
 	}
 
-	_getProgressWidth(index){
-		return this._options.windowWidth * (index + 1) / this._numOfSteps;
+	_getStepWidth(step){
+		return (step.windowWidth || this._options.windowWidth) / this._numOfSteps;
+	}
+
+	_getProgressWidth(index, step){
+		return (step.windowWidth || this._options.windowWidth) * (index + 1) / this._numOfSteps;
 	}
 
 	/**
 	 * @public
 	 * @returns {MaskRenderer} 
 	 */
-	_onStep(step, index) {
-		var width = this._getProgressWidth(index);
+	_onStep(step) {
+		if (step.showProgress === false) {
+			this._progressEl
+				.transition()
+				.duration(this._options.animationDuration)
+				.style("width", 0+"px");
+		
+			return;
+		} 
+
+		var index = this._steps.indexOf(step);
+		var width = this._getProgressWidth(index, step);
 		this._progressEl
 			.transition()
 			.duration(this._options.animationDuration)
 			.style("width", width+"px");
+
+		this._resizeSteps(step);
 	}	
 
 	/**

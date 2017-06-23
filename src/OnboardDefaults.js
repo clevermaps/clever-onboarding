@@ -24,9 +24,28 @@ export const NEXT_TEXT = "Next";
 
 /**
  * @public
- * Understand text
+ * Window class name
  */
-export const UNDERSTAND_TEXT = "Got it";
+export const WINDOW_CLASS_NAME = "";
+
+/**
+ * @public
+ * Prev button class name
+ */
+export const PREV_BUTTON_CLASS_NAME = "onboard-window-prev-btn";
+
+/**
+ * @public
+ * Next button class name
+ */
+export const NEXT_BUTTON_CLASS_NAME = "onboard-window-next-btn";
+
+/**
+ * @public
+ * Next button class name
+ */
+export const WINDOW_TITLE_CLASS_NAME = "onboard-window-title";
+
 
 /**
  * @public

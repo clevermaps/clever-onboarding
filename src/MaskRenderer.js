@@ -145,6 +145,8 @@ export default class MaskRenderer {
 	 */
 	_renderStep(step){
 		let selection = step.selection; 
+		if (!selection) return;
+		
 		selection.nodes().forEach(element=>{
 			this._stepElements.push(this._renderStepElement(element, step));
 		});

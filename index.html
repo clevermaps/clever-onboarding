@@ -88,6 +88,27 @@
         left:257px;
         top:-256px;
     }
+
+    /** =========================================================== INTRO ====== **/
+    .intro-step {
+        background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAABzCAMAAAA8NNjLAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAAYUExURf7//09PUIWPlczj8LDAytTU1MDW49Hq+EqbTnsAAANQSURBVHja7N3JEqIwFEDRECL5/z9uEMSByV61eX3OSinLBVW3kjCmCoSX7AIQOiB0QOiA0AGhA0IHhA4IHYQOCB0QOiB0QOiA0AGhA0IHoQNCB4QOCB0QOiB0QOiA0EHogNC/VnLX5WKPQtzQp8pnWoeYoS+V57J+sF8hVugfcWsdwoW+m7XWIVDoJ0FrHYKEns9TnlvP9jA0HXr3TeidPQzhp+5Ch9ZDr9cH44QOAUKvF6fXhA4xQq9nF8wIHcKEXg8vgRU6xAi9614m7esEfilc6BAl9C4P75uG3AkdooU+r8+HvtZ+eKzThQ6xQh/W9fm6Th+EDsFCHwfykp8H43Lp18KFDnFC/3YrIHTgh9fo243W6BAt9O54o9AhRuj9Tszjtt6uhUCh783dByM5BAs9d5sb0osny0C40PMXm4CmQy/beXrXeSokxAp9m3WxRIemQ0+L04m6mTs0HHp6s27uP4b07OQaNBt62niZqpe3ibsVOrQZetr1HMNz3fkMNBV6SqelT/enlqHv51vTTdyhydBTOi/9/bkT9iq0GHpKF6WPo/jyrrXSCx2aDD2lq9Jf4xY6RAx9mIby9caW929AI6Gfd55u65sbhmF9dJwTbBAq9PLyLqbl6ZCDU2zQWujnna9N30fzvLzLYfroJBtECX0s+rb3F8VZNggT+tRzvi0/HGfsj4Nwg3U6NBX6yVG4vL6YZY27X4rfebMq0F7oZT66fp+9Twvyfm57qP2yYf6BpTq0G/q94nybT6Tfy54W5VPs5fl61eViOTsZmgz9dp+Wv2S/3svyMWGfL4w1gYcGQ586v71fBVumUXwe07fPlVI6tBf62Hk+uFl19x+y0qG90DedX/1Hdk4dWgt9HNDT34Xu8c/w66HX7cVw5aDzw4HbY2GhtdA/DsR9E7p3sUF7oae/Dd1TZ+DXQ69XodfL0D11BoQO/PvQ63noVegQOfT503HOz+9Ch58PvZ6FXoUOMUKvx6FXoUOU0OtR6FXoECf0uh96FTpECv2ZutAhcOiP1B+hn4UtdGg29Ln157F2oUPM0AGhA0IHhA4IHRA6IHQQOiB0QOiA0AGhA0IHhA4IHRA6CB0QOiB0QOiA0AGhA0IHhA7/nT8CDADlIR9U2RusXwAAAABJRU5ErkJggg==');
+        background-position:0 bottom;
+        background-repeat: no-repeat;
+        padding-bottom:140px;
+    }
+
+    .intro-step .onboard-window-next-btn {
+        right:85px;
+        bottom:40px;
+    }
+
+    .intro-step .onboard-window-title {
+        font-size:20px;
+    }
+
+    .intro-step .onboard-window-prev-btn {
+        display:none;
+    }
 </style>
 
 <body>
@@ -118,14 +139,21 @@
     <script>
         var onboard = new Onboard({
             nextText:"Další",
-            understandText:"Rozumím",            
             steps:[
+                {
+                    title:"Objednávky",
+                    text:"Pohled Objednávky vám přinese porozumění, ve kterých oblastech se Rohlíku daří a ve kterých naopak zaostává. Na mapě tak z vašich dat jasně uvidíte, kde je například nejvíce objednávek, kde nejméně zákazníků, kde vznikal minulý měsíc největší obrat, nebo třeba jaká je průměrná výše objednávky v okolí Černošic. <br /> <br />S CleverAnalytics toho můžete zjistit ještě mnohem více..",
+                    nextText:"SPUSTIT PRŮVODCE",
+                    showProgress:false,
+                    windowClassName:"intro-step",
+                    windowWidth:500
+                },
                 {
                     selection:d3.select(".menu-element"),
                     title:"Data mimo dosah mapy",
                     text:"Odzoomovali jste mimo možnosti prohlížeče zobrazit takové množství oblastí zaráz. Kliknutím na ikonu se mapa přiblíží na nejbližší podporovanou úroveň zvolené graularity. Případně můžete vybrat jinou úroveň granularity, složenou z menšího počtu oblastí."
                     
-                },                
+                },
                  {
                     selection:d3.selectAll(".side-element"),
                     title:"Indikátory",
@@ -150,13 +178,12 @@
                     text:"Indikátory ve výchozím stavu ukazují hodnoty hromadně za celou síť. Zvolením oblasti nebo bodu v mapě se zobrazí hodnoty už jen pro vybraný objekt. Zvolením indikátoru se jev zobrazuje v mapě."
                     
                 },
-
-               
                 {
                     selection:d3.selectAll(".filter-element"),
                     shape:{
                         offset:13
-                    },                                        
+                    },
+                    nextText:"Rozumím",
                     title:"Aktivní filtr",
                     text:"Právě jste aktivovali filtr. Číslo u nástroje Filtr ukazuje počet všech aktivních filtrů, které aktuálně ořezávají data. Filtry lze dočasně vypnout pomocí ikony X aniž by se zrušilo jejich původní nastavení."
                 }

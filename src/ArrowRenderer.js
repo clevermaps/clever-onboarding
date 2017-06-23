@@ -94,6 +94,13 @@ export default class ArrowRenderer {
 	 * @returns {MaskRenderer} 
 	 */
 	_onStep(step) {
+		if (!step.selection){
+			this._arrowEl.style("display", "none");
+			return;
+		} else {
+			this._arrowEl.style("display", "block");
+		}
+
 		var firstNode = step.selection.nodes()[0];
 		var targetBox = this._getBox(firstNode);
 		var arrowPosition = this._positionResolver.getArrowPosition(targetBox, this._arrowBox);
