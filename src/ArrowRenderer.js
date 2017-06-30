@@ -1,6 +1,7 @@
 import style from "./Onboard.css";
 import * as d3 from "d3";
 import PositionResolver from "./PositionResolver";
+import * as BoxUtils from "./utils/BoxUtils";
 
 /**
  * @class
@@ -62,26 +63,18 @@ export default class ArrowRenderer {
 		return this;
 	}
 
+	/**
+	 * @private
+	 */
 	_renderArrow(){
 		this._arrowEl = this._containerEl.append("div")
 			.attr("class", style["arrow"]+" "+style["arrow-bottom-right"])
 
-		this._arrowBox = this._getBox(this._arrowEl.node());
+		this._arrowBox = BoxUtils.getBox(this._arrowEl.node());
 	}
 
-
-	_getBox(element){
-		var box = element.getBoundingClientRect();
-		return {
-			top:box.top +  + document.body.scrollTop,
-			left:box.left +  + document.body.scrollLeft,
-			width: box.width,
-			height:box.height
-		}
-	}	
-
 	/**
-	 * @public
+	 * @private
 	 * @returns {MaskRenderer} 
 	 */
 	_onStart() {
@@ -90,7 +83,7 @@ export default class ArrowRenderer {
 	}	
 
 	/**
-	 * @public
+	 * @private
 	 * @returns {MaskRenderer} 
 	 */
 	_onStep(step) {
@@ -102,8 +95,7 @@ export default class ArrowRenderer {
 		}
 
 		var selection = d3.selectAll(step.selector);
-		var firstNode = selection.nodes()[0];
-		var targetBox = this._getBox(firstNode);
+		var targetBox = BoxUtils.getTargetBox(selection);
 		var arrowPosition = this._positionResolver.getArrowPosition(targetBox, this._arrowBox);
 
 		this._arrowEl.transition().duration(0 /*this._options.animationDuration*/)
@@ -126,7 +118,7 @@ export default class ArrowRenderer {
 	}	
 
 	/**
-	 * @public
+	 * @private
 	 * @returns {MaskRenderer} 
 	 */
 	_onStop() {

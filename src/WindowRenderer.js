@@ -4,6 +4,7 @@ import PositionResolver from "./PositionResolver";
 import ArrowRenderer from "./ArrowRenderer";
 import ProgressRenderer from "./ProgressRenderer";
 import * as Defaults from "./OnboardDefaults";
+import * as BoxUtils from "./utils/BoxUtils";
 
 /**
  * @class
@@ -136,16 +137,6 @@ export default class WindowRenderer {
 		return this;
 	}	
 
-	_getBox(element){
-		var box = element.getBoundingClientRect();
-		return {
-			top:box.top +  + document.body.scrollTop,
-			left:box.left +  + document.body.scrollLeft,
-			width: box.width,
-			height:box.height
-		}
-	}
-
 	/**
 	 * @public
 	 * @returns {MaskRenderer} 
@@ -170,9 +161,8 @@ export default class WindowRenderer {
 
 		var selection = d3.selectAll(step.selector);
 
-		var firstNode = selection.nodes()[0];
-		var targetBox = this._getBox(firstNode);
-		var windowBox = this._getBox(this._windowEl.node());
+		var targetBox = BoxUtils.getTargetBox(selection);
+		var windowBox = BoxUtils.getBox(this._windowEl.node());
 		var windowPosition = this._positionResolver.getWindowPosition(targetBox, windowBox, this._arrowRenderer.getArrowBox());
 
 		this._windowEl.transition().duration(this._options.animationDuration)

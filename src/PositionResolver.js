@@ -49,6 +49,7 @@ export default class PositionResolver {
 	}
 
 	_getLeftArrowPosition(position, targetBox, arrowBox){
+		console.log(targetBox.left + targetBox.width/2);
 		return {
 			"left-top":targetBox.left + targetBox.width/2,
 			"right-top":targetBox.left - arrowBox.width,
