@@ -15,12 +15,12 @@ export default {
   plugins: [
     postcss({
       plugins: [
+        cssnext(),
         postcssModules({
           getJSON (id, exportTokens) {
             cssExportMap[id] = exportTokens;
           }
-        }),
-        cssnext()        
+        })
       ],
       getExport (id) {
         return cssExportMap[id];

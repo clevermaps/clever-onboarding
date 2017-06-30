@@ -85,7 +85,7 @@ export default class ArrowRenderer {
 	 * @returns {MaskRenderer} 
 	 */
 	_onStart() {
-		this._arrowEl.style("display", "block");
+		this._arrowEl.style("visibility", "visible");
 		return this;
 	}	
 
@@ -94,14 +94,15 @@ export default class ArrowRenderer {
 	 * @returns {MaskRenderer} 
 	 */
 	_onStep(step) {
-		if (!step.selection){
-			this._arrowEl.style("display", "none");
+		if (!step.selector){
+			this._arrowEl.style("visibility", "hidden");
 			return;
 		} else {
-			this._arrowEl.style("display", "block");
+			this._arrowEl.style("visibility", "visible");
 		}
 
-		var firstNode = step.selection.nodes()[0];
+		var selection = d3.selectAll(step.selector);
+		var firstNode = selection.nodes()[0];
 		var targetBox = this._getBox(firstNode);
 		var arrowPosition = this._positionResolver.getArrowPosition(targetBox, this._arrowBox);
 

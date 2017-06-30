@@ -144,8 +144,8 @@ export default class MaskRenderer {
 	 * @private
 	 */
 	_renderStep(step){
-		let selection = step.selection; 
-		if (!selection) return;
+		if (!step.selector) return;
+		var selection = d3.selectAll(step.selector);
 		
 		selection.nodes().forEach(element=>{
 			this._stepElements.push(this._renderStepElement(element, step));

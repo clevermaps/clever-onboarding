@@ -38,7 +38,7 @@ export default class OnboardModel {
 	}
 
 	stop(){
-		this._observable.fire("stop");
+		this._observable.fire("stop", this._currentStep);
 		this._currentStep = null;
 		this._currentStepIndex = -1;
 	}	

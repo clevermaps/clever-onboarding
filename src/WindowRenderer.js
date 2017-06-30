@@ -160,7 +160,7 @@ export default class WindowRenderer {
 		this._windowEl.attr("class", style["window"] + " " + (step.windowClassName || this._options.windowClassName))
 		this._windowEl.style("width", (step.windowWidth || this._options.windowWidth) + "px");
 
-		if (!step.selection) {
+		if (!step.selector) {
 			this._windowEl.transition().duration(this._options.animationDuration)
 				.style("left", null)
 				.style("top", null);
@@ -168,7 +168,9 @@ export default class WindowRenderer {
 			return;
 		}
 
-		var firstNode = step.selection.nodes()[0];
+		var selection = d3.selectAll(step.selector);
+
+		var firstNode = selection.nodes()[0];
 		var targetBox = this._getBox(firstNode);
 		var windowBox = this._getBox(this._windowEl.node());
 		var windowPosition = this._positionResolver.getWindowPosition(targetBox, windowBox, this._arrowRenderer.getArrowBox());
