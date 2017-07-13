@@ -4,6 +4,8 @@ import postcss from 'rollup-plugin-postcss';
 import postcssModules from 'postcss-modules';
 import uglify from 'rollup-plugin-uglify';
 import cssnext from 'postcss-cssnext';
+import resolve from 'rollup-plugin-node-resolve';
+import commonjs from 'rollup-plugin-commonjs';
 
 let pkg = require('./package.json');
 let external = Object.keys(pkg.dependencies);
@@ -13,6 +15,8 @@ const cssExportMap = {};
 export default {
   entry: 'src/Onboard.js',
   plugins: [
+    resolve({jsnext: true}),
+    commonjs(),    
     postcss({
       plugins: [
         cssnext(),

@@ -1,5 +1,6 @@
 import style from "./Onboard.css";
 import * as d3 from "d3";
+import debounce from "lodash-es/debounce.js";
 
 /**
  * @class
@@ -118,23 +119,19 @@ export default class MaskRenderer {
 			.attr("fill", this._options.fillColor)
 			.attr("fill-opacity", this._options.fillOpacity)
 
-		this._onWindowResize = ()=>{
+		this._onWindowResize = debounce(() => {
 			var size = this._getViewSize();
 			this._svgEl.attr("width", size.width);
 			this._svgEl.attr("height", size.height);
-		}	
+
+			if (this._step){
+				this._clearSteps();
+				this._renderStep(this._step);
+			}
+		}, 200);
 
 		window.addEventListener("resize", this._onWindowResize);
 	}
-
-	/**
-	 * @public
-	 * @returns {MaskRenderer} 
-	 */
-	_onStart() {
-		this._svgEl.style("display", "block");
-		return this;
-	}	
 
 	_clearSteps(){
 		this._stepElements.forEach(element=>element.remove());
@@ -247,6 +244,15 @@ export default class MaskRenderer {
 			
 		
 		return stepEl;
+	}
+
+	/**
+	 * @public
+	 * @returns {MaskRenderer} 
+	 */
+	_onStart() {
+		this._svgEl.style("display", "block");
+		return this;
 	}	
 
 	/**
@@ -254,6 +260,7 @@ export default class MaskRenderer {
 	 * @returns {MaskRenderer} 
 	 */
 	_onStep(step) {
+		this._step = step;
 		this._clearSteps();
 		this._renderStep(step);
 		return this;
@@ -264,6 +271,7 @@ export default class MaskRenderer {
 	 * @returns {MaskRenderer} 
 	 */
 	_onStop() {
+		this._step = null;
 		this._svgEl.style("display", "none");
 		return this;
 	}
