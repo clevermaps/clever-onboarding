@@ -46,6 +46,13 @@ export const NEXT_BUTTON_CLASS_NAME = "onboard-window-next-btn";
  */
 export const WINDOW_TITLE_CLASS_NAME = "onboard-window-title";
 
+/**
+ * @public
+ * Next button class name
+ */
+export const WINDOW_BODY_CLASS_NAME = "onboard-window-body";
+
+
 
 /**
  * @public

@@ -103,7 +103,7 @@ export default class WindowRenderer {
 			.attr("class", style["window-title"] + " " +Defaults.WINDOW_TITLE_CLASS_NAME)
 
 		this._bodyEl = this._windowEl.append("div")
-			.attr("class", style["window-body"])
+			.attr("class", style["window-body"] + " " + Defaults.WINDOW_BODY_CLASS_NAME)
 
 		this._closeEl = this._windowEl.append("div")
 			.attr("class", style["window-close"] + " zmdi zmdi-close")

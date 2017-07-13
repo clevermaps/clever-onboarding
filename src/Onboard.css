@@ -1,3 +1,8 @@
+:root {
+  --inactive-color:#cacaca;
+  --active-color:#49ace2;
+}
+
 .svg {
     position:absolute;
     top:0;
@@ -33,7 +38,7 @@
     right:30px;
     text-align: left;
     bottom:30px;
-    padding:8px 15px 8px 15px;
+    padding:6px 15px 6px 15px;
     text-transform: uppercase;
     cursor: pointer;
     box-sizing: border-box;
@@ -43,28 +48,33 @@
     font-weight: bold;
     letter-spacing: 1px;
     user-select: none;
-    color: #49ace2;
-    border: solid 2px #49ace2
+    color: var(--active-color);
+    border: solid 2px var(--active-color);
+
+    & span {
+        font-weight:bold;
+    }
+
+    & .window-btn-icon {
+        font-size:19px;
+        position:absolute;
+        display: none;
+        right:15px;
+        top:5px;
+    }    
 }
 
 .window-next-btn-hover {
     color:white;
-    background-color: #49ace2;
-}
-
-.window-next-btn>.window-btn-icon {
-    font-size:19px;
-    position:absolute;
-    display: none;
-    right:15px;
-    top:5px;
+    background-color: var(--active-color);
 }
 
 .window-button-has-next {
-    padding:8px 50px 8px 15px;
-}
-.window-button-has-next>.window-btn-icon {
-    display: block;
+    padding: 6px 50px 6px 15px;
+
+    & .window-btn-icon {
+        display: block;
+    }
 }
 
 .window-prev-btn {
@@ -73,13 +83,13 @@
     left:30px;
     bottom:30px;
     padding:5px;
-    color: #cacaca;
+    color: var(--inactive-color);
     pointer-events: none;
     cursor: default;
-}
 
-.window-prev-btn>.window-btn-icon {
-    font-size:19px;
+    & >.window-btn-icon {
+        font-size:19px;
+    }
 }
 
 .window-title {
@@ -100,9 +110,13 @@
 }
 
 .window-button-has-prev {
-    color: #49ace2;
+    color: var(--inactive-color);
     pointer-events: all;
     cursor: pointer;
+}
+
+.window-button-has-prev:hover {
+    color: var(--active-color);
 }
 
 .arrow {
@@ -145,12 +159,12 @@
 
 .window-close {
     position:absolute;
-    right:18px;
-    top:18px;
+    right:30px;
+    top:25px;
     font-size: 18px;
     width:15px;
     height:15px;
-    color:#cacaca;
+    color:var(--inactive-color);
     cursor: pointer;
 }
 
@@ -159,7 +173,7 @@
 }
 
 .window-progress-ct {
-    background-color: #49ace2;
+    background-color: var(--active-color);
     height: 5px;
     left: 0px;
     top: 0px;
