@@ -77,7 +77,7 @@ export default class OnboardRenderer {
 	}
 
 	_renderSteps(){
-		this._steps.forEach(()=>{
+		this._steps.slice(1).forEach(()=>{
 			this._progressEl.append("div")
 				.classed(style["window-progress-step"], true);
 		})

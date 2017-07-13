@@ -182,20 +182,26 @@ export default class MaskRenderer {
 	_renderRectangleMask(element, step){
 		var box = this._getBox(element);		
 		var borderRadius = this._getBorderRadius(element);
+		var shape = step.shape || {};
+		var offset = shape.offset || [0,0];
+
+		if (step.shape && step.shape.radius){
+			borderRadius = step.shape.radius;
+		}
 
 		var stepEl = this._maskEl
 			.append("rect")
 				.attr("fill", "black")
-				.attr("x", box.left)
-				.attr("y", box.top)
+				.attr("x", box.left + offset[0])
+				.attr("y", box.top + offset[1])
 				.attr("rx", borderRadius)
 				.attr("ry", borderRadius)
-				.attr("width", box.width)
+				.attr("width", shape.width || box.width)
 				.attr("fill-opacity", 1)
 				.attr("stroke-opacity", 1)
-				.attr("stroke-width", step.shape?step.shape.offset||0:0)
+				.attr("stroke-width", shape.strokeWidth || 0)
 				.attr("stroke", "black")
-				.attr("height", box.height)
+				.attr("height", shape.height || box.height)
 
 		return stepEl;
 	}
@@ -204,17 +210,19 @@ export default class MaskRenderer {
 		var box = this._getBox(element);
 		var cx = box.left + box.width / 2;
 		var cy = box.top + box.height / 2;
+		var shape = step.shape || {};
+		var offset = shape.offset || [0,0];
 
 		var stepEl = this._maskEl
 			.append("circle")
-			.attr("r", step.shape.radius || box.width /2)
+			.attr("r", step.shape.radius || box.width / 2)
 			.attr("fill", "black")
 			.attr("fill-opacity", 1)
-			.attr("stroke-width", step.shape?step.shape.offset||0:0)
+			.attr("stroke-width", shape.strokeWidth || 0)
 			.attr("stroke-opacity", 1)
 			.attr("stroke", "black")
-			.attr("cx", cx)
-			.attr("cy", cy)
+			.attr("cx", cx + offset[0])
+			.attr("cy", cy + offset[1])
 
 		return stepEl;
 	}
@@ -233,7 +241,7 @@ export default class MaskRenderer {
 			.append("path")
 				.attr("fill", "black")
 				.attr("fill-opacity", 1)
-				.attr("stroke-width", step.shape?step.shape.offset||0:0)
+				.attr("stroke-width", step.shape?step.shape.strokeWidth||0:0)
 				.attr("stroke", "black")
 				.attr("d", d3.select(element).attr("d"))
 			
