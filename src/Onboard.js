@@ -74,10 +74,39 @@ class Onboard {
 		 * observable handler
 		 */
 		this._observable = new Observable([
-			
+			/**
+			 * @event start
+			 * @param {Object} step
+			 * @param {int} index
+			 */
+			"start",
+			/**
+			 * @event stop
+			 * @param {Object} step
+			 * @param {int} index
+			 */
+			"stop",
+			/**
+			 * @event step
+			 * @param {Object} step
+			 * @param {int} index
+			 */
+			"step"
 		]);
 
 		this._model = new OnboardModel(this._options);
+
+		this._model.on("start", (step, index)=>{
+			this._observable.fire("start", step, index)
+		});
+
+		this._model.on("stop", (step, index)=>{
+			this._observable.fire("stop", step, index)
+		});
+
+		this._model.on("step", (step, index)=>{
+			this._observable.fire("step", step, index)
+		});
 
 		/**
 		 * @private

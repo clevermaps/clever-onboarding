@@ -20,8 +20,23 @@ export default class OnboardModel {
 		 * observable handler
 		 */
 		this._observable = new Observable([
+			/**
+			 * @event start
+			 * @param {Object} step
+			 * @param {int} index
+			 */
 			"start",
+			/**
+			 * @event stop
+			 * @param {Object} step
+			 * @param {int} index
+			 */
 			"stop",
+			/**
+			 * @event step
+			 * @param {Object} step
+			 * @param {int} index
+			 */
 			"step"
 		]);		
 	}
@@ -38,7 +53,7 @@ export default class OnboardModel {
 	}
 
 	stop(){
-		this._observable.fire("stop", this._currentStep);
+		this._observable.fire("stop", this._currentStep, this._currentStepIndex);
 		this._currentStep = null;
 		this._currentStepIndex = -1;
 	}	
