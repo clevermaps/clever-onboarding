@@ -3,11 +3,15 @@ import {select, selectAll} from "d3-selection";
 import 'd3-transition';
 
 /**
- * @class
- * Onboard class
- * @param {Object} options
+ * Renderes progress inside window
+ * @param {OnboardOptions} options
+ * @param {OnboardModel} model 
  */
 export default class OnboardRenderer {
+	/**
+	 * @param {OnboardOptions} options 
+	 * @param {OnboardModel} model 
+	 */
 	constructor(options, model) {
 		/**
 		 * @private 
@@ -32,6 +36,10 @@ export default class OnboardRenderer {
 		 */
 		this._model = model;
 
+		/**
+		 * @private 
+		 * Steps
+		 */
 		this._steps = model.getSteps().filter(step=>step.showProgress !== false);
 
 		/**
@@ -47,19 +55,17 @@ export default class OnboardRenderer {
 	}
 
 	/**
-	 * @public
-	 * Returns whether Onboard has been rendered or not
-	 * @returns {boolean} true if Onboard has been rendered
+	 * Returns true if rendered
+	 * @returns {boolean} true if rendered
 	 */
 	isRendered() {
 		return this._rendered;
 	}
 
 	/**
-	 * @public
-	 * Render logic of this widget
-	 * @param {String|DOMElement} selector selector or DOM element 
-	 * @returns {Onboard} returns this widget instance
+	 * Renders ProgressRenderer instance
+	 * @param {String|HTMLElement} selector selector or DOM element 
+	 * @returns {ProgressRenderer} returns this instance
 	 */
 	render(selector) {
 		// get container element using selector or given element
@@ -101,8 +107,7 @@ export default class OnboardRenderer {
 	}
 
 	/**
-	 * @public
-	 * @returns {MaskRenderer} 
+	 * Logic to render one step
 	 */
 	_onStep(step) {
 		if (step.showProgress === false) {
@@ -125,8 +130,7 @@ export default class OnboardRenderer {
 	}	
 
 	/**
-	 * @public
-	 * Destorys Onboard UI  
+	 * Destorys this renderer 
 	 */
 	destroy() {
 		if (this._rendered){

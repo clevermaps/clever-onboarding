@@ -1,10 +1,16 @@
 import {select, event} from "d3-selection";
 
 /**
- * @class
- * @param {Object} options
+ * This class is responsible for handling key events while onboarding is running
+ * @param {OnboardOptions} options 
+ * @param {OnboardModel} model 
+ * 
  */
 export default class OnboardKeyHandler {
+	/**
+	 * @param {OnboardOptions} options 
+	 * @param {OnboardModel} model 
+	 */
 	constructor(options, model) {
 		/**
 		 * @private 
@@ -16,20 +22,11 @@ export default class OnboardKeyHandler {
 		this._onStartBinding = this._model.on("start", this._onStart.bind(this));
 		this._onStopBinding = this._model.on("stop", this._onStop.bind(this));
 	}
-
-	/**
-	 * @public
-	 * @returns {OnboarKeyHandler} 
-	 */
 	_onStart() {
 		select(document).on("keydown.onboard", this._onKeyDown.bind(this));
 		return this;
 	}
 
-	/**
-	 * @public
-	 * @returns {OnboarKeyHandler} 
-	 */
 	_onKeyDown(){
 		if(event.key == "ArrowLeft" || event.key == "Backspace"){
 			this._model.hasPrev()?this._model.prev():this._model.stop();
@@ -44,17 +41,12 @@ export default class OnboardKeyHandler {
 		event.preventDefault();
 	}
 
-	/**
-	 * @public
-	 * @returns {OnboarKeyHandler} 
-	 */
 	_onStop() {
 		select(document).on("keydown.onboard", null);
 		return this;
 	}	
 
 	/**
-	 * @public
 	 * Destorys Onboard UI  
 	 */
 	destroy() {

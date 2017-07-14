@@ -9,7 +9,9 @@
     "watch": "rollup -c -w",
     "pretest": "npm run build",
     "test": "mocha",
-    "prepublish": "npm test"
+    "prepublish": "npm test",
+    "build-docs":"documentation build src/Onboard.js -f html -o docs",
+    "start-docs": "npm run build-docs && http-server docs -p 3000 -o"
   },
   "repository": "clevermaps/onboard",
   "keywords": [
@@ -26,13 +28,14 @@
     "lodash-es": "^4.17.4"
   },
   "devDependencies": {
+    "http-server":"^0.10.0",
+    "documentation":"^4.0.0-rc.1",
     "rollup-plugin-commonjs": "^8.0.2",
     "rollup-plugin-node-resolve": "^3.0.0",
     "babel-eslint": "^7.2.3",
     "babel-plugin-external-helpers": "^6.22.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-register": "^6.24.1",
-    "flubber": "^0.2.6",
     "babelrc-rollup": "^3.0.0",
     "eslint": "^3.19.0",
     "mocha": "^3.2.0",

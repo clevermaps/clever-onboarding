@@ -1,14 +1,19 @@
-import Observable from "./utils/Observable";
 import MaskRenderer from "./MaskRenderer";
 import WindowRenderer from "./WindowRenderer";
 import {select} from "d3-selection";
 
 /**
- * @class
- * Onboard class
- * @param {Object} options
+ * OnboardRenderer class is responsible for UI rendering for onboarding. It manages other 
+ * 
+ * @param {OnboardOptions} options 
+ * @param {OnboardModel} model 
  */
 export default class OnboardRenderer {
+	/**
+	 * 
+	 * @param {OnboardOptions} options 
+	 * @param {OnboardModel} model 
+	 */
 	constructor(options, model) {
 		/**
 		 * @private 
@@ -34,39 +39,35 @@ export default class OnboardRenderer {
 		this._model = model;
 
 		/**
-		 * @private
-		 * observable handler
+		 * @private 
+		 * Mask renderer
 		 */
-		this._observable = new Observable([
-			
-		]);		
-
 		this._maskRenderer = new MaskRenderer(options, model);
+		/**
+		 * @private 
+		 * Window renderer
+		 */
 		this._windowRenderer = new WindowRenderer(options, model);
 	}
 
 	/**
-	 * @public
 	 * Returns whether Onboard has been rendered or not
-	 * @returns {boolean} true if Onboard has been rendered
+	 * @returns {boolean} true if OnboardRenderer has been rendered
 	 */
 	isRendered() {
 		return this._rendered;
 	}
 
 	/**
-	 * @public
 	 * Render logic of this widget
-	 * @param {String|DOMElement} selector selector or DOM element 
-	 * @returns {Onboard} returns this widget instance
+	 * @param {String|HTMLElement} selector selector or HTML element 
+	 * @returns {OnboardRenderer} returns this renderer instance
 	 */
 	render(selector) {
 		// get container element using selector or given element
 		this._containerEl = select(selector || document.body);
-
 		this._maskRenderer.render(selector);
 		this._windowRenderer.render(selector);
-
 		this._rendered = true;
 
 		return this;
@@ -74,9 +75,9 @@ export default class OnboardRenderer {
 
 	/**
 	 * Bind widget event
-	 * @param {String} event event name
+	 * @param {string} event event name
 	 * @param {Function} handler event handler
-	 * @returns {Onboard} returns this widget instance
+	 * @returns {OnboardRenderer} returns renderer instance
 	 */
 	on(eventName, handler) {
 		this._observable.on(eventName, handler);
@@ -85,9 +86,9 @@ export default class OnboardRenderer {
 
 	/**
 	 * Unbind widget event
-	 * @param {String} event event name
+	 * @param {string} event event name
 	 * @param {Function} [handler] event handler
-	 * @returns {Onboard} returns this widget instance
+	 * @returns {OnboardRenderer} returns this widget instance
 	 */
 	off(eventName, handler) {
 		this._observable.off(eventName, handler);
@@ -95,15 +96,12 @@ export default class OnboardRenderer {
 	}	
 
 	/**
-	 * @public
 	 * Destorys Onboard UI  
 	 */
 	destroy() {
 		this._observable.destroy();	
-
 		this._maskRenderer.destroy();
 		this._windowRenderer.destroy();
-
 		return this;
 	}
 }

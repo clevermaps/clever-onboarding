@@ -4,11 +4,13 @@ import debounce from "lodash-es/debounce.js";
 import * as Defaults from "./OnboardDefaults";
 
 /**
- * @class
- * Onboard class
- * @param {Object} options
+ * MaskRenderer is reponsible for rendering mask / spotlight
  */
 export default class MaskRenderer {
+	/**
+	 * @param {OnboardOptions} options 
+	 * @param {OnboardModel} model 
+	 */
 	constructor(options, model) {
 		/**
 		 * @private 
@@ -51,19 +53,17 @@ export default class MaskRenderer {
 	}
 
 	/**
-	 * @public
-	 * Returns whether Onboard has been rendered or not
-	 * @returns {boolean} true if Onboard has been rendered
+	 * Returns whether MaskRenderer has been rendered or not
+	 * @returns {boolean} true if MaskRenderer has been rendered
 	 */
 	isRendered() {
 		return this._rendered;
 	}
 
 	/**
-	 * @public
 	 * Render logic of this widget
-	 * @param {String|DOMElement} selector selector or DOM element 
-	 * @returns {Onboard} returns this widget instance
+	 * @param {String|HTMLElement} selector selector or DOM element 
+	 * @returns {MaskRenderer} returns this widget instance
 	 */
 	render(selector) {
 		// get container element using selector or given element
@@ -75,6 +75,13 @@ export default class MaskRenderer {
 		return this;
 	}
 
+	/**
+	 * @private
+	 * Returns view size
+	 * @return {Object} viewSize
+	 * @return {Object} viewSize.width
+	 * @return {Object} viewSize.height
+	 */
 	_getViewSize(){
 		return {
 			width: Math.max(document.documentElement.offsetWidth, document.documentElement.clientWidth),
@@ -82,6 +89,10 @@ export default class MaskRenderer {
 		}
 	}
 
+	/**
+	 * @private
+	 * Render logic for the mask
+	 */
 	_renderMask(){
 		var size = this._getViewSize();
 
@@ -137,9 +148,6 @@ export default class MaskRenderer {
 		this._stepElements.forEach(element=>element.remove());
 	}
 
-	/**
-	 * @private
-	 */
 	_renderStep(step){
 		if (!step.selector) return;
 		var selection = selectAll(step.selector);
@@ -162,10 +170,21 @@ export default class MaskRenderer {
 			return this._renderRectangleMask(element, step);
 		}
 	}
+
+	/**
+	 * Returns border radius for given element
+	 * @return {number}
+	 * @param {HTMLElement} el 
+	 */
 	_getBorderRadius(el){
 		return parseFloat(window.getComputedStyle(el, null).getPropertyValue("border-top-left-radius"));
 	}
 
+	/**
+	 * Returns box for given element
+	 * @param {HTMLElement} element 
+	 * @return {Box} box
+	 */
 	_getBox(element){
 		var box = element.getBoundingClientRect();
 		return {
@@ -246,39 +265,25 @@ export default class MaskRenderer {
 		return stepEl;
 	}
 
-	/**
-	 * @public
-	 * @returns {MaskRenderer} 
-	 */
 	_onStart() {
 		this._svgEl.style("display", "block");
-		return this;
 	}	
 
-	/**
-	 * @public
-	 * @returns {MaskRenderer} 
-	 */
 	_onStep(step) {
 		this._step = step;
 		this._clearSteps();
 		this._renderStep(step);
-		return this;
 	}	
 
-	/**
-	 * @public
-	 * @returns {MaskRenderer} 
-	 */
 	_onStop() {
 		this._step = null;
 		this._svgEl.style("display", "none");
-		return this;
+
 	}
 
 	/**
-	 * @public
-	 * Destorys Onboard UI  
+	 * Destorys MaskRenderer
+	 * @return {MaskRenderer} mask renderer instance
 	 */
 	destroy() {
 		if (this._rendered){

@@ -2,12 +2,12 @@
 	 * @private
      * @param {Element}
 	 * @returns {Object} box
-     * @returns {Object} box.width
-     * @returns {Object} box.height
-     * @returns {Object} box.top
-     * @returns {Object} box.left
-     * @returns {Object} box.right
-     * @returns {Object} box.bottom
+     * @returns {number} box.width
+     * @returns {number} box.height
+     * @returns {number} box.top
+     * @returns {number} box.left
+     * @returns {number} box.right
+     * @returns {number} box.bottom
 	 */
 	export const getBox = (element) => {
 		var box = element.getBoundingClientRect();
@@ -26,12 +26,12 @@
 	 * @private
 	 * @param {Array<Element>}
 	 * @returns {Object} box
-     * @returns {Object} box.width
-     * @returns {Object} box.height
-     * @returns {Object} box.top
-     * @returns {Object} box.left
-     * @returns {Object} box.right
-     * @returns {Object} box.bottom
+     * @returns {number} box.width
+     * @returns {number} box.height
+     * @returns {number} box.top
+     * @returns {number} box.left
+     * @returns {number} box.right
+     * @returns {number} box.bottom
 	 */
 	export const getMultiBox = (nodes) => {
 		var boxes = nodes.map(node=>getBox(node));
@@ -53,12 +53,12 @@
 	 * @private
      * @param {D3Selection}
 	 * @returns {Object} box
-     * @returns {Object} box.width
-     * @returns {Object} box.height
-     * @returns {Object} box.top
-     * @returns {Object} box.left
-     * @returns {Object} box.right
-     * @returns {Object} box.bottom
+     * @returns {number} box.width
+     * @returns {number} box.height
+     * @returns {number} box.top
+     * @returns {number} box.left
+     * @returns {number} box.right
+     * @returns {number} box.bottom
 	 */
 	export const getTargetBox = (selection) => {
 		var nodes = selection.nodes();

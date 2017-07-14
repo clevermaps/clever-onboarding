@@ -1,11 +1,9 @@
 /**
- * @class
  * Observable class, handles binding and firing events
- * @param {Array} events list of events for this observable
  */
 export default class Observable {
     /**
-     * @param {Array} events
+     * @param {string[]} events
      */
     constructor(events = []) {
         // create a map of handlers where each event has an array of bound handlers
@@ -16,10 +14,10 @@ export default class Observable {
     }
 
 	/**
-	 * @public
-	 * Bind event
-	 * @param {String} event event name
+	 * Binds event
+	 * @param {string} event event name
 	 * @param {Function} handler event handler
+	 * @return {Observable}
 	 */
     on(event, handler) {
         if (!(event in this._handlers)) throw "No such event: " + event;
@@ -32,10 +30,10 @@ export default class Observable {
     }
 
 	/**
-	 * @public
 	 * Unbind event
-	 * @param {String} event event name
+	 * @param {string} event event name
 	 * @param {Function} [handler] event handler, optional
+	 * @return {Observable}
 	 */
     off(event, handler) {
         if (!(event in this._handlers)) throw "No such event: " + event;
@@ -52,10 +50,10 @@ export default class Observable {
     }
 
 	/**
-	 * @public
 	 * Fire widget event
 	 * @param {String} event event name
-	 * @param {*} ...args event arguments
+	 * @param {Array} args event arguments
+	 * @return {Observable}
 	 */
 	fire(event, ...args) {
 		if (!(event in this._handlers)) throw "No such event: " + event;
@@ -67,8 +65,8 @@ export default class Observable {
     }
 
 	/**
-	 * @public
 	 * Destorys this observable, removes events and so on 
+	 * @return {Observable}
 	 */
 	destroy() {
 		this._handlers = null;

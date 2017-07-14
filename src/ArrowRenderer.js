@@ -7,10 +7,13 @@ import {select, selectAll} from "d3-selection";
 import 'd3-transition';
 
 /**
- * @class
- * @param {Object} options
+ * ArrowRenderer is responsible for rendering arrows pointing to windows
  */
 export default class ArrowRenderer {
+	/**
+	 * @param {OnboardOptions} options 
+	 * @param {OnboardModel} model 
+	 */
 	constructor(options, model) {
 		/**
 		 * @private 
@@ -29,7 +32,6 @@ export default class ArrowRenderer {
 		 * true if Onboard has been rendered
 		 */
 		this._rendered = false;
-
 		this._model = model;
 		this._onStartBinding = this._model.on("start", this._onStart.bind(this));
 		this._onStepBinding = this._model.on("step", this._onStep.bind(this));
@@ -45,38 +47,36 @@ export default class ArrowRenderer {
 		window.addEventListener("resize", this._onWindowResize);		
 	}
 
+	/**
+	 * Returns box for the arrow
+	 * @return {Box}
+	 */
 	getArrowBox(){
 		return this._arrowBox;
 	}
 
 	/**
-	 * @public
-	 * Returns whether Onboard has been rendered or not
-	 * @returns {boolean} true if Onboard has been rendered
+	 * Returns whether ArrowRenderer has been rendered or not
+	 * @returns {boolean} true if ArrowRenderer has been rendered
 	 */
 	isRendered() {
 		return this._rendered;
 	}
 
 	/**
-	 * @public
-	 * Render logic of this widget
-	 * @param {String|DOMElement} selector selector or DOM element 
-	 * @returns {Onboard} returns this widget instance
+	 * Renders this widget
+	 * @param {String|HTMLElement} selector selector or DOM element 
+	 * @returns {ArrowRenderer} returns this renderer instance
 	 */
 	render(selector) {
 		// get container element using selector or given element
 		this._containerEl = select(selector || document.body);
-
 		this._renderArrow();
 		this._rendered = true;
 
 		return this;
 	}
 
-	/**
-	 * @private
-	 */
 	_renderArrow(){
 		this._arrowEl = this._containerEl.append("div")
 			.attr("class", style["arrow"]+" "+style["arrow-bottom-right"])
@@ -84,18 +84,14 @@ export default class ArrowRenderer {
 		this._arrowBox = BoxUtils.getBox(this._arrowEl.node());
 	}
 
-	/**
-	 * @private
-	 * @returns {MaskRenderer} 
-	 */
 	_onStart() {
 		this._arrowEl.style("visibility", "visible");
-		return this;
 	}	
 
 	/**
+	 * Render loging for arrow for each step
 	 * @private
-	 * @returns {MaskRenderer} 
+	 * @param {StepOptions} step
 	 */
 	_onStep(step) {
 		if (!step.selector){
@@ -122,23 +118,15 @@ export default class ArrowRenderer {
 			.style("opacity", 1);
 
 		this._arrowEl.attr("class", style["arrow"]+" "+style["arrow-"+arrowPosition.position]);
-
-		return this;
 	}	
 
-	/**
-	 * @private
-	 * @returns {MaskRenderer} 
-	 */
 	_onStop() {
 		this._arrowEl.style("display", "none");
 		this._step = null;
-		return this;
 	}	
 
 	/**
-	 * @public
-	 * Destorys Onboard UI  
+	 * Destroys arrow renderer
 	 */
 	destroy() {
 		this._onStartBinding.destroy();

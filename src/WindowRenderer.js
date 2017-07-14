@@ -10,10 +10,15 @@ import debounce from "lodash-es/debounce.js";
 
 
 /**
- * @class
- * @param {Object} options
+ * WindowRenderer renders window pupup in the onboard UI 
+ * @param {OnboardOptions} options 
+ * @param {OnboardModel} model 
  */
 export default class WindowRenderer {
+	/**
+	 * @param {OnboardOptions} options 
+	 * @param {OnboardModel} model 
+	 */	
 	constructor(options, model) {
 		/**
 		 * @private 
@@ -54,19 +59,17 @@ export default class WindowRenderer {
 	}
 
 	/**
-	 * @public
-	 * Returns whether Onboard has been rendered or not
-	 * @returns {boolean} true if Onboard has been rendered
+	 * Returns true if rendered
+	 * @return {boolean} true if rendered
 	 */
 	isRendered() {
 		return this._rendered;
 	}
 
 	/**
-	 * @public
-	 * Render logic of this widget
-	 * @param {String|DOMElement} selector selector or DOM element 
-	 * @returns {Onboard} returns this widget instance
+	 * Renders window UI 
+	 * @param {String|HTMLElement} selector selector or DOM element 
+	 * @return {Onboard} returns this renderer instance
 	 */
 	render(selector) {
 		// get container element using selector or given element
@@ -80,6 +83,7 @@ export default class WindowRenderer {
 		return this;
 	}
 
+	// render logic
 	_renderWindow(){
 		this._windowEl = this._containerEl.append("div")
 			.attr("class", style["window"] + " " + this._options.windowClassName)
@@ -139,19 +143,12 @@ export default class WindowRenderer {
 		this._model.prev();
 	}
 
-	/**
-	 * @public
-	 * @returns {MaskRenderer} 
-	 */
 	_onStart() {
 		this._windowEl.style("display", "block");
 		return this;
 	}	
 
-	/**
-	 * @public
-	 * @returns {MaskRenderer} 
-	 */
+	// step render logic
 	_onStep(step) {
 		this._step = step;
 
@@ -187,10 +184,6 @@ export default class WindowRenderer {
 		return this;
 	}	
 
-	/**
-	 * @public
-	 * @returns {MaskRenderer} 
-	 */
 	_onStop() {
 		this._windowEl.style("display", "none");
 		this._step = null;
@@ -198,8 +191,7 @@ export default class WindowRenderer {
 	}	
 
 	/**
-	 * @public
-	 * Destorys Onboard UI  
+	 * Destorys this renderer
 	 */
 	destroy() {
 		this._onStartBinding.destroy();

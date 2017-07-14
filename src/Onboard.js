@@ -8,65 +8,54 @@ import OnboardKeyHandler from "./OnboardKeyHandler";
  * @private 
  * @param {*} optionValue option value 
  * @param {*} defaultOptionValue default option value 
- * @returns option or default option value 
+ * @return option or default option value 
  */
 function getOptionValue(optionValue, defaultOptionValue) {
 	return typeof optionValue == "undefined" ? defaultOptionValue : optionValue;
 }
 
 /**
- * @class
- * Main onboard class
- * @param {Object} options
- */
+* Onboard class used to start, control and end app walkthrough experience
+* @param {OnboardOptions} options 
+* @example
+* const onboard = new Onboard({
+*   nextText:"Next",
+* 	steps:[
+* 		{
+* 			selector:".menu-element",
+* 			title:"Step 1 title",
+* 			text:"Step 1 text."
+* 			
+* 		},
+* 		{
+* 			selector:".sidebar-element",
+* 			title:"Step 2 title",
+* 			text:"Step 2 text."
+* 			
+* 		}
+* 	]
+* });
+* 
+* onboard.start();
+*/
+ 
 class Onboard {
+	/**
+	 * @param {OnboardOptions} options 
+	 */
+	
 	constructor(options) {
 		/**
 		 * @private
 		 * Options property exposing widget's options
 		 */
 		this._options = {};
-
-		/**
-		 * @public
-		 * fill color
-		 */
 		this._options.fillColor = getOptionValue(options.fillColor, Defaults.FILL_COLOR);		
-
-		/**
-		 * @public
-		 * fill opacity
-		 */
 		this._options.fillOpacity = getOptionValue(options.fillOpacity, Defaults.FILL_OPACITY);
-
-		/**
-		 * @public
-		 * Next text
-		 */
 		this._options.nextText = getOptionValue(options.nextText, Defaults.NEXT_TEXT);		
-
-		/**
-		 * @public
-		 * Understand text
-		 */
 		this._options.windowClassName = getOptionValue(options.windowClassName, Defaults.WINDOW_CLASS_NAME);		
-
-		/**
-		 * @public
-		 * animation duration
-		 */
 		this._options.animationDuration = getOptionValue(options.animationDuration, Defaults.ANIMATION_DURATION);		
-
-		/**
-		 * @public
-		 * window width
-		 */
 		this._options.windowWidth = getOptionValue(options.windowWidth, Defaults.WINDOW_WIDTH);				
-
-		/**
-		 * @public
-		 * steps
-		 */
 		this._options.steps = options.steps;
 
 		/**
@@ -75,47 +64,74 @@ class Onboard {
 		 */
 		this._observable = new Observable([
 			/**
-			 * @event start
-			 * @param {Object} step
-			 * @param {int} index
+			 * Fires when onboarding starts.
+			 *
+			 * @event Onboard#start
+			 * @memberof Onboard
+             * @instance
+			 * @type {object}
+			 * @property {Object} step.
+			 * @property {number} step index.
 			 */
 			"start",
 			/**
-			 * @event stop
-			 * @param {Object} step
-			 * @param {int} index
+			 * Fires when onboarding step changes.
+			 *
+			 * @event Onboard#stop
+			 * @memberof Onboard
+			 * @type {object}
+			 * @property {Object} step.
+			 * @property {number} step index.
 			 */
 			"stop",
 			/**
-			 * @event step
-			 * @param {Object} step
-			 * @param {int} index
+			 * Fires when onboarding finishes.
+			 *
+			 * @event Onboard#stop
+			 * @memberof Onboard
+			 * @type {object}
+			 * @property {Object} step.
+			 * @property {number} step index.
 			 */
 			"step"
 		]);
 
+		/**
+		 * @private
+		 * model
+		 */
 		this._model = new OnboardModel(this._options);
 
 		this._model.on("start", (step, index)=>{
-			this._observable.fire("start", step, index)
+			this._observable.fire("start", {
+				step:step, 
+				index:index
+			});
 		});
 
 		this._model.on("stop", (step, index)=>{
-			this._observable.fire("stop", step, index)
+			this._observable.fire("stop", {
+				step:step, 
+				index:index
+			});
 		});
 
 		this._model.on("step", (step, index)=>{
-			this._observable.fire("step", step, index)
+			this._observable.fire("step", {
+				step:step, 
+				index:index
+			});
 		});
 
 		/**
 		 * @private
-		 * OnboardRenderer
+		 * renderer
 		 */
 		this._onboardRenderer = new OnboardRenderer(this._options, this._model);
 
 		/**
 		 * @private
+		 * key handler
 		 */
 		this._onboardKeyHandler = new OnboardKeyHandler(this._options, this._model);		
 
@@ -123,10 +139,10 @@ class Onboard {
 	}
 
 	/**
-	 * Bind widget event
-	 * @param {String} event event name
+	 * Binds widget event
+	 * @param {string} eventName event name
 	 * @param {Function} handler event handler
-	 * @returns {Onboard} returns this widget instance
+	 * @return {Onboard} returns this widget instance
 	 */
 	on(eventName, handler) {
 		this._observable.on(eventName, handler);
@@ -134,10 +150,10 @@ class Onboard {
 	}
 
 	/**
-	 * Unbind widget event
-	 * @param {String} event event name
+	 * Unbinds widget event
+	 * @param {string} event event name
 	 * @param {Function} [handler] event handler
-	 * @returns {Onboard} returns this widget instance
+	 * @return {Onboard} returns this widget instance
 	 */
 	off(eventName, handler) {
 		this._observable.off(eventName, handler);
@@ -145,8 +161,8 @@ class Onboard {
 	}	
 
 	/**
-	 * Destroys widget
-	 * @returns {Onboard} returns this widget instance
+	 * Destroys this widget
+	 * @return {Onboard} returns this widget instance
 	 */
 	destroy() {
 		this._observable.destroy();
@@ -159,9 +175,9 @@ class Onboard {
 	}	
 
 	/**
-	 * Render logic of this widget
-	 * @param {String|DOMElement} selector selector or DOM element 
-	 * @returns {Onboard} returns this widget instance
+	 * Renders this widget
+	 * @param {string|HTMLElement} selector selector or DOM element 
+	 * @return {Onboard} returns this widget instance
 	 */
 	render(selector) {
 		this._onboardRenderer.render(selector);
@@ -170,7 +186,7 @@ class Onboard {
 
 	/**
 	 * Starts onboarding
-	 * @returns {Onboard} returns this widget instance 
+	 * @return {Onboard} returns this widget instance 
 	 */
 	start() {
 		this._model.start();
@@ -179,13 +195,69 @@ class Onboard {
 
 
 	/**
-	 * Stops
-	 * @returns {Onboard} returns this widget instance 
+	 * Stops onboarding
+	 * @return {Onboard} returns this widget instance 
 	 */
 	stop() {
 		this._model.stop();
 		return this;
 	}	
 }
+
+/**
+ * Options for the main Onboard instance
+ *
+ * @typedef {Object} OnboardOptions
+ * @property {string} fillColor color of the modal background, defaults to {@link #.OnboardDefaultsFILL_COLOR|FILL_COLOR}
+ * @property {number} fillOpacity opacity of the modal background, defaults {@link to #.OnboardDefaultsFILL_OPACITY|FILL_OPACITY}
+ * @property {string} nextText default text for the Next button, defaults to {@link #.OnboardDefaultsNEXT_TEXT|NEXT_TEXT}
+ * @property {string} windowClassName custom class name for popup window, defaults to {@link #.OnboardDefaultsWINDOW_CLASS_NAME|WINDOW_CLASS_NAME}
+ * @property {number} animationDuration lenght of animation duration when transitioning between steps, defaults to {@link #.OnboardDefaultsANIMATION_DURATION|ANIMATION_DURATION}
+ * @property {StepOptions[]} steps definition of steps
+ */
+
+/**
+ * Options for the each Onboard step
+ *
+ * @typedef {Object} StepOptions
+ * @property {selector} selector of spotlighted HTML/SVG node(s), if no selector is provided, no element is spotlighted and window is positioned in the center
+ * @property {string} window title for this step, can be HTML
+ * @property {string} body text for this step, can be HTML
+ * @property {string} nextText text for the Next button, defaults to {@link #.OnboardDefaultsNEXT_TEXT|NEXT_TEXT} or OnboardOptions
+ * @property {boolean} showProgress hides progress bar for this step if false 
+ * @property {string} windowClass name allows to set additional window class name for this step, this can be used for customization
+ * @property {number} windowWidth width of window for this step
+ * @property {ShapeOptions} shape shape options
+ */
+
+/**
+ * Shape otions for the each step
+ *
+ * @typedef {Object} ShapeOptions
+ * @property {radius} radius of the shape, can be customized if target element is rectangle but spotlight is required with rounded corners
+ * @property {string} type can be set to change shape's type, supports 'rectangle' (default) and 'circle'. 
+ * @property {number} width width of the shape if it requires to be different than target element's width
+ * @property {number} height height of the shape if it requires to be different than target element's height
+ * @property {number} strokeWidth can be set to extend spotlight by given number
+ */
+
+/**
+ * Box definition
+ * @typedef {Object} Box
+ * @property {number} width
+ * @property {number} height
+ * @property {number} top
+ * @property {number} left
+ * @property {number} right
+ * @property {number} bottom
+ */
+
+/**
+ * Position definition
+ * @typedef {Object} Position
+ * @property {number} top
+ * @property {number} left
+ * @property {string} position can be 'right-top', 'right-bottom', 'left-top', 'left-bottom'
+ */
 
 export default Onboard;

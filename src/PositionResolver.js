@@ -1,10 +1,13 @@
 /**
- * @class
+ * Handles window and arrow position based on target/window/arrow boxes
  */
 export default class PositionResolver {
 	/**
-	 * @public
-	 * @returns {Object}
+	 * Returns position of window based on target/window/arrow boxes
+	 * @param {Box} targetBox
+	 * @param {Box} windowBox
+	 * @param {Box} arrowBox
+	 * @returns {Position}
 	 */
 	getWindowPosition(targetBox, windowBox, arrowBox) {
 		var position = this._getTargetPosition(targetBox, arrowBox);
@@ -17,6 +20,24 @@ export default class PositionResolver {
 			top:top
 		}
 	} 	
+
+	/**
+	 * Returns position of arrow based on target/arrow boxes
+	 * @param {Box} targetBox
+	 * @param {Box} arrowBox
+	 * @returns {Position}
+	 */
+	getArrowPosition(targetBox, arrowBox) {
+		var position = this._getTargetPosition(targetBox, arrowBox);
+		var left = this._getLeftArrowPosition(position, targetBox, arrowBox);
+		var top = this._getTopArrowPosition(position, targetBox, arrowBox);
+
+		return {
+			position:position,
+			left:left, 
+			top:top
+		}
+	}	
 
 	_getLeftWindowPosition(position, targetBox, arrowBox, windowBox){
 		return {
@@ -35,18 +56,6 @@ export default class PositionResolver {
 			"right-bottom":targetBox.top - windowBox.height + arrowBox.height,
 		}[position];
 	}	
-
-	getArrowPosition(targetBox, arrowBox) {
-		var position = this._getTargetPosition(targetBox, arrowBox);
-		var left = this._getLeftArrowPosition(position, targetBox, arrowBox);
-		var top = this._getTopArrowPosition(position, targetBox, arrowBox);
-
-		return {
-			position:position,
-			left:left, 
-			top:top
-		}
-	}
 
 	_getLeftArrowPosition(position, targetBox, arrowBox){
 		return {
