@@ -59,3 +59,8 @@ export const WINDOW_BODY_CLASS_NAME = "onboard-window-body";
  * Default window width
  */
 export const WINDOW_WIDTH = 400;
+
+/**
+ * Default debounce time when window is resized
+ */
+export const WINDOW_RESIZE_DEBOUNCE_TIME = 50;

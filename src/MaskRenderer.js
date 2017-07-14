@@ -1,6 +1,7 @@
 import style from "./Onboard.css";
 import * as d3 from "d3";
 import debounce from "lodash-es/debounce.js";
+import * as Defaults from "./OnboardDefaults";
 
 /**
  * @class
@@ -125,10 +126,9 @@ export default class MaskRenderer {
 			this._svgEl.attr("height", size.height);
 
 			if (this._step){
-				this._clearSteps();
-				this._renderStep(this._step);
+				this._onStep(this._step);
 			}
-		}, 200);
+		}, Defaults.WINDOW_RESIZE_DEBOUNCE_TIME);
 
 		window.addEventListener("resize", this._onWindowResize);
 	}
@@ -286,7 +286,7 @@ export default class MaskRenderer {
 		}
 
 		this._clearSteps();
-
+		this._step = null;
 		this._onStartBinding.destroy();
 		this._onStepBinding.destroy();
 		this._onStopBinding.destroy();

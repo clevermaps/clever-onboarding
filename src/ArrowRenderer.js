@@ -2,6 +2,8 @@ import style from "./Onboard.css";
 import * as d3 from "d3";
 import PositionResolver from "./PositionResolver";
 import * as BoxUtils from "./utils/BoxUtils";
+import * as Defaults from "./OnboardDefaults";
+import debounce from "lodash-es/debounce.js";
 
 /**
  * @class
@@ -32,6 +34,14 @@ export default class ArrowRenderer {
 		this._onStepBinding = this._model.on("step", this._onStep.bind(this));
 		this._onStopBinding = this._model.on("stop", this._onStop.bind(this));
 		this._positionResolver = new PositionResolver();
+
+		this._onWindowResize = debounce(() => {
+			if (this._step){
+				this._onStep(this._step);
+			}
+		}, Defaults.WINDOW_RESIZE_DEBOUNCE_TIME);
+
+		window.addEventListener("resize", this._onWindowResize);		
 	}
 
 	getArrowBox(){
@@ -94,6 +104,8 @@ export default class ArrowRenderer {
 			this._arrowEl.style("visibility", "visible");
 		}
 
+		this._step = step;
+
 		var selection = d3.selectAll(step.selector);
 		var targetBox = BoxUtils.getTargetBox(selection);
 		var arrowPosition = this._positionResolver.getArrowPosition(targetBox, this._arrowBox);
@@ -102,15 +114,11 @@ export default class ArrowRenderer {
 			.style("top", arrowPosition.top+"px")
 			.style("left", arrowPosition.left+"px");
 
-			// epxerimental fading when moving arrow
-		// this._arrowEl
-		// 	.transition("2")
-		// 	.duration(this._options.animationDuration/4)
-		// 	.style("opacity", 0)
-		// 	.transition().duration(this._options.animationDuration/2)
-		// 	.style("opacity", 0)
-		// 	.transition().duration(this._options.animationDuration/4)
-		// 	.style("opacity", 1);
+		// epxerimental fading when moving arrow
+		this._arrowEl
+			.style("opacity", 0)
+			.transition("2").duration(this._options.animationDuration)
+			.style("opacity", 1);
 
 		this._arrowEl.attr("class", style["arrow"]+" "+style["arrow-"+arrowPosition.position]);
 
@@ -123,6 +131,7 @@ export default class ArrowRenderer {
 	 */
 	_onStop() {
 		this._arrowEl.style("display", "none");
+		this._step = null;
 		return this;
 	}	
 
@@ -134,6 +143,9 @@ export default class ArrowRenderer {
 		this._onStartBinding.destroy();
 		this._onStepBinding.destroy();
 		this._onStopBinding.destroy();
+
+		this._step = null;
+		window.removeEventListener("resize", this._onWindowResize);	
 
 		if (this._arrowEl){
 			this._arrowEl.remove();

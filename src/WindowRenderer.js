@@ -5,6 +5,8 @@ import ArrowRenderer from "./ArrowRenderer";
 import ProgressRenderer from "./ProgressRenderer";
 import * as Defaults from "./OnboardDefaults";
 import * as BoxUtils from "./utils/BoxUtils";
+import debounce from "lodash-es/debounce.js";
+
 
 /**
  * @class
@@ -39,6 +41,14 @@ export default class WindowRenderer {
 		this._positionResolver = new PositionResolver();
 		this._arrowRenderer = new ArrowRenderer(options, model);		
 		this._progressRenderer = new ProgressRenderer(options, model);		
+
+		this._onWindowResize = debounce(() => {
+			if (this._step){
+				this._onStep(this._step);
+			}
+		}, Defaults.WINDOW_RESIZE_DEBOUNCE_TIME);
+
+		window.addEventListener("resize", this._onWindowResize);		
 		
 	}
 
@@ -142,6 +152,8 @@ export default class WindowRenderer {
 	 * @returns {MaskRenderer} 
 	 */
 	_onStep(step) {
+		this._step = step;
+
 		this._titleEl.html(step.title);
 		this._bodyEl.html(step.text);
 
@@ -180,6 +192,7 @@ export default class WindowRenderer {
 	 */
 	_onStop() {
 		this._windowEl.style("display", "none");
+		this._step = null;
 		return this;
 	}	
 
@@ -192,8 +205,11 @@ export default class WindowRenderer {
 		this._onStepBinding.destroy();
 		this._onStopBinding.destroy();
 
+		this._step = null;
+
 		this._progressRenderer.destroy();
 		this._arrowRenderer.destroy();
+		window.removeEventListener("resize", this._onWindowResize);
 
 		return this;
 	}
