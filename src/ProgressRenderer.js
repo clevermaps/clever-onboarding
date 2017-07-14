@@ -1,5 +1,6 @@
 import style from "./Onboard.css";
-import * as d3 from "d3";
+import {select, selectAll} from "d3-selection";
+import 'd3-transition';
 
 /**
  * @class
@@ -62,7 +63,7 @@ export default class OnboardRenderer {
 	 */
 	render(selector) {
 		// get container element using selector or given element
-		this._containerEl = d3.select(selector);
+		this._containerEl = select(selector);
 
 		this._renderProgress();
 		this._renderSteps();
@@ -85,7 +86,7 @@ export default class OnboardRenderer {
 
 	_resizeSteps(step){
 		var stepWidth = this._getStepWidth(step);
-		d3.selectAll("."+style["window-progress-step"])
+		selectAll("."+style["window-progress-step"])
 			.transition()
 			.duration(this._options.animationDuration)
 			.style("width", stepWidth + "px");

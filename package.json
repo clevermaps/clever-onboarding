@@ -13,7 +13,6 @@
   },
   "repository": "clevermaps/onboard",
   "keywords": [
-    "d3.js",
     "onboard"
   ],
   "author": "Clever Maps s.r.o",
@@ -22,12 +21,13 @@
     "dist"
   ],
   "dependencies": {
-    "d3": "^4.8.0",
+    "d3-selection": "^1.1.0",
+    "d3-transition": "^1.1.0",
     "lodash-es": "^4.17.4"
   },
   "devDependencies": {
     "rollup-plugin-commonjs": "^8.0.2",
-    "rollup-plugin-node-resolve": "^3.0.0",    
+    "rollup-plugin-node-resolve": "^3.0.0",
     "babel-eslint": "^7.2.3",
     "babel-plugin-external-helpers": "^6.22.0",
     "babel-preset-es2015": "^6.24.1",

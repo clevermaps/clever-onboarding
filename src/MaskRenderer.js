@@ -1,5 +1,5 @@
 import style from "./Onboard.css";
-import * as d3 from "d3";
+import {select, selectAll} from "d3-selection";
 import debounce from "lodash-es/debounce.js";
 import * as Defaults from "./OnboardDefaults";
 
@@ -67,7 +67,7 @@ export default class MaskRenderer {
 	 */
 	render(selector) {
 		// get container element using selector or given element
-		this._containerEl = d3.select(selector || document.body);
+		this._containerEl = select(selector || document.body);
 
 		this._renderMask();
 		this._rendered = true;
@@ -142,7 +142,7 @@ export default class MaskRenderer {
 	 */
 	_renderStep(step){
 		if (!step.selector) return;
-		var selection = d3.selectAll(step.selector);
+		var selection = selectAll(step.selector);
 		
 		selection.nodes().forEach(element=>{
 			this._stepElements.push(this._renderStepElement(element, step));
@@ -240,7 +240,7 @@ export default class MaskRenderer {
 				.attr("fill-opacity", 1)
 				.attr("stroke-width", step.shape?step.shape.strokeWidth||0:0)
 				.attr("stroke", "black")
-				.attr("d", d3.select(element).attr("d"))
+				.attr("d", select(element).attr("d"))
 			
 		
 		return stepEl;

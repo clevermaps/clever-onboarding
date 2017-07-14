@@ -8,7 +8,6 @@ import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 
 let pkg = require('./package.json');
-let external = Object.keys(pkg.dependencies);
 
 const cssExportMap = {};
 
@@ -33,10 +32,6 @@ export default {
     babel(babelrc()),
     uglify()
   ],
-  globals:{
-    "d3":"d3"
-  },
-  external: external,
   targets: [
     {
       dest: pkg.main,

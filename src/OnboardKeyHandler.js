@@ -1,4 +1,4 @@
-import * as d3 from "d3";
+import {select, event} from "d3-selection";
 
 /**
  * @class
@@ -22,7 +22,7 @@ export default class OnboardKeyHandler {
 	 * @returns {OnboarKeyHandler} 
 	 */
 	_onStart() {
-		d3.select(document).on("keydown.onboard", this._onKeyDown.bind(this));
+		select(document).on("keydown.onboard", this._onKeyDown.bind(this));
 		return this;
 	}
 
@@ -31,17 +31,17 @@ export default class OnboardKeyHandler {
 	 * @returns {OnboarKeyHandler} 
 	 */
 	_onKeyDown(){
-		if(d3.event.key == "ArrowLeft" || d3.event.key == "Backspace"){
+		if(event.key == "ArrowLeft" || event.key == "Backspace"){
 			this._model.hasPrev()?this._model.prev():this._model.stop();
-		} else if (d3.event.key == "ArrowRight" || d3.event.key == "Enter"){
+		} else if (event.key == "ArrowRight" || event.key == "Enter"){
 			this._model.hasNext()?this._model.next():this._model.stop();
-		} else if (d3.event.key == "Escape"){
+		} else if (event.key == "Escape"){
 			this._model.stop();
 		} else {
 			return;
 		}
 
-		d3.event.preventDefault();
+		event.preventDefault();
 	}
 
 	/**
@@ -49,7 +49,7 @@ export default class OnboardKeyHandler {
 	 * @returns {OnboarKeyHandler} 
 	 */
 	_onStop() {
-		d3.select(document).on("keydown.onboard", null);
+		select(document).on("keydown.onboard", null);
 		return this;
 	}	
 

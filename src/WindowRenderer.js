@@ -1,5 +1,6 @@
 import style from "./Onboard.css";
-import * as d3 from "d3";
+import {select, selectAll} from "d3-selection";
+import 'd3-transition';
 import PositionResolver from "./PositionResolver";
 import ArrowRenderer from "./ArrowRenderer";
 import ProgressRenderer from "./ProgressRenderer";
@@ -69,7 +70,7 @@ export default class WindowRenderer {
 	 */
 	render(selector) {
 		// get container element using selector or given element
-		this._containerEl = d3.select(selector || document.body);
+		this._containerEl = select(selector || document.body);
 
 		this._renderWindow();
 		this._arrowRenderer.render(selector);
@@ -171,7 +172,7 @@ export default class WindowRenderer {
 			return;
 		}
 
-		var selection = d3.selectAll(step.selector);
+		var selection = selectAll(step.selector);
 
 		var targetBox = BoxUtils.getTargetBox(selection);
 		var windowBox = BoxUtils.getBox(this._windowEl.node());

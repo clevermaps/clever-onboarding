@@ -1,7 +1,7 @@
 import Observable from "./utils/Observable";
 import MaskRenderer from "./MaskRenderer";
 import WindowRenderer from "./WindowRenderer";
-import * as d3 from "d3";
+import {select} from "d3-selection";
 
 /**
  * @class
@@ -62,7 +62,7 @@ export default class OnboardRenderer {
 	 */
 	render(selector) {
 		// get container element using selector or given element
-		this._containerEl = d3.select(selector || document.body);
+		this._containerEl = select(selector || document.body);
 
 		this._maskRenderer.render(selector);
 		this._windowRenderer.render(selector);

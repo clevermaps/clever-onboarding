@@ -1,9 +1,10 @@
 import style from "./Onboard.css";
-import * as d3 from "d3";
 import PositionResolver from "./PositionResolver";
 import * as BoxUtils from "./utils/BoxUtils";
 import * as Defaults from "./OnboardDefaults";
 import debounce from "lodash-es/debounce.js";
+import {select, selectAll} from "d3-selection";
+import 'd3-transition';
 
 /**
  * @class
@@ -65,7 +66,7 @@ export default class ArrowRenderer {
 	 */
 	render(selector) {
 		// get container element using selector or given element
-		this._containerEl = d3.select(selector || document.body);
+		this._containerEl = select(selector || document.body);
 
 		this._renderArrow();
 		this._rendered = true;
@@ -106,7 +107,7 @@ export default class ArrowRenderer {
 
 		this._step = step;
 
-		var selection = d3.selectAll(step.selector);
+		var selection = selectAll(step.selector);
 		var targetBox = BoxUtils.getTargetBox(selection);
 		var arrowPosition = this._positionResolver.getArrowPosition(targetBox, this._arrowBox);
 
