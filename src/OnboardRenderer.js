@@ -69,32 +69,9 @@ export default class OnboardRenderer {
 	}
 
 	/**
-	 * Bind widget event
-	 * @param {string} event event name
-	 * @param {Function} handler event handler
-	 * @returns {OnboardRenderer} returns renderer instance
-	 */
-	on(eventName, handler) {
-		this._observable.on(eventName, handler);
-		return this;
-	}
-
-	/**
-	 * Unbind widget event
-	 * @param {string} event event name
-	 * @param {Function} [handler] event handler
-	 * @returns {OnboardRenderer} returns this widget instance
-	 */
-	off(eventName, handler) {
-		this._observable.off(eventName, handler);
-		return this;
-	}	
-
-	/**
 	 * Destorys this renderer 
 	 */
 	destroy() {
-		this._observable.destroy();	
 		this._maskRenderer.destroy();
 		this._windowRenderer.destroy();
 		return this;

@@ -288,6 +288,7 @@ export default class MaskRenderer {
 	destroy() {
 		if (this._rendered){
 			window.removeEventListener("resize", this._onWindowResize);
+			this._svgEl.remove();
 		}
 
 		this._clearSteps();

@@ -208,6 +208,10 @@ export default class WindowRenderer {
 
 		this._step = null;
 
+		if (this._rendered){
+			this._windowEl.remove();
+		}
+
 		this._progressRenderer.destroy();
 		this._arrowRenderer.destroy();
 		window.removeEventListener("resize", this._onWindowResize);
