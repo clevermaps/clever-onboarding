@@ -3,17 +3,12 @@ import WindowRenderer from "./WindowRenderer";
 import {select} from "d3-selection";
 
 /**
- * OnboardRenderer class is responsible for UI rendering for onboarding. It manages other 
+ * OnboardRenderer class is responsible for UI rendering for onboarding. It manages other renderers.
  * 
  * @param {OnboardOptions} options 
  * @param {OnboardModel} model 
  */
 export default class OnboardRenderer {
-	/**
-	 * 
-	 * @param {OnboardOptions} options 
-	 * @param {OnboardModel} model 
-	 */
 	constructor(options, model) {
 		/**
 		 * @private 
@@ -96,7 +91,7 @@ export default class OnboardRenderer {
 	}	
 
 	/**
-	 * Destorys Onboard UI  
+	 * Destorys this renderer 
 	 */
 	destroy() {
 		this._observable.destroy();	

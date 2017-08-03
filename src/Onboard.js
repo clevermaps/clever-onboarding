@@ -19,8 +19,10 @@ function getOptionValue(optionValue, defaultOptionValue) {
 * @param {OnboardOptions} options 
 * @example
 * const onboard = new Onboard({
-*   nextText:"Next",
-* 	steps:[
+*   nextText:"Next"
+* });
+* 
+* onboard.start([
 * 		{
 * 			selector:".menu-element",
 * 			title:"Step 1 title",
@@ -33,10 +35,7 @@ function getOptionValue(optionValue, defaultOptionValue) {
 * 			text:"Step 2 text."
 * 			
 * 		}
-* 	]
-* });
-* 
-* onboard.start();
+* 	]);
 */
  
 class Onboard {
@@ -68,10 +67,9 @@ class Onboard {
 			 *
 			 * @event Onboard#start
 			 * @memberof Onboard
-             * @instance
-			 * @type {object}
-			 * @property {Object} step.
-			 * @property {number} step index.
+			 * @type {Object}
+			 * @property {Object} step
+			 * @property {number} stepIndex
 			 */
 			"start",
 			/**
@@ -79,19 +77,19 @@ class Onboard {
 			 *
 			 * @event Onboard#stop
 			 * @memberof Onboard
-			 * @type {object}
-			 * @property {Object} step.
-			 * @property {number} step index.
+			 * @type {Object}
+			 * @property {Object} step
+			 * @property {number} stepIndex
 			 */
 			"stop",
 			/**
 			 * Fires when onboarding finishes.
 			 *
-			 * @event Onboard#stop
+			 * @event Onboard#step
 			 * @memberof Onboard
-			 * @type {object}
-			 * @property {Object} step.
-			 * @property {number} step index.
+			 * @type {Object}
+			 * @property {Object} step
+			 * @property {number} stepIndex
 			 */
 			"step"
 		]);
@@ -151,7 +149,7 @@ class Onboard {
 
 	/**
 	 * Unbinds widget event
-	 * @param {string} event event name
+	 * @param {string} eventName event name
 	 * @param {Function} [handler] event handler
 	 * @return {Onboard} returns this widget instance
 	 */
@@ -186,10 +184,11 @@ class Onboard {
 
 	/**
 	 * Starts onboarding
+	 * @param {StepOptions[]} steps 
 	 * @return {Onboard} returns this widget instance 
 	 */
-	start() {
-		this._model.start();
+	start(steps) {
+		this._model.start(steps);
 		return this;
 	}
 
@@ -209,7 +208,7 @@ class Onboard {
  *
  * @typedef {Object} OnboardOptions
  * @property {string} fillColor color of the modal background, defaults to {@link #.OnboardDefaultsFILL_COLOR|FILL_COLOR}
- * @property {number} fillOpacity opacity of the modal background, defaults {@link to #.OnboardDefaultsFILL_OPACITY|FILL_OPACITY}
+ * @property {number} fillOpacity opacity of the modal background, defaults to {@link #.OnboardDefaultsFILL_OPACITY|FILL_OPACITY}
  * @property {string} nextText default text for the Next button, defaults to {@link #.OnboardDefaultsNEXT_TEXT|NEXT_TEXT}
  * @property {string} windowClassName custom class name for popup window, defaults to {@link #.OnboardDefaultsWINDOW_CLASS_NAME|WINDOW_CLASS_NAME}
  * @property {number} animationDuration lenght of animation duration when transitioning between steps, defaults to {@link #.OnboardDefaultsANIMATION_DURATION|ANIMATION_DURATION}
@@ -220,7 +219,7 @@ class Onboard {
  * Options for the each Onboard step
  *
  * @typedef {Object} StepOptions
- * @property {selector} selector of spotlighted HTML/SVG node(s), if no selector is provided, no element is spotlighted and window is positioned in the center
+ * @property {string|HTMLElement} selector of spotlighted HTML/SVG node(s), if no selector is provided, no element is spotlighted and window is positioned in the center
  * @property {string} window title for this step, can be HTML
  * @property {string} body text for this step, can be HTML
  * @property {string} nextText text for the Next button, defaults to {@link #.OnboardDefaultsNEXT_TEXT|NEXT_TEXT} or OnboardOptions
@@ -234,7 +233,7 @@ class Onboard {
  * Shape otions for the each step
  *
  * @typedef {Object} ShapeOptions
- * @property {radius} radius of the shape, can be customized if target element is rectangle but spotlight is required with rounded corners
+ * @property {number} radius of the shape, can be customized if target element is rectangle but spotlight is required with rounded corners
  * @property {string} type can be set to change shape's type, supports 'rectangle' (default) and 'circle'. 
  * @property {number} width width of the shape if it requires to be different than target element's width
  * @property {number} height height of the shape if it requires to be different than target element's height

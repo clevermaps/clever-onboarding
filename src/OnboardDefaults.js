@@ -1,15 +1,15 @@
 /**
- * Onboard defaults
- * @static
+ * OnboardDefaults
+ *
+ * @typedef {Module} OnboardDefaults
  */
-export default class OnboardDefaults {}
 
 /**
  * Default fill color
  * @constant
  * @memberof OnboardDefaults
  * @type {string}
- * @default
+ * @default "#343A3D"
  */
 export const FILL_COLOR = "#343A3D";
 

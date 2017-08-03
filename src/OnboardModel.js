@@ -5,9 +5,6 @@ import Observable from "./utils/Observable";
  * Manages onboard data model
  */
 export default class OnboardModel {
-	/**
-	 * @param {OnboardOptions} options 
-	 */	
 	constructor(options) {
 		/**
 		 * @private 
@@ -26,31 +23,30 @@ export default class OnboardModel {
 			 * Fires when onboarding starts.
 			 *
 			 * @event Onboard#start
-			 * @memberof Onboard
-             * @instance
-			 * @type {object}
-			 * @property {Object} step.
-			 * @property {number} step index.
+			 * @memberof OnboardModel
+			 * @type {Object}
+			 * @property {Object} step
+			 * @property {number} stepIndex
 			 */
 			"start",
 			/**
 			 * Fires when onboarding step changes.
 			 *
 			 * @event Onboard#stop
-			 * @memberof Onboard
-			 * @type {object}
-			 * @property {Object} step.
-			 * @property {number} step index.
+			 * @memberof OnboardModel
+			 * @type {Object}
+			 * @property {Object} step
+			 * @property {number} stepIndex
 			 */
 			"stop",
 			/**
 			 * Fires when onboarding finishes.
 			 *
-			 * @event Onboard#stop
-			 * @memberof Onboard
-			 * @type {object}
-			 * @property {Object} step.
-			 * @property {number} step index.
+			 * @event Onboard#step
+			 * @memberof OnboardModel
+			 * @type {Object}
+			 * @property {Object} step
+			 * @property {number} stepIndex
 			 */
 			"step"
 		]);		
@@ -66,8 +62,13 @@ export default class OnboardModel {
 
 	/**
 	 * Starts onboarding
+	 * @param {StepOptions[]} steps
 	 */
-	start(){
+	start(steps){
+		if (steps){
+			this._steps = steps;
+		}
+
 		this._currentStepIndex = 0;
 		this._currentStep = this._steps[this._currentStepIndex];
 		this._observable.fire("start", this._currentStep, this._currentStepIndex);

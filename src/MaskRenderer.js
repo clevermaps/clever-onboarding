@@ -5,12 +5,10 @@ import * as Defaults from "./OnboardDefaults";
 
 /**
  * MaskRenderer is reponsible for rendering mask / spotlight
+ * @param {OnboardOptions} options 
+ * @param {OnboardModel} model 
  */
 export default class MaskRenderer {
-	/**
-	 * @param {OnboardOptions} options 
-	 * @param {OnboardModel} model 
-	 */
 	constructor(options, model) {
 		/**
 		 * @private 
@@ -173,6 +171,7 @@ export default class MaskRenderer {
 
 	/**
 	 * Returns border radius for given element
+	 * @private
 	 * @return {number}
 	 * @param {HTMLElement} el 
 	 */
@@ -181,6 +180,7 @@ export default class MaskRenderer {
 	}
 
 	/**
+	 * @private
 	 * Returns box for given element
 	 * @param {HTMLElement} element 
 	 * @return {Box} box

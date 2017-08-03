@@ -47,7 +47,7 @@ export default class OnboardKeyHandler {
 	}	
 
 	/**
-	 * Destorys Onboard UI  
+	 * Destorys key handler
 	 */
 	destroy() {
 		this._onStop();

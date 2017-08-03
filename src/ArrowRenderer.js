@@ -8,12 +8,13 @@ import 'd3-transition';
 
 /**
  * ArrowRenderer is responsible for rendering arrows pointing to windows
+*
+* @param {OnboardOptions} options 
+* @param {OnboardModel} model 
+*
  */
 export default class ArrowRenderer {
-	/**
-	 * @param {OnboardOptions} options 
-	 * @param {OnboardModel} model 
-	 */
+
 	constructor(options, model) {
 		/**
 		 * @private 
@@ -85,7 +86,7 @@ export default class ArrowRenderer {
 	}
 
 	_onStart() {
-		this._arrowEl.style("visibility", "visible");
+		this._arrowEl.style("display", "block");
 	}	
 
 	/**
@@ -105,6 +106,12 @@ export default class ArrowRenderer {
 
 		var selection = selectAll(step.selector);
 		var targetBox = BoxUtils.getTargetBox(selection);
+
+		if (!targetBox) {
+			this._arrowEl.style("display", "none");
+			return;
+		}
+
 		var arrowPosition = this._positionResolver.getArrowPosition(targetBox, this._arrowBox);
 
 		this._arrowEl.transition().duration(0 /*this._options.animationDuration*/)

@@ -10,6 +10,10 @@
      * @returns {number} box.bottom
 	 */
 	export const getBox = (element) => {
+		if (!element) {
+			return null;
+		}
+
 		var box = element.getBoundingClientRect();
 
 		return {
