@@ -7,11 +7,7 @@ import 'd3-transition';
  * @param {OnboardOptions} options
  * @param {OnboardModel} model 
  */
-export default class OnboardRenderer {
-	/**
-	 * @param {OnboardOptions} options 
-	 * @param {OnboardModel} model 
-	 */
+export default class ProgressRenderer {
 	constructor(options, model) {
 		/**
 		 * @private 
@@ -48,11 +44,22 @@ export default class OnboardRenderer {
 		 */
 		this._numOfSteps = this._steps.length;		
 
-		// only show when number of steps is > than 1
-		if (this._numOfSteps>1){
-			this._onStepBinding = this._model.on("step", this._onStep.bind(this));
-		}
+		this._onStepBinding = this._model.on("step", this._onStep.bind(this));
+		this._onStartBinding = this._model.on("start", this._onStart.bind(this));
+		this._onStopBinding = this._model.on("stop", this._onStop.bind(this));
 	}
+
+	_onStart(){
+		this._steps = this._model.getSteps().filter(step=>step.showProgress !== false);
+		this._numOfSteps = this._steps.length;		
+		this._renderSteps();
+	}
+
+	_onStop(){
+		// remove steps on stop
+		this._progressEl.node().innerHTML = "";
+	}
+	
 
 	/**
 	 * Returns true if rendered
@@ -107,10 +114,11 @@ export default class OnboardRenderer {
 	}
 
 	/**
+	 * @private
 	 * Logic to render one step
 	 */
 	_onStep(step) {
-		if (step.showProgress === false) {
+		if (step.showProgress === false || this._steps.length < 2) {
 			this._progressEl
 				.transition()
 				.duration(this._options.animationDuration)
@@ -137,9 +145,9 @@ export default class OnboardRenderer {
 			this._progressEl.remove();
 		}
 
-		if (this._onStepBinding){
-			this._onStepBinding.destroy();
-		}
+		this._onStartBinding.destroy();
+		this._onStepBinding.destroy();
+		this._onStopBinding.destroy();
 		
 		return this;
 	}

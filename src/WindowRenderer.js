@@ -15,10 +15,6 @@ import debounce from "lodash-es/debounce.js";
  * @param {OnboardModel} model 
  */
 export default class WindowRenderer {
-	/**
-	 * @param {OnboardOptions} options 
-	 * @param {OnboardModel} model 
-	 */	
 	constructor(options, model) {
 		/**
 		 * @private 
@@ -112,8 +108,8 @@ export default class WindowRenderer {
 			.on("click", this._onPrevClick.bind(this))
 			.html(this._options.prevText)
 
-		this._prevBtnEl.append("div").attr("class",style["window-btn-icon"]+" zmdi zmdi-long-arrow-left");			
-
+		this._prevBtnEl.append("div").attr("class",style["window-btn-icon"]+" zmdi zmdi-long-arrow-left");
+		
 		this._titleEl = this._windowEl.append("div")
 			.attr("class", style["window-title"] + " " +Defaults.WINDOW_TITLE_CLASS_NAME)
 
@@ -161,6 +157,14 @@ export default class WindowRenderer {
 		this._windowEl.attr("class", style["window"] + " " + (step.windowClassName || this._options.windowClassName))
 		this._windowEl.style("width", (step.windowWidth || this._options.windowWidth) + "px");
 
+		// hide previous button if there are no other steps
+		if (this._model.getSteps().length<2){
+			this._prevBtnEl.style("display","none");
+		} else {
+			this._prevBtnEl.style("display","block");
+		}
+		
+
 		if (!step.selector) {
 			this._windowEl.transition().duration(this._options.animationDuration)
 				.style("left", null)
@@ -172,6 +176,10 @@ export default class WindowRenderer {
 		var selection = selectAll(step.selector);
 
 		var targetBox = BoxUtils.getTargetBox(selection);
+		if (!targetBox) {
+			return;
+		}
+
 		var windowBox = BoxUtils.getBox(this._windowEl.node());
 		var windowPosition = this._positionResolver.getWindowPosition(targetBox, windowBox, this._arrowRenderer.getArrowBox());
 
