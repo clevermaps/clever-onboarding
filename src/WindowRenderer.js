@@ -164,11 +164,12 @@ export default class WindowRenderer {
 			this._prevBtnEl.style("display","block");
 		}
 		
+		var windowBox = BoxUtils.getBox(this._windowEl.node());
 
 		if (!step.selector) {
 			this._windowEl.transition().duration(this._options.animationDuration)
-				.style("left", null)
-				.style("top", null);
+				.style("left", "calc(50vw - "+windowBox.width/2+"px")
+				.style("top", "calc(50vh - "+windowBox.height/2+"px)");
 
 			return;
 		}
@@ -180,7 +181,7 @@ export default class WindowRenderer {
 			return;
 		}
 
-		var windowBox = BoxUtils.getBox(this._windowEl.node());
+		
 		var windowPosition = this._positionResolver.getWindowPosition(targetBox, windowBox, this._arrowRenderer.getArrowBox());
 
 		this._windowEl.transition().duration(this._options.animationDuration)

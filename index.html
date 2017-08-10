@@ -148,84 +148,57 @@
     <script>
         var onboard = new Onboard({
             nextText:"Další",
-            steps:[]
-
-        //     [
-        //         {
-        //             title:"Objednávky",
-        //             text:"Pohled Objednávky vám přinese porozumění, ve kterých oblastech se Rohlíku daří a ve kterých naopak zaostává. Na mapě tak z vašich dat jasně uvidíte, kde je například nejvíce objednávek, kde nejméně zákazníků, kde vznikal minulý měsíc největší obrat, nebo třeba jaká je průměrná výše objednávky v okolí Černošic. <br /> <br />S CleverAnalytics toho můžete zjistit ještě mnohem více..",
-        //             nextText:"Pokračovat s průvodcem",
-        //             showProgress:false,
-        //             windowClassName:"intro-step",
-        //             windowWidth:476
-        //         },
-        //         {
-        //             selector:".menu-element",
-        //             title:"Data mimo dosah mapy",
-        //             text:"Odzoomovali jste mimo možnosti prohlížeče zobrazit takové množství oblastí zaráz. Kliknutím na ikonu se mapa přiblíží na nejbližší podporovanou úroveň zvolené graularity. Případně můžete vybrat jinou úroveň granularity, složenou z menšího počtu oblastí."
-                    
-        //         },
-        //          {
-        //             selector:".side-element",
-        //             title:"Indikátory",
-        //             text:"Indikátory ve výchozím stavu ukazují hodnoty hromadně za celou síť. Zvolením oblasti nebo bodu v mapě se zobrazí hodnoty už jen pro vybraný objekt. Zvolením indikátoru se jev zobrazuje v mapě."
-                    
-        //         },
-        //         {
-        //             selector:".ricany",
-        //             title:"Mapa ukazka - Ricany",
-        //             text:"Indikátory ve výchozím stavu ukazují hodnoty hromadně za celou síť. Zvolením oblasti nebo bodu v mapě se zobrazí hodnoty už jen pro vybraný objekt. Zvolením indikátoru se jev zobrazuje v mapě."
-                    
-        //         },
-        //         {
-        //             selector:".graph-element",
-        //             title:"Data mimo dosah mapy",
-        //             text:"Odzoomovali jste mimo možnosti prohlížeče zobrazit takové množství oblastí zaráz. Kliknutím na ikonu se mapa přiblíží na nejbližší podporovanou úroveň zvolené graularity. Případně můžete vybrat jinou úroveň granularity, složenou z menšího počtu oblastí."
-                    
-        //         },                
-        //         {
-        //             selector:".lysa",
-        //             title:"Mapa ukazka - lysa",
-        //             text:"Indikátory ve výchozím stavu ukazují hodnoty hromadně za celou síť. Zvolením oblasti nebo bodu v mapě se zobrazí hodnoty už jen pro vybraný objekt. Zvolením indikátoru se jev zobrazuje v mapě."
-                    
-        //         },
-        //         {
-        //             selector:".filter-element",
-        //             shape:{
-        //                 offset:13
-        //             },
-        //             nextText:"Rozumím",
-        //             title:"Aktivní filtr",
-        //             text:"Právě jste aktivovali filtr. Číslo u nástroje Filtr ukazuje počet všech aktivních filtrů, které aktuálně ořezávají data. Filtry lze dočasně vypnout pomocí ikony X aniž by se zrušilo jejich původní nastavení."
-        //         }
-        //     ]
         });
 
-        onboard.start(            [
-    {
-        "title": "Time frame",
-        "text": "See your data in the right context of time. Pick the start and the end date to display only the relevant data.",
-        "nextText": "GOT IT",
-        "selector": "#date-selector",
-        "tipId": "basicTimeFrame"
-    },
-    {
-        "title": "Time frame",
-        "text": "See your data in the right context of time. Pick the start and the end date to display only the relevant data.",
-        "nextText": "GOT IT",
-        "selector": "#date-selector",
-        "tipId": "basicTimeFrame"
-    },
-    {
-        "title": "Time frame",
-        "text": "See your data in the right context of time. Pick the start and the end date to display only the relevant data.",
-        "nextText": "GOT IT",
-        "selector": "#date-selector",
-        "tipId": "basicTimeFrame"
-    }
-]);
-
-
+        onboard.start([
+                {
+                    title:"Objednávky",
+                    text:"Pohled Objednávky vám přinese porozumění, ve kterých oblastech se Rohlíku daří a ve kterých naopak zaostává. Na mapě tak z vašich dat jasně uvidíte, kde je například nejvíce objednávek, kde nejméně zákazníků, kde vznikal minulý měsíc největší obrat, nebo třeba jaká je průměrná výše objednávky v okolí Černošic. <br /> <br />S CleverAnalytics toho můžete zjistit ještě mnohem více..",
+                    nextText:"Pokračovat s průvodcem",
+                    showProgress:false,
+                    windowClassName:"intro-step",
+                    windowWidth:500
+                },
+                {
+                    selector:".menu-element",
+                    title:"Data mimo dosah mapy",
+                    text:"Odzoomovali jste mimo možnosti prohlížeče zobrazit takové množství oblastí zaráz. Kliknutím na ikonu se mapa přiblíží na nejbližší podporovanou úroveň zvolené graularity. Případně můžete vybrat jinou úroveň granularity, složenou z menšího počtu oblastí."
+                    
+                },
+                 {
+                    selector:".side-element",
+                    title:"Indikátory",
+                    text:"Indikátory ve výchozím stavu ukazují hodnoty hromadně za celou síť. Zvolením oblasti nebo bodu v mapě se zobrazí hodnoty už jen pro vybraný objekt. Zvolením indikátoru se jev zobrazuje v mapě."
+                    
+                },
+                {
+                    selector:".ricany",
+                    title:"Mapa ukazka - Ricany",
+                    text:"Indikátory ve výchozím stavu ukazují hodnoty hromadně za celou síť. Zvolením oblasti nebo bodu v mapě se zobrazí hodnoty už jen pro vybraný objekt. Zvolením indikátoru se jev zobrazuje v mapě."
+                    
+                },
+                {
+                    selector:".graph-element",
+                    title:"Data mimo dosah mapy",
+                    text:"Odzoomovali jste mimo možnosti prohlížeče zobrazit takové množství oblastí zaráz. Kliknutím na ikonu se mapa přiblíží na nejbližší podporovanou úroveň zvolené graularity. Případně můžete vybrat jinou úroveň granularity, složenou z menšího počtu oblastí."
+                    
+                },                
+                {
+                    selector:".lysa",
+                    title:"Mapa ukazka - lysa",
+                    text:"Indikátory ve výchozím stavu ukazují hodnoty hromadně za celou síť. Zvolením oblasti nebo bodu v mapě se zobrazí hodnoty už jen pro vybraný objekt. Zvolením indikátoru se jev zobrazuje v mapě."
+                    
+                },
+                {
+                    selector:".filter-element",
+                    shape:{
+                        offset:13
+                    },
+                    nextText:"Rozumím",
+                    title:"Aktivní filtr",
+                    text:"Právě jste aktivovali filtr. Číslo u nástroje Filtr ukazuje počet všech aktivních filtrů, které aktuálně ořezávají data. Filtry lze dočasně vypnout pomocí ikony X aniž by se zrušilo jejich původní nastavení."
+                }
+            ]);
       
     </script>
     

@@ -1,6 +1,5 @@
 	/**
-	 * @private
-     * @param {Element}
+     * @param {HTMLElement} element HTML element
 	 * @returns {Object} box
      * @returns {number} box.width
      * @returns {number} box.height
@@ -27,8 +26,7 @@
 	}
 
 	/**
-	 * @private
-	 * @param {Array<Element>}
+	 * @param {Array<HTMLElement>} nodes array of HTML elements 
 	 * @returns {Object} box
      * @returns {number} box.width
      * @returns {number} box.height
@@ -54,8 +52,7 @@
 	}
 
 	/**
-	 * @private
-     * @param {D3Selection}
+     * @param {D3Selection} selection
 	 * @returns {Object} box
      * @returns {number} box.width
      * @returns {number} box.height
