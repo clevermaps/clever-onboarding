@@ -141,7 +141,7 @@
 .arrow-right-bottom {
     transform: scaleY(-1);
     margin-left: -20px;
-    margin-top: -8px;
+    margin-top: 8px;
 }
 
 .arrow-left-top {
