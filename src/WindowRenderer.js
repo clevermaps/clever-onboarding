@@ -156,18 +156,13 @@ export default class WindowRenderer {
 		this._nextBtnTextEl.html(step.nextText || this._options.nextText)
 		this._windowEl.attr("class", style["window"] + " " + (step.windowClassName || this._options.windowClassName))
 		this._windowEl.style("width", (step.windowWidth || this._options.windowWidth) + "px");
-
-		// hide previous button if there are no other steps
-		if (this._model.getSteps().length<2){
-			this._prevBtnEl.style("display","none");
-		} else {
-			this._prevBtnEl.style("display","block");
-		}
 		
 		var windowBox = BoxUtils.getBox(this._windowEl.node());
 
 		if (!step.selector) {
-			this._windowEl.transition().duration(this._options.animationDuration)
+			// center window if no selector is available
+			// note that we don't animate this as calc wouldn't animate properly
+			this._windowEl
 				.style("left", "calc(50vw - "+windowBox.width/2+"px")
 				.style("top", "calc(50vh - "+windowBox.height/2+"px)");
 
@@ -184,7 +179,12 @@ export default class WindowRenderer {
 		
 		var windowPosition = this._positionResolver.getWindowPosition(targetBox, windowBox, this._arrowRenderer.getArrowBox());
 
-		this._windowEl.transition().duration(this._options.animationDuration)
+		this._windowEl
+			// set left/top first so that we can animate correctly from centered window
+			.style("left", windowBox.left+"px")
+			.style("top", windowBox.top+"px")
+			.transition()
+			.duration(this._options.animationDuration)
 			.style("left", windowPosition.left+"px")
 			.style("top", windowPosition.top+"px");
 

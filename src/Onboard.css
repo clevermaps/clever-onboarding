@@ -78,7 +78,7 @@
 }
 
 .window-prev-btn {
-    display: block;
+    display: none;
     position: absolute;
     left:30px;
     bottom:30px;
@@ -112,6 +112,7 @@
 
 .window-button-has-prev {
     color: var(--inactive-color);
+    display: block;
     pointer-events: all;
     cursor: pointer;
 }
