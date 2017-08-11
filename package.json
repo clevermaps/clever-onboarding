@@ -1,23 +1,21 @@
 {
-  "name": "onboard",
-  "version": "1.2.0",
-  "description": "onboard widget.",
-  "main": "dist/can-onboard.min.js",
+  "name": "clever-onboarding",
+  "version": "1.0.0",
+  "description": "Framework agnostic onboarding widget for your web apps.",
+  "main": "dist/clever-onboarding.min.js",
   "scripts": {
-    "prebuild": "eslint src test",
+    "prebuild": "eslint src",
     "build": "rollup -c",
     "watch": "rollup -c -w",
     "pretest": "npm run build",
-    "test": "mocha",
-    "prepublish": "npm test",
-    "build-docs":"documentation build src/Onboard.js -f html -o docs",
+    "build-docs":"documentation build src/CleverOnboarding.js -f html -o docs",
     "start-docs": "npm run build-docs && http-server docs -p 3000 -o"
   },
-  "repository": "clevermaps/onboard",
+  "repository": "https://github.com/CleverMaps/clever-onboarding.git",
   "keywords": [
     "onboard"
   ],
-  "author": "Clever Maps s.r.o",
+  "author": "Jaroslav Benc",
   "files": [
     "src",
     "dist"

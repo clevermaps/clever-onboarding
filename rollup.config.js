@@ -12,7 +12,7 @@ let pkg = require('./package.json');
 const cssExportMap = {};
 
 export default {
-  entry: 'src/Onboard.js',
+  entry: 'src/CleverOnboarding.js',
   plugins: [
     resolve({jsnext: true}),
     commonjs(),    
@@ -36,7 +36,7 @@ export default {
     {
       dest: pkg.main,
       format: 'umd',
-      moduleName: 'Onboard',
+      moduleName: 'CleverOnboarding',
       sourceMap: true
     }
   ]

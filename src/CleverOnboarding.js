@@ -18,11 +18,11 @@ function getOptionValue(optionValue, defaultOptionValue) {
 * Onboard class used to start, control and end app walkthrough experience
 * @param {OnboardOptions} options 
 * @example
-* const onboard = new Onboard({
+* const onboarding = new CleverOnboarding({
 *   nextText:"Next"
 * });
 * 
-* onboard.start([
+* onboarding.start([
 * 		{
 * 			selector:".menu-element",
 * 			title:"Step 1 title",
