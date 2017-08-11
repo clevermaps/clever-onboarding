@@ -38,7 +38,7 @@ function getOptionValue(optionValue, defaultOptionValue) {
 * 	]);
 */
  
-class Onboard {
+class CleverOnboarding {
 	/**
 	 * @param {OnboardOptions} options 
 	 */
@@ -259,4 +259,4 @@ class Onboard {
  * @property {string} position can be 'right-top', 'right-bottom', 'left-top', 'left-bottom'
  */
 
-export default Onboard;
+export default CleverOnboarding;
