@@ -1,3 +1,5 @@
+import * as BoxUtils from "./utils/BoxUtils";
+
 /**
  * Handles window and arrow position based on target/window/arrow boxes
  */
@@ -14,12 +16,31 @@ export default class PositionResolver {
 		var left = this._getLeftWindowPosition(position, targetBox, arrowBox, windowBox);
 		var top = this._getTopWindowPosition(position, targetBox, arrowBox, windowBox);
 
-		return {
+		return this._getConstrainedWindowPosition({
 			position:position,
 			left:left, 
 			top:top
-		}
+		}, windowBox);
 	} 	
+
+	/**
+	 * Returns constrained window position to the browser viewport 
+	 * @param {Position} position
+	 * @param {Box} windowBox
+	 * @returns {Position} constrained position
+	 */
+	_getConstrainedWindowPosition(position, windowBox){
+		var viewportBox = BoxUtils.getBox(document.body);
+		var offset = 5;
+		var maxTop = viewportBox.bottom-windowBox.height-offset;
+		var constrained = position.top > maxTop;
+
+		return {
+			...position,
+			constrained:constrained,
+			top:Math.min(maxTop, position.top)
+		};
+	}
 
 	/**
 	 * Returns position of arrow based on target/arrow boxes
@@ -49,11 +70,17 @@ export default class PositionResolver {
 	}
 
 	_getTopWindowPosition(position, targetBox, arrowBox, windowBox){
+		var verticalOffset = 25;
+		// center arrow to the middle of target if target is smaller than 50px
+		if (targetBox.height<50){
+			verticalOffset = targetBox.height/2;
+		}
+
 		return {
 			"left-top":targetBox.top + targetBox.height + arrowBox.height,
-			"right-top":targetBox.top + targetBox.height/2 + arrowBox.height,
+			"right-top":targetBox.top + verticalOffset + arrowBox.height,
 			"left-bottom":targetBox.top - windowBox.height - arrowBox.height,
-			"right-bottom":targetBox.top - windowBox.height + arrowBox.height,
+			"right-bottom":targetBox.top - windowBox.height - arrowBox.height + verticalOffset,
 		}[position];
 	}	
 
@@ -67,11 +94,17 @@ export default class PositionResolver {
 	}
 
 	_getTopArrowPosition(position, targetBox, arrowBox){
+		var verticalOffset = 25;
+		// center arrow to the middle of target if target is smaller than 50px
+		if (targetBox.height<50){
+			verticalOffset = targetBox.height/2
+		}
+		
 		return {
 			"left-top":targetBox.top + targetBox.height,
-			"right-top":targetBox.top + targetBox.height/2,
+			"right-top":targetBox.top + verticalOffset,
 			"left-bottom":targetBox.top - arrowBox.height,
-			"right-bottom":targetBox.top + arrowBox.height,
+			"right-bottom":targetBox.top - arrowBox.height + verticalOffset,
 		}[position];
 	}
 

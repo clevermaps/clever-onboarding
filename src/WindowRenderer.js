@@ -188,7 +188,12 @@ export default class WindowRenderer {
 			.style("left", windowPosition.left+"px")
 			.style("top", windowPosition.top+"px");
 
-		this._windowEl.classed(style["window-"+windowPosition.position], true);
+		var positionClassName = style["window-"+windowPosition.position]; 
+		if (positionClassName){
+			this._windowEl.classed(style["window-"+windowPosition.position], true);
+		}
+		
+		this._windowEl.classed(style.constrained, windowPosition.constrained);
 
 		return this;
 	}	

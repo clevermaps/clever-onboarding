@@ -5,6 +5,9 @@
     "browser": true,
     "mocha": true
   },
+  "ecmaFeatures": {
+    "experimentalObjectRestSpread": true
+  },
   "rules":{
     "no-console":"off",
     "valid-jsdoc":1

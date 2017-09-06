@@ -132,6 +132,10 @@
     background-image:var(--arrow-image);
 }
 
+.constrained + .arrow {
+    display: none !important;
+}
+
 .arrow-right-top {
     transform: rotate(0deg);
     margin-left: -20px;
