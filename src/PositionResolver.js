@@ -33,12 +33,13 @@ export default class PositionResolver {
 		var viewportBox = BoxUtils.getBox(document.body);
 		var offset = 5;
 		var maxTop = viewportBox.bottom-windowBox.height-offset;
-		var constrained = position.top > maxTop;
+		var minTop = offset;
+		var constrained = position.top > maxTop && position.top < minTop;
 
 		return {
 			...position,
 			constrained:constrained,
-			top:Math.min(maxTop, position.top)
+			top:Math.max(minTop, Math.min(maxTop, position.top))
 		};
 	}
 
