@@ -91,7 +91,14 @@ class CleverOnboarding {
 			 * @property {Object} step
 			 * @property {number} stepIndex
 			 */
-			"step"
+			"step",
+			/**
+			 * Fires when user clicks on close button.
+			 *
+			 * @event Onboard#closeClick
+			 * @memberof Onboard
+			 */
+			"closeClick"
 		]);
 
 		/**
@@ -132,6 +139,10 @@ class CleverOnboarding {
 		 * key handler
 		 */
 		this._onboardKeyHandler = new OnboardKeyHandler(this._options, this._model);		
+
+		this._onboardRenderer.on("closeClick", ()=>{
+			this._observable.fire("closeClick");
+		});		
 
 		this.render();
 	}

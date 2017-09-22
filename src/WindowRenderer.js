@@ -7,6 +7,7 @@ import ProgressRenderer from "./ProgressRenderer";
 import * as Defaults from "./OnboardDefaults";
 import * as BoxUtils from "./utils/BoxUtils";
 import debounce from "lodash-es/debounce.js";
+import Observable from "./utils/Observable";
 
 
 /**
@@ -33,6 +34,20 @@ export default class WindowRenderer {
 		 * true if Onboard has been rendered
 		 */
 		this._rendered = false;
+
+		/**
+		 * @private
+		 * observable handler
+		 */
+		this._observable = new Observable([
+			/**
+			 * Fires when user clicks on close button.
+			 *
+			 * @event WindowRenderer#closeClick
+			 * @memberof WindowRenderer
+			 */
+			"closeClick"
+		]);		
 
 		this._model = model;
 
@@ -61,6 +76,28 @@ export default class WindowRenderer {
 	isRendered() {
 		return this._rendered;
 	}
+
+	/**
+	 * Binds widget event
+	 * @param {string} eventName event name
+	 * @param {Function} handler event handler
+	 * @return {Onboard} returns this widget instance
+	 */
+	on(eventName, handler) {
+		this._observable.on(eventName, handler);
+		return this;
+	}
+
+	/**
+	 * Unbinds widget event
+	 * @param {string} eventName event name
+	 * @param {Function} [handler] event handler
+	 * @return {Onboard} returns this widget instance
+	 */
+	off(eventName, handler) {
+		this._observable.off(eventName, handler);
+		return this;
+	}	
 
 	/**
 	 * Renders window UI 
@@ -123,6 +160,7 @@ export default class WindowRenderer {
 
 	_onCloseClick(){
 		this._model.stop();
+		this._observable.fire("closeClick");
 	}
 
 	_onNextClick(){

@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset='utf-8' />
-  <title>onboard 1.2.0 | Documentation</title>
+  <title>clever-onboarding 1.0.2 | Documentation</title>
   <meta name='viewport' content='width=device-width,initial-scale=1'>
   <link href='assets/bass.css' type='text/css' rel='stylesheet' />
   <link href='assets/style.css' type='text/css' rel='stylesheet' />
@@ -13,8 +13,8 @@
     <div class='clearfix md-mxn2'>
       <div class='fixed xs-hide fix-3 overflow-auto max-height-100'>
         <div class='py1 px2'>
-          <h3 class='mb0 no-anchor'>onboard</h3>
-          <div class='mb1'><code>1.2.0</code></div>
+          <h3 class='mb0 no-anchor'>clever-onboarding</h3>
+          <div class='mb1'><code>1.0.2</code></div>
           <input
             placeholder='Filter'
             id='filter-input'
@@ -25,9 +25,9 @@
               
                 
                 <li><a
-                  href='#onboard'
+                  href='#cleveronboarding'
                   class=" toggle-sibling">
-                  Onboard
+                  CleverOnboarding
                   <span class='icon'>▸</span>
                 </a>
                 
@@ -38,43 +38,43 @@
                       <li class='h5'><span>Instance members</span></li>
                       
                       <li><a
-                        href='#Onboard#constructor'
+                        href='#CleverOnboarding#constructor'
                         class='regular pre-open'>
                         #constructor
                       </a></li>
                       
                       <li><a
-                        href='#Onboard#on'
+                        href='#CleverOnboarding#on'
                         class='regular pre-open'>
                         #on
                       </a></li>
                       
                       <li><a
-                        href='#Onboard#off'
+                        href='#CleverOnboarding#off'
                         class='regular pre-open'>
                         #off
                       </a></li>
                       
                       <li><a
-                        href='#Onboard#destroy'
+                        href='#CleverOnboarding#destroy'
                         class='regular pre-open'>
                         #destroy
                       </a></li>
                       
                       <li><a
-                        href='#Onboard#render'
+                        href='#CleverOnboarding#render'
                         class='regular pre-open'>
                         #render
                       </a></li>
                       
                       <li><a
-                        href='#Onboard#start'
+                        href='#CleverOnboarding#start'
                         class='regular pre-open'>
                         #start
                       </a></li>
                       
                       <li><a
-                        href='#Onboard#stop'
+                        href='#CleverOnboarding#stop'
                         class='regular pre-open'>
                         #stop
                       </a></li>
@@ -83,30 +83,57 @@
                   
                   
                   
-                    <ul class='list-reset py1-ul pl1'>
-                      <li class='h5'>Events</li>
-                      
-                        <li><a
-                          href='#Onboard.event:Onboard#start'
-                          class='regular pre-open'>
-                          ⓔ Onboard#start
-                        </a></li>
-                      
-                        <li><a
-                          href='#Onboard.event:Onboard#stop'
-                          class='regular pre-open'>
-                          ⓔ Onboard#stop
-                        </a></li>
-                      
-                        <li><a
-                          href='#Onboard.event:Onboard#step'
-                          class='regular pre-open'>
-                          ⓔ Onboard#step
-                        </a></li>
-                      
-                    </ul>
-                  
                 </div>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#eventonboardstart'
+                  class="">
+                  Onboard#start
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#eventonboardstop'
+                  class="">
+                  Onboard#stop
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#eventonboardstep'
+                  class="">
+                  Onboard#step
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#eventonboardcloseclick'
+                  class="">
+                  Onboard#closeClick
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#position'
+                  class="">
+                  Position
+                  
+                </a>
                 
                 </li>
               
@@ -115,26 +142,6 @@
                   href='#box'
                   class="">
                   Box
-                  
-                </a>
-                
-                </li>
-              
-                
-                <li><a
-                  href='#onboardoptions'
-                  class="">
-                  OnboardOptions
-                  
-                </a>
-                
-                </li>
-              
-                
-                <li><a
-                  href='#stepoptions'
-                  class="">
-                  StepOptions
                   
                 </a>
                 
@@ -152,9 +159,19 @@
               
                 
                 <li><a
-                  href='#position'
+                  href='#stepoptions'
                   class="">
-                  Position
+                  StepOptions
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#onboardoptions'
+                  class="">
+                  OnboardOptions
                   
                 </a>
                 
@@ -315,18 +332,6 @@
                       <li class='h5'><span>Instance members</span></li>
                       
                       <li><a
-                        href='#OnboardRenderer#isRendered'
-                        class='regular pre-open'>
-                        #isRendered
-                      </a></li>
-                      
-                      <li><a
-                        href='#OnboardRenderer#render'
-                        class='regular pre-open'>
-                        #render
-                      </a></li>
-                      
-                      <li><a
                         href='#OnboardRenderer#on'
                         class='regular pre-open'>
                         #on
@@ -339,6 +344,18 @@
                       </a></li>
                       
                       <li><a
+                        href='#OnboardRenderer#isRendered'
+                        class='regular pre-open'>
+                        #isRendered
+                      </a></li>
+                      
+                      <li><a
+                        href='#OnboardRenderer#render'
+                        class='regular pre-open'>
+                        #render
+                      </a></li>
+                      
+                      <li><a
                         href='#OnboardRenderer#destroy'
                         class='regular pre-open'>
                         #destroy
@@ -347,6 +364,17 @@
                     </ul>
                   
                   
+                  
+                    <ul class='list-reset py1-ul pl1'>
+                      <li class='h5'>Events</li>
+                      
+                        <li><a
+                          href='#OnboardRenderer.event:OnboardRenderer#closeClick'
+                          class='regular pre-open'>
+                          ⓔ OnboardRenderer#closeClick
+                        </a></li>
+                      
+                    </ul>
                   
                 </div>
                 
@@ -413,6 +441,18 @@
                       </a></li>
                       
                       <li><a
+                        href='#WindowRenderer#on'
+                        class='regular pre-open'>
+                        #on
+                      </a></li>
+                      
+                      <li><a
+                        href='#WindowRenderer#off'
+                        class='regular pre-open'>
+                        #off
+                      </a></li>
+                      
+                      <li><a
                         href='#WindowRenderer#render'
                         class='regular pre-open'>
                         #render
@@ -427,6 +467,17 @@
                     </ul>
                   
                   
+                  
+                    <ul class='list-reset py1-ul pl1'>
+                      <li class='h5'>Events</li>
+                      
+                        <li><a
+                          href='#WindowRenderer.event:WindowRenderer#closeClick'
+                          class='regular pre-open'>
+                          ⓔ WindowRenderer#closeClick
+                        </a></li>
+                      
+                    </ul>
                   
                 </div>
                 
@@ -450,6 +501,12 @@
                         href='#PositionResolver#getWindowPosition'
                         class='regular pre-open'>
                         #getWindowPosition
+                      </a></li>
+                      
+                      <li><a
+                        href='#PositionResolver#_getConstrainedWindowPosition'
+                        class='regular pre-open'>
+                        #_getConstrainedWindowPosition
                       </a></li>
                       
                       <li><a
@@ -549,6 +606,36 @@
                   
                   
                 </div>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#getbox'
+                  class="">
+                  getBox
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#getmultibox'
+                  class="">
+                  getMultiBox
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#gettargetbox'
+                  class="">
+                  getTargetBox
+                  
+                </a>
                 
                 </li>
               
@@ -706,8 +793,8 @@
   
   <div class='clearfix'>
     
-    <h3 class='fl m0' id='onboard'>
-      Onboard
+    <h3 class='fl m0' id='cleveronboarding'>
+      CleverOnboarding
     </h3>
     
     
@@ -717,7 +804,7 @@
   <p>Onboard class used to start, control and end app walkthrough experience</p>
 
 
-  <div class='pre p1 fill-light mt0'>new Onboard(options: <a href="#onboardoptions">OnboardOptions</a>)</div>
+  <div class='pre p1 fill-light mt0'>new CleverOnboarding(options: <a href="#onboardoptions">OnboardOptions</a>)</div>
   
   
 
@@ -753,11 +840,11 @@
     <div class='py1 quiet mt1 prose-big'>Example</div>
     
       
-      <pre class='p1 overflow-auto round fill-light'><span class="hljs-keyword">const</span> onboard = <span class="hljs-keyword">new</span> Onboard({
+      <pre class='p1 overflow-auto round fill-light'><span class="hljs-keyword">const</span> onboarding = <span class="hljs-keyword">new</span> CleverOnboarding({
   <span class="hljs-attr">nextText</span>:<span class="hljs-string">"Next"</span>
 });
 
-onboard.start([
+onboarding.start([
 		{
 			<span class="hljs-attr">selector</span>:<span class="hljs-string">".menu-element"</span>,
 			<span class="hljs-attr">title</span>:<span class="hljs-string">"Step 1 title"</span>,
@@ -780,7 +867,7 @@ onboard.start([
     <div class='py1 quiet mt1 prose-big'>Instance Members</div>
     <div class="clearfix">
   
-    <div class='border-bottom' id='Onboard#constructor'>
+    <div class='border-bottom' id='CleverOnboarding#constructor'>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
             <a class='icon pin-right py1 dark-link caret-right'>▸</a>
@@ -838,7 +925,7 @@ onboard.start([
       </div>
     </div>
   
-    <div class='border-bottom' id='Onboard#on'>
+    <div class='border-bottom' id='CleverOnboarding#on'>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
             <a class='icon pin-right py1 dark-link caret-right'>▸</a>
@@ -853,7 +940,7 @@ onboard.start([
   <p>Binds widget event</p>
 
 
-  <div class='pre p1 fill-light mt0'>on(eventName: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, handler: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">Function</a>): <a href="#onboard">Onboard</a></div>
+  <div class='pre p1 fill-light mt0'>on(eventName: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, handler: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">Function</a>): Onboard</div>
   
   
 
@@ -894,7 +981,7 @@ onboard.start([
   
     
       <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="#onboard">Onboard</a></code>:
+      <code>Onboard</code>:
         returns this widget instance
 
       
@@ -915,7 +1002,7 @@ onboard.start([
       </div>
     </div>
   
-    <div class='border-bottom' id='Onboard#off'>
+    <div class='border-bottom' id='CleverOnboarding#off'>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
             <a class='icon pin-right py1 dark-link caret-right'>▸</a>
@@ -930,7 +1017,7 @@ onboard.start([
   <p>Unbinds widget event</p>
 
 
-  <div class='pre p1 fill-light mt0'>off(eventName: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, handler: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">Function</a>?): <a href="#onboard">Onboard</a></div>
+  <div class='pre p1 fill-light mt0'>off(eventName: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, handler: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">Function</a>?): Onboard</div>
   
   
 
@@ -971,7 +1058,7 @@ onboard.start([
   
     
       <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="#onboard">Onboard</a></code>:
+      <code>Onboard</code>:
         returns this widget instance
 
       
@@ -992,7 +1079,7 @@ onboard.start([
       </div>
     </div>
   
-    <div class='border-bottom' id='Onboard#destroy'>
+    <div class='border-bottom' id='CleverOnboarding#destroy'>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
             <a class='icon pin-right py1 dark-link caret-right'>▸</a>
@@ -1007,7 +1094,7 @@ onboard.start([
   <p>Destroys this widget</p>
 
 
-  <div class='pre p1 fill-light mt0'>destroy(): <a href="#onboard">Onboard</a></div>
+  <div class='pre p1 fill-light mt0'>destroy(): Onboard</div>
   
   
 
@@ -1025,7 +1112,7 @@ onboard.start([
   
     
       <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="#onboard">Onboard</a></code>:
+      <code>Onboard</code>:
         returns this widget instance
 
       
@@ -1046,7 +1133,7 @@ onboard.start([
       </div>
     </div>
   
-    <div class='border-bottom' id='Onboard#render'>
+    <div class='border-bottom' id='CleverOnboarding#render'>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
             <a class='icon pin-right py1 dark-link caret-right'>▸</a>
@@ -1061,7 +1148,7 @@ onboard.start([
   <p>Renders this widget</p>
 
 
-  <div class='pre p1 fill-light mt0'>render(selector: (<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a> | <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element">HTMLElement</a>)): <a href="#onboard">Onboard</a></div>
+  <div class='pre p1 fill-light mt0'>render(selector: (<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a> | <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element">HTMLElement</a>)): Onboard</div>
   
   
 
@@ -1093,7 +1180,7 @@ onboard.start([
   
     
       <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="#onboard">Onboard</a></code>:
+      <code>Onboard</code>:
         returns this widget instance
 
       
@@ -1114,7 +1201,7 @@ onboard.start([
       </div>
     </div>
   
-    <div class='border-bottom' id='Onboard#start'>
+    <div class='border-bottom' id='CleverOnboarding#start'>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
             <a class='icon pin-right py1 dark-link caret-right'>▸</a>
@@ -1129,7 +1216,7 @@ onboard.start([
   <p>Starts onboarding</p>
 
 
-  <div class='pre p1 fill-light mt0'>start(steps: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;<a href="#stepoptions">StepOptions</a>>): <a href="#onboard">Onboard</a></div>
+  <div class='pre p1 fill-light mt0'>start(steps: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;<a href="#stepoptions">StepOptions</a>>): Onboard</div>
   
   
 
@@ -1160,7 +1247,7 @@ onboard.start([
   
     
       <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="#onboard">Onboard</a></code>:
+      <code>Onboard</code>:
         returns this widget instance
 
       
@@ -1181,7 +1268,7 @@ onboard.start([
       </div>
     </div>
   
-    <div class='border-bottom' id='Onboard#stop'>
+    <div class='border-bottom' id='CleverOnboarding#stop'>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
             <a class='icon pin-right py1 dark-link caret-right'>▸</a>
@@ -1196,7 +1283,7 @@ onboard.start([
   <p>Stops onboarding</p>
 
 
-  <div class='pre p1 fill-light mt0'>stop(): <a href="#onboard">Onboard</a></div>
+  <div class='pre p1 fill-light mt0'>stop(): Onboard</div>
   
   
 
@@ -1214,7 +1301,7 @@ onboard.start([
   
     
       <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="#onboard">Onboard</a></code>:
+      <code>Onboard</code>:
         returns this widget instance
 
       
@@ -1240,19 +1327,22 @@ onboard.start([
   
 
   
-    <div class='py1 quiet mt1 prose-big'>Events</div>
-    <div class="clearfix">
-  
-    <div class='border-bottom' id='Onboard.event:Onboard#start'>
-      <div class="clearfix small pointer toggle-sibling">
-        <div class="py1 contain">
-            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>Onboard#start</span>
-        </div>
-      </div>
-      <div class="clearfix display-none toggle-target">
-        <section class='p2 mb2 clearfix bg-white minishadow'>
+</section>
 
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='eventonboardstart'>
+      Onboard#start
+    </h3>
+    
+    
+  </div>
   
 
   <p>Fires when onboarding starts.</p>
@@ -1303,19 +1393,20 @@ onboard.start([
   
 </section>
 
-      </div>
-    </div>
-  
-    <div class='border-bottom' id='Onboard.event:Onboard#stop'>
-      <div class="clearfix small pointer toggle-sibling">
-        <div class="py1 contain">
-            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>Onboard#stop</span>
-        </div>
-      </div>
-      <div class="clearfix display-none toggle-target">
-        <section class='p2 mb2 clearfix bg-white minishadow'>
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
 
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='eventonboardstop'>
+      Onboard#stop
+    </h3>
+    
+    
+  </div>
   
 
   <p>Fires when onboarding step changes.</p>
@@ -1366,19 +1457,20 @@ onboard.start([
   
 </section>
 
-      </div>
-    </div>
-  
-    <div class='border-bottom' id='Onboard.event:Onboard#step'>
-      <div class="clearfix small pointer toggle-sibling">
-        <div class="py1 contain">
-            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>Onboard#step</span>
-        </div>
-      </div>
-      <div class="clearfix display-none toggle-target">
-        <section class='p2 mb2 clearfix bg-white minishadow'>
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
 
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='eventonboardstep'>
+      Onboard#step
+    </h3>
+    
+    
+  </div>
   
 
   <p>Fires when onboarding finishes.</p>
@@ -1429,10 +1521,125 @@ onboard.start([
   
 </section>
 
-      </div>
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='eventonboardcloseclick'>
+      Onboard#closeClick
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Fires when user clicks on close button.</p>
+
+
+  <div class='pre p1 fill-light mt0'>Onboard#closeClick</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='position'>
+      Position
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Position definition</p>
+
+
+  <div class='pre p1 fill-light mt0'>Position</div>
+  
+    <p>
+      Type:
+      <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>
+    </p>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Properties</div>
+    <div>
+      
+        <div class='space-bottom0'>
+          <span class='code bold'>top</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>)</code>
+          
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <span class='code bold'>left</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>)</code>
+          
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <span class='code bold'>position</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+          : can be 'right-top', 'right-bottom', 'left-top', 'left-bottom'
+
+          
+        </div>
+      
     </div>
   
-</div>
+
+  
+
+  
+
+  
+
+  
+
+  
 
   
 </section>
@@ -1538,18 +1745,18 @@ onboard.start([
   
   <div class='clearfix'>
     
-    <h3 class='fl m0' id='onboardoptions'>
-      OnboardOptions
+    <h3 class='fl m0' id='shapeoptions'>
+      ShapeOptions
     </h3>
     
     
   </div>
   
 
-  <p>Options for the main Onboard instance</p>
+  <p>Shape otions for the each step</p>
 
 
-  <div class='pre p1 fill-light mt0'>OnboardOptions</div>
+  <div class='pre p1 fill-light mt0'>ShapeOptions</div>
   
     <p>
       Type:
@@ -1572,48 +1779,36 @@ onboard.start([
     <div>
       
         <div class='space-bottom0'>
-          <span class='code bold'>fillColor</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
-          : color of the modal background, defaults to 
-<a href="#.OnboardDefaultsFILL_COLOR">FILL_COLOR</a>
+          <span class='code bold'>radius</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>)</code>
+          : of the shape, can be customized if target element is rectangle but spotlight is required with rounded corners
 
           
         </div>
       
         <div class='space-bottom0'>
-          <span class='code bold'>fillOpacity</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>)</code>
-          : opacity of the modal background, defaults to 
-<a href="#.OnboardDefaultsFILL_OPACITY">FILL_OPACITY</a>
+          <span class='code bold'>type</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+          : can be set to change shape's type, supports 'rectangle' (default) and 'circle'.
 
           
         </div>
       
         <div class='space-bottom0'>
-          <span class='code bold'>nextText</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
-          : default text for the Next button, defaults to 
-<a href="#.OnboardDefaultsNEXT_TEXT">NEXT_TEXT</a>
+          <span class='code bold'>width</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>)</code>
+          : width of the shape if it requires to be different than target element's width
 
           
         </div>
       
         <div class='space-bottom0'>
-          <span class='code bold'>windowClassName</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
-          : custom class name for popup window, defaults to 
-<a href="#.OnboardDefaultsWINDOW_CLASS_NAME">WINDOW_CLASS_NAME</a>
+          <span class='code bold'>height</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>)</code>
+          : height of the shape if it requires to be different than target element's height
 
           
         </div>
       
         <div class='space-bottom0'>
-          <span class='code bold'>animationDuration</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>)</code>
-          : lenght of animation duration when transitioning between steps, defaults to 
-<a href="#.OnboardDefaultsANIMATION_DURATION">ANIMATION_DURATION</a>
-
-          
-        </div>
-      
-        <div class='space-bottom0'>
-          <span class='code bold'>steps</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;<a href="#stepoptions">StepOptions</a>>)</code>
-          : definition of steps
+          <span class='code bold'>strokeWidth</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>)</code>
+          : can be set to extend spotlight by given number
 
           
         </div>
@@ -1757,18 +1952,18 @@ onboard.start([
   
   <div class='clearfix'>
     
-    <h3 class='fl m0' id='shapeoptions'>
-      ShapeOptions
+    <h3 class='fl m0' id='onboardoptions'>
+      OnboardOptions
     </h3>
     
     
   </div>
   
 
-  <p>Shape otions for the each step</p>
+  <p>Options for the main Onboard instance</p>
 
 
-  <div class='pre p1 fill-light mt0'>ShapeOptions</div>
+  <div class='pre p1 fill-light mt0'>OnboardOptions</div>
   
     <p>
       Type:
@@ -1791,112 +1986,48 @@ onboard.start([
     <div>
       
         <div class='space-bottom0'>
-          <span class='code bold'>radius</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>)</code>
-          : of the shape, can be customized if target element is rectangle but spotlight is required with rounded corners
+          <span class='code bold'>fillColor</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+          : color of the modal background, defaults to 
+<a href="#.OnboardDefaultsFILL_COLOR">FILL_COLOR</a>
 
           
         </div>
       
         <div class='space-bottom0'>
-          <span class='code bold'>type</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
-          : can be set to change shape's type, supports 'rectangle' (default) and 'circle'.
+          <span class='code bold'>fillOpacity</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>)</code>
+          : opacity of the modal background, defaults to 
+<a href="#.OnboardDefaultsFILL_OPACITY">FILL_OPACITY</a>
 
           
         </div>
       
         <div class='space-bottom0'>
-          <span class='code bold'>width</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>)</code>
-          : width of the shape if it requires to be different than target element's width
+          <span class='code bold'>nextText</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+          : default text for the Next button, defaults to 
+<a href="#.OnboardDefaultsNEXT_TEXT">NEXT_TEXT</a>
 
           
         </div>
       
         <div class='space-bottom0'>
-          <span class='code bold'>height</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>)</code>
-          : height of the shape if it requires to be different than target element's height
+          <span class='code bold'>windowClassName</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+          : custom class name for popup window, defaults to 
+<a href="#.OnboardDefaultsWINDOW_CLASS_NAME">WINDOW_CLASS_NAME</a>
 
           
         </div>
       
         <div class='space-bottom0'>
-          <span class='code bold'>strokeWidth</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>)</code>
-          : can be set to extend spotlight by given number
+          <span class='code bold'>animationDuration</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>)</code>
+          : lenght of animation duration when transitioning between steps, defaults to 
+<a href="#.OnboardDefaultsANIMATION_DURATION">ANIMATION_DURATION</a>
 
           
         </div>
       
-    </div>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-          
-        
-          
-            <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-  <div class='clearfix'>
-    
-    <h3 class='fl m0' id='position'>
-      Position
-    </h3>
-    
-    
-  </div>
-  
-
-  <p>Position definition</p>
-
-
-  <div class='pre p1 fill-light mt0'>Position</div>
-  
-    <p>
-      Type:
-      <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>
-    </p>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Properties</div>
-    <div>
-      
         <div class='space-bottom0'>
-          <span class='code bold'>top</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>)</code>
-          
-          
-        </div>
-      
-        <div class='space-bottom0'>
-          <span class='code bold'>left</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>)</code>
-          
-          
-        </div>
-      
-        <div class='space-bottom0'>
-          <span class='code bold'>position</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
-          : can be 'right-top', 'right-bottom', 'left-top', 'left-bottom'
+          <span class='code bold'>steps</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;<a href="#stepoptions">StepOptions</a>>)</code>
+          : definition of steps
 
           
         </div>
@@ -3014,6 +3145,160 @@ onboard.start([
     <div class='py1 quiet mt1 prose-big'>Instance Members</div>
     <div class="clearfix">
   
+    <div class='border-bottom' id='OnboardRenderer#on'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>on(eventName, handler)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Binds widget event</p>
+
+
+  <div class='pre p1 fill-light mt0'>on(eventName: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, handler: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">Function</a>): Onboard</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>eventName</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    event name
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>handler</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">Function</a>)</code>
+	    event handler
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>Onboard</code>:
+        returns this widget instance
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='OnboardRenderer#off'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>off(eventName, handler?)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Unbinds widget event</p>
+
+
+  <div class='pre p1 fill-light mt0'>off(eventName: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, handler: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">Function</a>?): Onboard</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>eventName</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    event name
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>handler</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">Function</a>?)</code>
+	    event handler
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>Onboard</code>:
+        returns this widget instance
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
     <div class='border-bottom' id='OnboardRenderer#isRendered'>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
@@ -3136,176 +3421,6 @@ onboard.start([
       </div>
     </div>
   
-    <div class='border-bottom' id='OnboardRenderer#on'>
-      <div class="clearfix small pointer toggle-sibling">
-        <div class="py1 contain">
-            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>on(eventName, handler, event)</span>
-        </div>
-      </div>
-      <div class="clearfix display-none toggle-target">
-        <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-
-  <p>Bind widget event</p>
-
-
-  <div class='pre p1 fill-light mt0'>on(eventName: any, handler: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">Function</a>, event: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>): <a href="#onboardrenderer">OnboardRenderer</a></div>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Parameters</div>
-    <div class='prose'>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>eventName</span> <code class='quiet'>(any)</code>
-	    
-          </div>
-          
-        </div>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>handler</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">Function</a>)</code>
-	    event handler
-
-          </div>
-          
-        </div>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>event</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
-	    event name
-
-          </div>
-          
-        </div>
-      
-    </div>
-  
-
-  
-
-  
-    
-      <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="#onboardrenderer">OnboardRenderer</a></code>:
-        returns renderer instance
-
-      
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-      </div>
-    </div>
-  
-    <div class='border-bottom' id='OnboardRenderer#off'>
-      <div class="clearfix small pointer toggle-sibling">
-        <div class="py1 contain">
-            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>off(eventName, handler?, event)</span>
-        </div>
-      </div>
-      <div class="clearfix display-none toggle-target">
-        <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-
-  <p>Unbind widget event</p>
-
-
-  <div class='pre p1 fill-light mt0'>off(eventName: any, handler: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">Function</a>?, event: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>): <a href="#onboardrenderer">OnboardRenderer</a></div>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Parameters</div>
-    <div class='prose'>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>eventName</span> <code class='quiet'>(any)</code>
-	    
-          </div>
-          
-        </div>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>handler</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">Function</a>?)</code>
-	    event handler
-
-          </div>
-          
-        </div>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>event</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
-	    event name
-
-          </div>
-          
-        </div>
-      
-    </div>
-  
-
-  
-
-  
-    
-      <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="#onboardrenderer">OnboardRenderer</a></code>:
-        returns this widget instance
-
-      
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-      </div>
-    </div>
-  
     <div class='border-bottom' id='OnboardRenderer#destroy'>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
@@ -3355,6 +3470,58 @@ onboard.start([
 </div>
 
   
+
+  
+    <div class='py1 quiet mt1 prose-big'>Events</div>
+    <div class="clearfix">
+  
+    <div class='border-bottom' id='OnboardRenderer.event:OnboardRenderer#closeClick'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>OnboardRenderer#closeClick</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Fires when user clicks on close button.</p>
+
+
+  <div class='pre p1 fill-light mt0'>OnboardRenderer#closeClick</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+</div>
 
   
 </section>
@@ -3730,6 +3897,160 @@ onboard.start([
       </div>
     </div>
   
+    <div class='border-bottom' id='WindowRenderer#on'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>on(eventName, handler)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Binds widget event</p>
+
+
+  <div class='pre p1 fill-light mt0'>on(eventName: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, handler: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">Function</a>): Onboard</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>eventName</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    event name
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>handler</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">Function</a>)</code>
+	    event handler
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>Onboard</code>:
+        returns this widget instance
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='WindowRenderer#off'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>off(eventName, handler?)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Unbinds widget event</p>
+
+
+  <div class='pre p1 fill-light mt0'>off(eventName: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, handler: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">Function</a>?): Onboard</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>eventName</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    event name
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>handler</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">Function</a>?)</code>
+	    event handler
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>Onboard</code>:
+        returns this widget instance
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
     <div class='border-bottom' id='WindowRenderer#render'>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
@@ -3745,7 +4066,7 @@ onboard.start([
   <p>Renders window UI</p>
 
 
-  <div class='pre p1 fill-light mt0'>render(selector: (<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> | <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element">HTMLElement</a>)): <a href="#onboard">Onboard</a></div>
+  <div class='pre p1 fill-light mt0'>render(selector: (<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> | <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element">HTMLElement</a>)): Onboard</div>
   
   
 
@@ -3777,7 +4098,7 @@ onboard.start([
   
     
       <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="#onboard">Onboard</a></code>:
+      <code>Onboard</code>:
         returns this renderer instance
 
       
@@ -3847,6 +4168,58 @@ onboard.start([
 </div>
 
   
+
+  
+    <div class='py1 quiet mt1 prose-big'>Events</div>
+    <div class="clearfix">
+  
+    <div class='border-bottom' id='WindowRenderer.event:WindowRenderer#closeClick'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>WindowRenderer#closeClick</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Fires when user clicks on close button.</p>
+
+
+  <div class='pre p1 fill-light mt0'>WindowRenderer#closeClick</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+</div>
 
   
 </section>
@@ -3961,6 +4334,81 @@ onboard.start([
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="#position">Position</a></code>:
         
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='PositionResolver#_getConstrainedWindowPosition'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>_getConstrainedWindowPosition(position, windowBox)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Returns constrained window position to the browser viewport</p>
+
+
+  <div class='pre p1 fill-light mt0'>_getConstrainedWindowPosition(position: <a href="#position">Position</a>, windowBox: <a href="#box">Box</a>): <a href="#position">Position</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>position</span> <code class='quiet'>(<a href="#position">Position</a>)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>windowBox</span> <code class='quiet'>(<a href="#box">Box</a>)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="#position">Position</a></code>:
+        constrained position
 
       
     
@@ -4594,6 +5042,317 @@ onboard.start([
     </div>
   
 </div>
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='getbox'>
+      getBox
+    </h3>
+    
+    
+  </div>
+  
+
+  
+
+  <div class='pre p1 fill-light mt0'>getBox</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>element</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element">HTMLElement</a>)</code>
+	    HTML element
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></code>:
+        box
+
+      
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></code>:
+        box.width
+
+      
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></code>:
+        box.height
+
+      
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></code>:
+        box.top
+
+      
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></code>:
+        box.left
+
+      
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></code>:
+        box.right
+
+      
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></code>:
+        box.bottom
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='getmultibox'>
+      getMultiBox
+    </h3>
+    
+    
+  </div>
+  
+
+  
+
+  <div class='pre p1 fill-light mt0'>getMultiBox</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>nodes</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element">HTMLElement</a>>)</code>
+	    array of HTML elements
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></code>:
+        box
+
+      
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></code>:
+        box.width
+
+      
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></code>:
+        box.height
+
+      
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></code>:
+        box.top
+
+      
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></code>:
+        box.left
+
+      
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></code>:
+        box.right
+
+      
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></code>:
+        box.bottom
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='gettargetbox'>
+      getTargetBox
+    </h3>
+    
+    
+  </div>
+  
+
+  
+
+  <div class='pre p1 fill-light mt0'>getTargetBox</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>selection</span> <code class='quiet'>(D3Selection)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></code>:
+        box
+
+      
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></code>:
+        box.width
+
+      
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></code>:
+        box.height
+
+      
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></code>:
+        box.top
+
+      
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></code>:
+        box.left
+
+      
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></code>:
+        box.right
+
+      
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></code>:
+        box.bottom
+
+      
+    
+  
+
+  
+
+  
+
+  
 
   
 

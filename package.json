@@ -1,8 +1,8 @@
 {
   "name": "clever-onboarding",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Framework agnostic onboarding widget for your web apps.",
-  "main": "dist/clever-onboarding-1.0.1.min.js",
+  "main": "dist/clever-onboarding-1.0.2.min.js",
   "scripts": {
     "prebuild": "eslint src",
     "build": "rollup -c",

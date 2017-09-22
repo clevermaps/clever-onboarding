@@ -1,5 +1,6 @@
 import MaskRenderer from "./MaskRenderer";
 import WindowRenderer from "./WindowRenderer";
+import Observable from "./utils/Observable";
 import {select} from "d3-selection";
 
 /**
@@ -43,7 +44,47 @@ export default class OnboardRenderer {
 		 * Window renderer
 		 */
 		this._windowRenderer = new WindowRenderer(options, model);
+
+		/**
+		 * @private
+		 * observable handler
+		 */
+		this._observable = new Observable([
+			/**
+			 * Fires when user clicks on close button.
+			 *
+			 * @event OnboardRenderer#closeClick
+			 * @memberof OnboardRenderer
+			 */
+			"closeClick"
+		]);
+		
+		this._windowRenderer.on("closeClick", ()=>{
+			this._observable.fire("closeClick");
+		});
 	}
+
+	/**
+	 * Binds widget event
+	 * @param {string} eventName event name
+	 * @param {Function} handler event handler
+	 * @return {Onboard} returns this widget instance
+	 */
+	on(eventName, handler) {
+		this._observable.on(eventName, handler);
+		return this;
+	}
+
+	/**
+	 * Unbinds widget event
+	 * @param {string} eventName event name
+	 * @param {Function} [handler] event handler
+	 * @return {Onboard} returns this widget instance
+	 */
+	off(eventName, handler) {
+		this._observable.off(eventName, handler);
+		return this;
+	}	
 
 	/**
 	 * Returns whether Onboard has been rendered or not

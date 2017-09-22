@@ -2,7 +2,7 @@
 <meta charset="utf-8">
 
 <head>
-    <script src="dist/clever-onboarding.min.js"></script>
+    <script src="dist/clever-onboarding-1.0.2.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
 </head>
@@ -43,7 +43,7 @@
 
     .filter-element {
         position:absolute;
-        top: 29px;
+        top: -1129px;
         left: 1051.5px;
         border-radius: 50%;
         width:23px;
@@ -150,6 +150,10 @@
             nextText:"Další",
         });
 
+        onboarding.on("closeClick",()=>{
+            console.log("closeClick");
+        })
+
         onboarding.start([
                 {
                     title:"Objednávky",
@@ -192,7 +196,7 @@
                 {
                     selector:".filter-element",
                     shape:{
-                        offset:13
+                        offset:[13,13]
                     },
                     nextText:"Rozumím",
                     title:"Aktivní filtr",
