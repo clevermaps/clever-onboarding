@@ -159,8 +159,8 @@ export default class WindowRenderer {
 	}
 
 	_onCloseClick(){
-		this._model.stop();
 		this._observable.fire("closeClick");
+		this._model.stop();
 	}
 
 	_onNextClick(){

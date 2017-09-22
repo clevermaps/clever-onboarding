@@ -142,7 +142,7 @@ class CleverOnboarding {
 
 		this._onboardRenderer.on("closeClick", ()=>{
 			this._observable.fire("closeClick");
-		});		
+		});
 
 		this.render();
 	}
