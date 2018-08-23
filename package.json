@@ -1,15 +1,15 @@
 {
   "name": "clever-onboarding",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Framework agnostic onboarding widget for your web apps.",
-  "main": "dist/clever-onboarding-1.0.2.min.js",
+  "main": "dist/clever-onboarding-1.0.3.min.js",
   "scripts": {
     "prebuild": "eslint src",
     "build": "rollup -c",
     "watch": "rollup -c -w",
     "pretest": "npm run build",
-    "build-docs":"documentation build src/CleverOnboarding.js -f html -o docs",
-    "build-docs-md":"documentation build src/CleverOnboarding.js -f md > api.md",
+    "build-docs": "documentation build src/CleverOnboarding.js -f html -o docs",
+    "build-docs-md": "documentation build src/CleverOnboarding.js -f md > api.md",
     "start-docs": "npm run build-docs && http-server docs -p 3000 -o"
   },
   "repository": "https://github.com/CleverMaps/clever-onboarding.git",
@@ -27,9 +27,9 @@
     "lodash-es": "^4.17.4"
   },
   "devDependencies": {
-    "http-server":"^0.10.0",
-    "documentation":"^4.0.0-rc.1",
-    "rollup-plugin-commonjs": "^8.0.2",
+    "http-server": "^0.10.0",
+    "documentation": "^4.0.0-rc.1",
+    "rollup-plugin-commonjs": "^9.1.5",
     "rollup-plugin-node-resolve": "^3.0.0",
     "babel-eslint": "^7.2.3",
     "babel-plugin-external-helpers": "^6.22.0",
@@ -38,7 +38,7 @@
     "babelrc-rollup": "^3.0.0",
     "eslint": "^3.19.0",
     "mocha": "^3.2.0",
-    "rollup": "^0.41.6",
+    "rollup": "^0.64.1",
     "rollup-plugin-babel": "^2.7.1",
     "rollup-watch": "^3.2.2",
     "rollup-plugin-postcss": "^0.4.1",

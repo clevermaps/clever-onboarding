@@ -89,8 +89,10 @@ export default class OnboardModel {
 	 */
 	next(){
 		if (this.hasNext()){
+            const lastStep = this._currentStep;
+            const lastIndex = this._currentStepIndex;
 			this._currentStep = this._steps[++this._currentStepIndex];
-			this._observable.fire("step", this._currentStep, this._currentStepIndex);
+			this._observable.fire("step", this._currentStep, this._currentStepIndex, lastStep, lastIndex);
 		}
 	}
 
@@ -99,8 +101,10 @@ export default class OnboardModel {
 	 */
 	prev(){
 		if (this.hasPrev()){
+            const lastStep = this._currentStep;
+            const lastIndex = this._currentStepIndex;
 			this._currentStep = this._steps[--this._currentStepIndex];
-			this._observable.fire("step", this._currentStep, this._currentStepIndex);
+			this._observable.fire("step", this._currentStep, this._currentStepIndex, lastStep, lastIndex);
 		}
 	}
 
