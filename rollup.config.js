@@ -36,7 +36,7 @@ export default {
     {
       dest: pkg.main,
       format: 'umd',
-      moduleName: 'CleverOnboarding',
+      name: 'CleverOnboarding',
       sourceMap: true
     }
   ]

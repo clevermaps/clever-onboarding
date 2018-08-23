@@ -81,7 +81,14 @@ class CleverOnboarding {
 			 * @property {Object} step
 			 * @property {number} stepIndex
 			 */
-			"stop",
+			"step",
+			/**
+			 * Fires when user clicks on close button.
+			 *
+			 * @event Onboard#closeClick
+			 * @memberof Onboard
+			 */
+			"closeClick",
 			/**
 			 * Fires when onboarding finishes.
 			 *
@@ -91,14 +98,7 @@ class CleverOnboarding {
 			 * @property {Object} step
 			 * @property {number} stepIndex
 			 */
-			"step",
-			/**
-			 * Fires when user clicks on close button.
-			 *
-			 * @event Onboard#closeClick
-			 * @memberof Onboard
-			 */
-			"closeClick"
+			"stop"
 		]);
 
 		/**
@@ -121,10 +121,12 @@ class CleverOnboarding {
 			});
 		});
 
-		this._model.on("step", (step, index)=>{
+		this._model.on("step", (step, index, lastStep, lastIndex)=>{
 			this._observable.fire("step", {
-				step:step, 
-				index:index
+				step,
+				index,
+                lastStep,
+                lastIndex
 			});
 		});
 
@@ -138,10 +140,13 @@ class CleverOnboarding {
 		 * @private
 		 * key handler
 		 */
-		this._onboardKeyHandler = new OnboardKeyHandler(this._options, this._model);		
+		this._onboardKeyHandler = new OnboardKeyHandler(this._options, this._model);
 
-		this._onboardRenderer.on("closeClick", ()=>{
-			this._observable.fire("closeClick");
+		this._onboardRenderer.on("closeClick", (step, index)=>{
+			this._observable.fire("closeClick", {
+                step,
+                index,
+            });
 		});
 
 		this.render();

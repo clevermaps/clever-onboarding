@@ -60,7 +60,7 @@ export default class OnboardRenderer {
 		]);
 		
 		this._windowRenderer.on("closeClick", ()=>{
-			this._observable.fire("closeClick");
+			this._observable.fire("closeClick", model._currentStep, model._currentStepIndex);
 		});
 	}
 
