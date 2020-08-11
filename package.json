@@ -1,8 +1,8 @@
 {
   "name": "clever-onboarding",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Framework agnostic onboarding widget for your web apps.",
-  "main": "dist/clever-onboarding-1.0.3.min.js",
+  "main": "dist/clever-onboarding.min.js",
   "scripts": {
     "prebuild": "eslint src",
     "build": "rollup -c",
@@ -12,11 +12,14 @@
     "build-docs-md": "documentation build src/CleverOnboarding.js -f md > api.md",
     "start-docs": "npm run build-docs && http-server docs -p 3000 -o"
   },
-  "repository": "https://github.com/CleverMaps/clever-onboarding.git",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CleverMaps/clever-onboarding.git"
+  },
   "keywords": [
     "onboard"
   ],
-  "author": "Jaroslav Benc",
+  "author": "CleverMaps",
   "files": [
     "src",
     "dist"
@@ -45,5 +48,14 @@
     "postcss-cssnext": "2.11.0",
     "postcss-modules": "^0.6.4",
     "rollup-plugin-uglify": "^1.0.2"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/CleverMaps/clever-onboarding/issues"
+  },
+  "homepage": "https://github.com/CleverMaps/clever-onboarding#readme",
+  "directories": {
+    "doc": "docs",
+    "test": "test"
+  },
+  "license": "MIT"
 }
