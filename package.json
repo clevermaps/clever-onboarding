@@ -46,7 +46,7 @@
     "rollup-watch": "^3.2.2",
     "rollup-plugin-postcss": "^0.4.1",
     "postcss-cssnext": "2.11.0",
-    "postcss-modules": "^0.6.4",
+    "postcss-modules": "^6.0.0",
     "rollup-plugin-uglify": "^1.0.2"
   },
   "bugs": {
