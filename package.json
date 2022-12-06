@@ -30,7 +30,7 @@
     "lodash-es": "^4.17.4"
   },
   "devDependencies": {
-    "http-server": "^0.10.0",
+    "http-server": "^14.1.1",
     "documentation": "^4.0.0-rc.1",
     "rollup-plugin-commonjs": "^9.1.5",
     "rollup-plugin-node-resolve": "^3.0.0",
